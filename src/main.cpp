@@ -3,9 +3,8 @@
 #include <iostream>
 
 int main() {
+    Card *card;
     Deck *deck = new Deck();
 
-
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }

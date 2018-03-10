@@ -7,6 +7,32 @@
 
 
 class Pot {
+private:
+    unsigned int chips;
+
+public:
+    /**
+     * Pot constructor
+     */
+    Pot();
+
+    /**
+     * Returns pot's chips;
+     * @return pot's chips
+     */
+    unsigned int getChips();
+
+    /**
+     * Adds chips to pot.
+     *
+     * @param chips         chips to add
+     */
+    void addChips(unsigned int chips);
+
+    /**
+     * Zeros chips in pot.
+     */
+    void zeroChips();
 
 };
 
