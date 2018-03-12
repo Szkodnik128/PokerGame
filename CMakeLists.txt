@@ -9,4 +9,5 @@ add_executable(PokerGame
         src/model/Deck.cpp src/model/Deck.h
         src/model/Pot.cpp src/model/Pot.h
         src/model/Table.cpp src/model/Table.h
-        src/model/Player.cpp src/model/Player.h)
+        src/model/Player.cpp src/model/Player.h
+        src/server/Server.cpp src/server/Server.h)

@@ -4,17 +4,17 @@
 
 #include "Player.h"
 
-Player::Player(std::string const &name)
+Player::Player(std::string name)
 {
     this->name = name;
 }
 
-void Player::setHand(std::tuple<Card, Card>hand)
+void Player::setHand(std::tuple<Card, Card> hand)
 {
     this->hand = hand;
 }
 
-std::tuple Player::getHand()
+std::tuple<Card, Card> Player::getHand()
 {
     return hand;
 }
@@ -33,7 +33,6 @@ void Player::setTable(Table *table)
 {
     this->table = table;
 }
-
 
 Table *Player::getTable()
 {

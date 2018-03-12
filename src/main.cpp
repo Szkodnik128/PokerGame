@@ -1,10 +1,14 @@
-#include "model/Deck.h"
+#include "server/Server.h"
 
-#include <iostream>
+#include <string>
 
 int main() {
-    Card *card;
-    Deck *deck = new Deck();
+    std::string address = "localhost";
+    std::string service = "9988";
+    Server *server;
+
+    server = new Server(address, service, 256);
+    server->run();
 
     return 0;
 }
