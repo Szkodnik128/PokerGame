@@ -1,4 +1,5 @@
 #include "server/Server.h"
+#include "protocol/protocol.pb.h"
 
 #include <string>
 

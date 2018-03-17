@@ -9,15 +9,15 @@ Player::Player(std::string name)
     this->name = name;
 }
 
-void Player::setHand(std::tuple<Card, Card> hand)
-{
-    this->hand = hand;
-}
-
-std::tuple<Card, Card> Player::getHand()
-{
-    return hand;
-}
+//void Player::setHand(std::tuple<Card, Card> hand)
+//{
+//    this->hand = hand;
+//}
+//
+//std::tuple<Card, Card> Player::getHand()
+//{
+//    return hand;
+//}
 
 void Player::setChips(unsigned int chips)
 {

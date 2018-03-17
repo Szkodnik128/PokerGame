@@ -17,8 +17,8 @@ class Player {
 private:
     /** Player's name */
     std::string name;
-    /** Player's hand */
-    std::tuple<Card, Card> hand;
+//    /** Player's hand */
+//    std::tuple<Card, Card> hand;
     /** Player's chips */
     unsigned int chips;
     /** Table where player is playing */
@@ -32,19 +32,19 @@ public:
      */
     Player(std::string name);
 
-    /**
-     * Sets player's hand.
-     *
-     * @param hand      hand to set
-     */
-    void setHand(std::tuple<Card, Card> hand);
-
-    /**
-     * Returns player's hand.
-     *
-     * @return player's hand
-     */
-    std::tuple<Card, Card> getHand();
+//    /**
+//     * Sets player's hand.
+//     *
+//     * @param hand      hand to set
+//     */
+//    void setHand(std::tuple<Card, Card> hand);
+//
+//    /**
+//     * Returns player's hand.
+//     *
+//     * @return player's hand
+//     */
+//    std::tuple<Card, Card> getHand();
 
     /**
      * Sets player's chips.

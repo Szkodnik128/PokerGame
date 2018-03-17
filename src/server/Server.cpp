@@ -4,13 +4,16 @@
 
 #include "Server.h"
 
-#include <iostream>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <netdb.h>
+#include <thread>
+#include <iostream>
+#include <cstring>
 
+static void handle_connection(const int client_socket);
 
 Server::Server(std::string const &address, std::string const &service, size_t max_connections)
 {
@@ -22,47 +25,73 @@ Server::Server(std::string const &address, std::string const &service, size_t ma
 
 void Server::run()
 {
-    int ret, client_sock;
+    struct addrinfo hints;
+    struct addrinfo *res = nullptr;
+    int sock, ret, client_sock;
     int reuse_addr = 1;
     socklen_t sock_len;
     struct sockaddr_in client_addr;
 
-    this->hints.ai_family = AF_INET;
-    this->hints.ai_socktype = SOCK_STREAM;
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_STREAM;
+    hints.ai_protocol = IPPROTO_TCP;
 
-    ret = getaddrinfo(this->address.c_str(), this->service.c_str(), &this->hints, &this->res);
+    ret = getaddrinfo(this->address.c_str(), this->service.c_str(), &hints, &res);
     if (ret != 0) {
-        // TODO: Throw exception
+        std::cerr << "getaddrinfo failed" << ret << std::endl;
+        return;
     }
 
-    this->sock = socket(this->res->ai_family, this->res->ai_socktype, this->res->ai_protocol);
+    sock = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
 
-    ret = setsockopt(this->sock, SOL_SOCKET, SO_REUSEADDR, &reuse_addr, sizeof(int));
+    ret = setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &reuse_addr, sizeof(int));
     if (ret == -1) {
-        // TODO: Throw exception
+        std::cerr << "setsockopt failed" << std::endl;
+        return;
     }
 
-    ret = bind(this->sock, this->res->ai_addr, this->res->ai_addrlen);
+    ret = bind(sock, res->ai_addr, res->ai_addrlen);
     if (ret == -1) {
-        // TODO: Throw exception
+        std::cerr << "bind failed" << std::endl;
+        return;
     }
 
-    ret = listen(this->sock, (int)this->max_connections);
+    ret = listen(sock, (int)this->max_connections);
     if (ret == -1) {
-        // TODO: Throw exception
+        std::cerr << "listen failed" << std::endl;
+        return;
     }
 
     this->work_flag = true;
     sock_len = sizeof(struct sockaddr_in);
 
-    while (this->work_flag == true) {
-        client_sock = accept(this->sock, (struct sockaddr*)&client_addr, &sock_len);
+    while (this->work_flag) {
+        client_sock = accept(sock, (struct sockaddr*)&client_addr, &sock_len);
         if (client_sock == -1) {
-            // TODO: Log error
+            std::cerr << "accept failed" << std::endl;
         } else {
-            std::cout << "New connection" << std::endl;
+            std::thread client_thread(handle_connection, client_sock);
+            client_thread.detach();
         }
     }
 
-    close(this->sock);
+    close(sock);
+}
+
+static void handle_connection(const int client_sock)
+{
+    ClientHandler *clientHandler;
+
+    /* Create new client handler */
+    clientHandler = new ClientHandler(client_sock);
+
+    /* Run client handler */
+    clientHandler->listen();
+
+    /* Destroy client handler */
+    free(clientHandler);
+
+    /* Close socket */
+    close(client_sock);
 }

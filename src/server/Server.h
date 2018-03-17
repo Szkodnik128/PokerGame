@@ -5,17 +5,17 @@
 #ifndef POKERGAME_SERVER_H
 #define POKERGAME_SERVER_H
 
+#include "ClientHandler.h"
+
+#include <list>
 #include <string>
 #include <netdb.h>
 
 class Server {
 
 private:
-    int sock;
     std::string address;
     std::string service;
-    struct addrinfo hints;
-    struct addrinfo *res;
     size_t max_connections;
     bool work_flag;
 

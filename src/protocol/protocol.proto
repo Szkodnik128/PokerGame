@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+// Errors
+enum Error {
+    ErrorSuccess = 0;
+    ErrorWrongMessage = 1;
+    ErrorInvalidValue = 2;
+}
+
+// Table statuses
+enum TableStatus {
+    TableStatusUnknown = 0;
+    TableStatusWaitingForPlayers = 1;
+    TableStatusGameInProgress = 2;
+    TableStatusGameEnded = 3;
+}
+
+// Round statuses
+enum RoundStatus {
+    RoundStatusUnknown = 0;
+    RoundStatusPreFlop = 1;
+    RoundStatusFlop = 2;
+    RoundStatusTurn = 3;
+    RoundStatusRiver = 4;
+    RoundStatusEnd = 5;
+}
+
+// Card values
+enum CardValue {
+    CardValueUnkown = 0;
+    CardValueTwo = 2;
+    CardValueThree = 3;
+    CardValueFour = 4;
+    CardValueFive = 5;
+    CardValueSix = 6;
+    CardValueSeven = 7;
+    CardValueEight = 8;
+    CardValueNine = 9;
+    CardValueTen = 10;
+    CardValueJack = 11;
+    CardValueQueen = 12;
+    CardValueKing = 13;
+    CardValueAce = 14;
+}
+
+// Card suits
+enum CardSuit {
+    CardSuitUnkown = 0;
+    CardSuitSpades = 1;
+    CardSuitHearts = 2;
+    CardSuitDiamonds = 3;
+    CardSuitClubs = 4;
+}
+
+// Request message (sent by client)
+message Request {
+    oneof payload {
+        Login login = 1;
+        JoinTable joinTable = 2;
+        LeaveTable leaveTable = 3;
+        Raise raise = 4;
+        Fold fold = 5;
+        Call call = 6;
+    }
+}
+
+
+// Response message (sent by server)
+message Response {
+    Error error = 1;
+    oneof payload {
+        LobbyView lobbyView = 2;
+        TableView tableView = 3;
+    }
+}
+
+// Login request message
+message Login {
+    string username = 1;
+}
+
+// Join table request message
+message JoinTable {
+    uint32 tableId = 1;
+}
+
+// Leave table request message
+message LeaveTable {
+}
+
+// Raise request message
+message Raise {
+    int32 chips = 1;
+}
+
+// Fold request message
+message Fold {
+}
+
+// Call request message
+message Call {
+}
+
+// Card
+message Card {
+    CardValue cardValue = 1;
+    CardSuit cardSuit = 2;
+}
+
+// Player
+message Player {
+    string username = 1;
+    uint32 chips = 2;
+    repeated Card hand = 3; // optional
+    bool dealer = 4;
+}
+
+// Table informations (for Lobby View)
+message TableInfo {
+    uint32 index = 1;
+    string name = 2;
+    uint32 maxPlayers = 3;
+    uint32 players = 4;
+}
+
+// Lobby view response message
+message LobbyView {
+    repeated TableInfo tables = 1; // optional
+}
+
+// Table (during the game) response message
+message TableView {
+    TableStatus tableStatus = 1;
+    RoundStatus roundStatus = 2;
+    repeated Card cards = 3; // optional
+    repeated uint32 pots = 4; // optional
+    repeated Player players = 5;
+}
