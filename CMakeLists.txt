@@ -3,7 +3,7 @@ project(PokerGame)
 
 set(CMAKE_CXX_STANDARD 17)
 
-file(GLOB SOURCE_FILES "src/*.cpp"
+file(GLOB SOURCE_FILES "src/*.cpp" "src/*.h"
                        "src/controller/*.cpp" "src/controller/*.h"
                        "src/model/*.cpp" "src/model/*.h"
                        "src/protocol/*pb.cc" "src/protocol/*pb.h"

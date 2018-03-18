@@ -22,12 +22,13 @@ private:
     std::string address;
     std::string service;
     size_t max_connections;
-    bool work_flag;
+    bool workerFlag;
 
 public:
     Server(BlockingQueue<Event *> *const blockingQueue, std::string const &address, std::string const &service,
            size_t max_connections);
     void run();
+    void setWorkerFlag(bool workerFlag);
 };
 
 

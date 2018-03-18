@@ -1,3 +1,4 @@
+#include "config.h"
 #include "server/Server.h"
 #include "controller/Controller.h"
 #include "model/Model.h"
@@ -5,10 +6,6 @@
 #include "event/Event.h"
 
 #include <thread>
-
-#define SERVER_ADDRESS "localhost"
-#define SERVER_SERVICE "9988"
-#define SERVER_MAX_CONNECTIONS 256
 
 static void run_controller(Controller *controller)
 {
@@ -29,7 +26,7 @@ int main() {
     /* Create objects */
     model = new Model();
     blockingQueue = new BlockingQueue<Event *>();
-    controller = new Controller();
+    controller = new Controller(blockingQueue, model);
     server = new Server(blockingQueue, SERVER_ADDRESS, SERVER_SERVICE, SERVER_MAX_CONNECTIONS);
 
     /* Run controller as thread */

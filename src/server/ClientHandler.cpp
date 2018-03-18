@@ -16,10 +16,10 @@
 
 #define BUFFER_SIZE 1024
 
-ClientHandler::ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int client_sock)
+ClientHandler::ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int clientSock)
         : blockingQueue(blockingQueue),
-          client_sock(client_sock),
-          logged_in(false)
+          clientSock(clientSock),
+          loggedIn(false)
 {
 }
 
@@ -32,14 +32,14 @@ void ClientHandler::listen()
 
     while (true) {
         memset(buffer, 0, BUFFER_SIZE);
-        sent = recv(this->client_sock, buffer, BUFFER_SIZE, 0);
+        sent = recv(this->clientSock, buffer, BUFFER_SIZE, 0);
         if (sent < 0) {
-            std::cerr << "recv failed. client socket = " << this->client_sock << std::endl;
+            std::cerr << "recv failed. client socket = " << this->clientSock << std::endl;
             event = new EventConnectionClosed(this);
             blockingQueue->push(event);
             return;
         } else if (sent == 0) {
-            std::cerr << "connection closed. client socket = " << this->client_sock << std::endl;
+            std::cerr << "connection closed. client socket = " << this->clientSock << std::endl;
             event = new EventConnectionClosed(this);
             blockingQueue->push(event);
             return;
@@ -47,7 +47,7 @@ void ClientHandler::listen()
 
         ret = this->handleMessage(buffer, (size_t)sent);
         if (ret != true) {
-            std::cerr << "received illegal message. closing connection. client socket = " << this->client_sock << std::endl;
+            std::cerr << "received illegal message. closing connection. client socket = " << this->clientSock << std::endl;
             event = new EventConnectionClosed(this);
             blockingQueue->push(event);
             return;
@@ -59,7 +59,7 @@ bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
 {
     ssize_t ret;
 
-    ret = send(this->client_sock, data, size, 0);
+    ret = send(this->clientSock, data, size, 0);
     if (ret < 0) {
         return false;
     }
@@ -74,7 +74,7 @@ bool ClientHandler::handleMessage(unsigned char *const data, size_t size)
 
     request.ParseFromArray(data, (int)size);
 
-    if (this->logged_in == false) {
+    if (this->loggedIn == false) {
         if (request.has_login()) {
             event = new EventRecvRequest(this, request);
             blockingQueue->push(event);
@@ -88,4 +88,8 @@ bool ClientHandler::handleMessage(unsigned char *const data, size_t size)
     }
 
     return true;
+}
+
+void ClientHandler::setLoggedIn(bool loggedIn) {
+    this->loggedIn = loggedIn;
 }

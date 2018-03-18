@@ -21,7 +21,7 @@ Server::Server(BlockingQueue<Event *> *const blockingQueue, std::string const &a
           address(address),
           service(service),
           max_connections(max_connections),
-          work_flag(false)
+          workerFlag(false)
 {
 }
 
@@ -65,10 +65,10 @@ void Server::run()
         return;
     }
 
-    this->work_flag = true;
+    this->workerFlag = true;
     sock_len = sizeof(struct sockaddr_in);
 
-    while (this->work_flag) {
+    while (this->workerFlag) {
         client_sock = accept(sock, (struct sockaddr*)&client_addr, &sock_len);
         if (client_sock == -1) {
             std::cerr << "accept failed" << std::endl;
@@ -82,6 +82,10 @@ void Server::run()
     close(sock);
 }
 
+void Server::setWorkerFlag(bool workerFlag) {
+    this->workerFlag = workerFlag;
+}
+
 static void handle_connection(BlockingQueue<Event *> *const blockingQueue, const int client_sock)
 {
     ClientHandler *clientHandler;
@@ -93,7 +97,7 @@ static void handle_connection(BlockingQueue<Event *> *const blockingQueue, const
     clientHandler->listen();
 
     /* Destroy client handler */
-    free(clientHandler);
+    delete clientHandler;
 
     /* Close socket */
     close(client_sock);

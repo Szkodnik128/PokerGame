@@ -14,14 +14,15 @@ class ClientHandler {
 
 private:
     BlockingQueue<Event *> *const blockingQueue;
-    const int client_sock;
-    bool logged_in;
+    const int clientSock;
+    bool loggedIn;
     bool handleMessage(unsigned char *const data, size_t size);
 
 public:
-    ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int client_sock);
+    ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int clientSock);
     void listen();
     bool sendMessage(unsigned char *const data, size_t size);
+    void setLoggedIn(bool loggedIn);
 };
 
 
