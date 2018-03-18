@@ -5,19 +5,23 @@
 #ifndef POKERGAME_CLIENTHANDLER_H
 #define POKERGAME_CLIENTHANDLER_H
 
+#include "utils/BlockingQueue.h"
+#include "event/Event.h"
+
 #include <cstddef>
 
 class ClientHandler {
 
 private:
+    BlockingQueue<Event *> *const blockingQueue;
     const int client_sock;
     bool logged_in;
-    bool handle_msg(unsigned char *const data, size_t size);
+    bool handleMessage(unsigned char *const data, size_t size);
 
 public:
-    ClientHandler(const int client_sock);
+    ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int client_sock);
     void listen();
-    bool send_msg(unsigned char *const data, size_t size);
+    bool sendMessage(unsigned char *const data, size_t size);
 };
 
 

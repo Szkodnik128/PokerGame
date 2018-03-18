@@ -13,14 +13,16 @@
 #include <iostream>
 #include <cstring>
 
-static void handle_connection(const int client_socket);
+static void handle_connection(BlockingQueue<Event *> *const blockingQueue, const int client_sock);
 
-Server::Server(std::string const &address, std::string const &service, size_t max_connections)
+Server::Server(BlockingQueue<Event *> *const blockingQueue, std::string const &address, std::string const &service,
+               size_t max_connections)
+        : blockingQueue(blockingQueue),
+          address(address),
+          service(service),
+          max_connections(max_connections),
+          work_flag(false)
 {
-    this->address = address;
-    this->service = service;
-    this->max_connections = max_connections;
-    this->work_flag = false;
 }
 
 void Server::run()
@@ -71,7 +73,8 @@ void Server::run()
         if (client_sock == -1) {
             std::cerr << "accept failed" << std::endl;
         } else {
-            std::thread client_thread(handle_connection, client_sock);
+            std::cout << "Accepted new connection: " << client_sock << std::endl;
+            std::thread client_thread(handle_connection, this->blockingQueue, client_sock);
             client_thread.detach();
         }
     }
@@ -79,12 +82,12 @@ void Server::run()
     close(sock);
 }
 
-static void handle_connection(const int client_sock)
+static void handle_connection(BlockingQueue<Event *> *const blockingQueue, const int client_sock)
 {
     ClientHandler *clientHandler;
 
     /* Create new client handler */
-    clientHandler = new ClientHandler(client_sock);
+    clientHandler = new ClientHandler(blockingQueue, client_sock);
 
     /* Run client handler */
     clientHandler->listen();

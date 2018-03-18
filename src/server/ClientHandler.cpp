@@ -4,23 +4,29 @@
 
 #include "ClientHandler.h"
 #include "protocol/protocol.pb.h"
+#include "event/EventRecvRequest.h"
+#include "utils/BlockingQueue.h"
 
 #include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <cstring>
+#include <event/EventConnectionClosed.h>
 
-#define BUFFER_SIZE 256
+#define BUFFER_SIZE 1024
 
-ClientHandler::ClientHandler(const int client_sock) : client_sock(client_sock)
+ClientHandler::ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int client_sock)
+        : blockingQueue(blockingQueue),
+          client_sock(client_sock),
+          logged_in(false)
 {
-    this->logged_in = false;
 }
 
 void ClientHandler::listen()
 {
     unsigned char buffer[BUFFER_SIZE];
+    Event *event;
     ssize_t sent;
     bool ret;
 
@@ -29,22 +35,27 @@ void ClientHandler::listen()
         sent = recv(this->client_sock, buffer, BUFFER_SIZE, 0);
         if (sent < 0) {
             std::cerr << "recv failed. client socket = " << this->client_sock << std::endl;
-            /* TODO: Add to queue connection closed event */
+            event = new EventConnectionClosed(this);
+            blockingQueue->push(event);
             return;
         } else if (sent == 0) {
             std::cerr << "connection closed. client socket = " << this->client_sock << std::endl;
-            /* TODO: Add to queue connection closed event */
+            event = new EventConnectionClosed(this);
+            blockingQueue->push(event);
             return;
         }
 
-        ret = this->handle_msg(buffer, (size_t)sent);
+        ret = this->handleMessage(buffer, (size_t)sent);
         if (ret != true) {
+            std::cerr << "received illegal message. closing connection. client socket = " << this->client_sock << std::endl;
+            event = new EventConnectionClosed(this);
+            blockingQueue->push(event);
             return;
         }
     }
 }
 
-bool ClientHandler::send_msg(unsigned char *const data, size_t size)
+bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
 {
     ssize_t ret;
 
@@ -56,20 +67,25 @@ bool ClientHandler::send_msg(unsigned char *const data, size_t size)
     return true;
 }
 
-bool ClientHandler::handle_msg(unsigned char *const data, size_t size)
+bool ClientHandler::handleMessage(unsigned char *const data, size_t size)
 {
     Request request;
+    Event *event;
 
     request.ParseFromArray(data, (int)size);
 
     if (this->logged_in == false) {
         if (request.has_login()) {
-            // TODO: Login
-            this->logged_in = true;
+            event = new EventRecvRequest(this, request);
+            blockingQueue->push(event);
+            /* TODO: Set logged in in controller */
         } else {
             return false;
         }
     } else {
-        // TODO: Handle request
+        event = new EventRecvRequest(this, request);
+        blockingQueue->push(event);
     }
+
+    return true;
 }

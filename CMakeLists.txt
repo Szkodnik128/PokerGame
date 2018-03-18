@@ -7,7 +7,9 @@ file(GLOB SOURCE_FILES "src/*.cpp"
                        "src/controller/*.cpp" "src/controller/*.h"
                        "src/model/*.cpp" "src/model/*.h"
                        "src/protocol/*pb.cc" "src/protocol/*pb.h"
-                       "src/server/*.cpp" "src/server/*.h")
+                       "src/server/*.cpp" "src/server/*.h"
+                       "src/utils/*.cpp" "src/utils/*.h"
+                       "src/event/*.cpp" "src/event/*.h")
 
 add_executable(PokerGame ${SOURCE_FILES})
 
