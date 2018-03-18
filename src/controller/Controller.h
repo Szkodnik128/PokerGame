@@ -9,18 +9,23 @@
 #include "utils/BlockingQueue.h"
 #include "event/Event.h"
 
+class Controller;
+typedef void (Controller::*EventHandler)(Event *event);
+
 class Controller {
 
 private:
     BlockingQueue<Event *> *const blockingQueue;
     Model *const model;
     bool workerFlag;
-public:
-    void setWorkerFlag(bool workerFlag);
+    std::map<std::string, EventHandler> eventStrategyMap;
+    void eventRecvRequestHandler(Event *event);
+    void eventConnectionClosedHandler(Event *event);
 
 public:
     Controller(BlockingQueue<Event *> *const blockingQueue, Model *const model);
     void run();
+    void setWorkerFlag(bool workerFlag);
 };
 
 

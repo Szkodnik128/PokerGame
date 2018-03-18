@@ -14,6 +14,7 @@ protected:
 
 public:
     explicit Event(const void *const clientHandler);
+    virtual ~Event() = default;
     const void *const getClientHandler() const;
 };
 
