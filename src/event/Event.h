@@ -5,8 +5,6 @@
 #ifndef POKERGAME_EVENT_H
 #define POKERGAME_EVENT_H
 
-#include "protocol/protocol.pb.h"
-
 class Event {
 
 protected:

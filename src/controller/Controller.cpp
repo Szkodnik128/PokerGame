@@ -15,6 +15,14 @@ Controller::Controller(BlockingQueue<Event *> *const blockingQueue, Model *const
     /* Fill event strategy map */
     this->eventStrategyMap[typeid(EventRecvRequest).name()] = &Controller::eventRecvRequestHandler;
     this->eventStrategyMap[typeid(EventConnectionClosed).name()] = &Controller::eventConnectionClosedHandler;
+
+    /* Fill message strategy map */
+    this->messageStrategyMap[Request::PayloadCase::kLogin] = &Controller::messageLoginHandler;
+    this->messageStrategyMap[Request::PayloadCase::kJoinTable] = &Controller::messageJoinTableHandler;
+    this->messageStrategyMap[Request::PayloadCase::kLeaveTable] = &Controller::messageLeaveTableHandler;
+    this->messageStrategyMap[Request::PayloadCase::kRaise] = &Controller::messageRaiseHandler;
+    this->messageStrategyMap[Request::PayloadCase::kFold] = &Controller::messageFoldHandler;
+    this->messageStrategyMap[Request::PayloadCase::kCall] = &Controller::messageCallHandler;
 }
 
 void Controller::run()
@@ -40,10 +48,60 @@ void Controller::setWorkerFlag(bool workerFlag) {
 
 void Controller::eventRecvRequestHandler(Event *event)
 {
-    std::cout << "eventRecvRequestHandler" << std::endl;
+    MessageHandler handler;
+    auto *eventRecvRequest = (EventRecvRequest *)event;
+    const Request &request = eventRecvRequest->getRequest();
+
+    handler = this->messageStrategyMap[request.payload_case()];
+    assert(handler != nullptr);
+    (this->*handler)(&request, (ClientHandler *const)eventRecvRequest->getClientHandler());
 }
 
 void Controller::eventConnectionClosedHandler(Event *event)
 {
-    std::cout << "eventConnectionClosedHandler" << std::endl;
+    auto *eventConnectionClosed = (EventConnectionClosed *)event;
+
+    this->model->disconnect((ClientHandler *const)eventConnectionClosed->getClientHandler());
+}
+
+void Controller::messageLoginHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgLogin &login = request->login();
+
+    this->model->login(login, clientHandler);
+}
+
+void Controller::messageJoinTableHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgJoinTable &joinTable = request->jointable();
+
+    this->model->joinTable(joinTable, clientHandler);
+}
+
+void Controller::messageLeaveTableHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgLeaveTable &leaveTable = request->leavetable();
+
+    this->model->leaveTable(leaveTable, clientHandler);
+}
+
+void Controller::messageRaiseHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgRaise &raise = request->raise();
+
+    this->model->raise(raise, clientHandler);
+}
+
+void Controller::messageFoldHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgFold &fold = request->fold();
+
+    this->model->fold(fold, clientHandler);
+}
+
+void Controller::messageCallHandler(const Request *const request, ClientHandler *const clientHandler)
+{
+    const MsgCall &call = request->call();
+
+    this->model->call(call, clientHandler);
 }

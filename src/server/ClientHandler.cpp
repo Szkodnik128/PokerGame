@@ -3,16 +3,15 @@
 //
 
 #include "ClientHandler.h"
-#include "protocol/protocol.pb.h"
+#include "protocol/Protocol.pb.h"
 #include "event/EventRecvRequest.h"
+#include "event/EventConnectionClosed.h"
 #include "utils/BlockingQueue.h"
 
-#include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <cstring>
-#include <event/EventConnectionClosed.h>
 
 #define BUFFER_SIZE 1024
 
@@ -78,7 +77,6 @@ bool ClientHandler::handleMessage(unsigned char *const data, size_t size)
         if (request.has_login()) {
             event = new EventRecvRequest(this, request);
             blockingQueue->push(event);
-            /* TODO: Set logged in in controller */
         } else {
             return false;
         }

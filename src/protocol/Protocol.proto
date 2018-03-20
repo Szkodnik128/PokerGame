@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+// Errors
+enum MsgError {
+    MsgErrorSuccess = 0;
+    MsgErrorWrongMessage = 1;
+    MsgErrorInvalidValue = 2;
+}
+
+// Table statuses
+enum MsgTableStatus {
+    MsgTableStatusUnknown = 0;
+    MsgTableStatusWaitingForPlayers = 1;
+    MsgTableStatusGameInProgress = 2;
+    MsgTableStatusGameEnded = 3;
+}
+
+// Round statuses
+enum MsgRoundStatus {
+    MsgRoundStatusUnknown = 0;
+    MsgRoundStatusPreFlop = 1;
+    MsgRoundStatusFlop = 2;
+    MsgRoundStatusTurn = 3;
+    MsgRoundStatusRiver = 4;
+    MsgRoundStatusEnd = 5;
+}
+
+// Card values
+enum MsgCardValue {
+    MsgCardValueUnkown = 0;
+    MsgCardValueTwo = 2;
+    MsgCardValueThree = 3;
+    MsgCardValueFour = 4;
+    MsgCardValueFive = 5;
+    MsgCardValueSix = 6;
+    MsgCardValueSeven = 7;
+    MsgCardValueEight = 8;
+    MsgCardValueNine = 9;
+    MsgCardValueTen = 10;
+    MsgCardValueJack = 11;
+    MsgCardValueQueen = 12;
+    MsgCardValueKing = 13;
+    MsgCardValueAce = 14;
+}
+
+// Card suits
+enum MsgCardSuit {
+    MsgCardSuitUnkown = 0;
+    MsgCardSuitSpades = 1;
+    MsgCardSuitHearts = 2;
+    MsgCardSuitDiamonds = 3;
+    MsgCardSuitClubs = 4;
+}
+
+// Request message (sent by client)
+message Request {
+    oneof payload {
+        MsgLogin login = 1;
+        MsgJoinTable joinTable = 2;
+        MsgLeaveTable leaveTable = 3;
+        MsgRaise raise = 4;
+        MsgFold fold = 5;
+        MsgCall call = 6;
+    }
+}
+
+
+// Response message (sent by server)
+message Response {
+    MsgError error = 1;
+    oneof payload {
+        MsgLobbyView lobbyView = 2;
+        MsgTableView tableView = 3;
+    }
+}
+
+// Login request message
+message MsgLogin {
+    string username = 1;
+}
+
+// Join table request message
+message MsgJoinTable {
+    uint32 tableId = 1;
+}
+
+// Leave table request message
+message MsgLeaveTable {
+}
+
+// Raise request message
+message MsgRaise {
+    int32 chips = 1;
+}
+
+// Fold request message
+message MsgFold {
+}
+
+// Call request message
+message MsgCall {
+}
+
+// Card
+message MsgCard {
+    MsgCardValue cardValue = 1;
+    MsgCardSuit cardSuit = 2;
+}
+
+// Player
+message MsgPlayer {
+    string username = 1;
+    uint32 chips = 2;
+    repeated MsgCard hand = 3; // optional
+    bool dealer = 4;
+}
+
+// Table informations (for Lobby View)
+message MsgTableInfo {
+    uint32 index = 1;
+    string name = 2;
+    uint32 maxPlayers = 3;
+    uint32 players = 4;
+}
+
+// Lobby view response message
+message MsgLobbyView {
+    repeated MsgTableInfo tables = 1; // optional
+}
+
+// Table (during the game) response message
+message MsgTableView {
+    MsgTableStatus tableStatus = 1;
+    MsgRoundStatus roundStatus = 2;
+    repeated MsgCard cards = 3; // optional
+    repeated uint32 pots = 4; // optional
+    repeated MsgPlayer players = 5;
+}

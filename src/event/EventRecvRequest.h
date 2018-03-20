@@ -6,6 +6,7 @@
 #define POKERGAME_EVENTRECVREQUEST_H
 
 #include "Event.h"
+#include "protocol/Protocol.pb.h"
 
 class EventRecvRequest : public Event {
 
