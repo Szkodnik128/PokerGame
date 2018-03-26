@@ -9,29 +9,21 @@
 void Model::login(const MsgLogin &login, ClientHandler *const clientHandler)
 {
     bool found;
-    Response response;
-    Player *player;
-    size_t response_size;
-    void *response_buffer;
+    User *user;
 
     std::cout << "login" << std::endl;
 
-    found = isPlayerWithName(login.username());
+    found = isUserWithName(login.username());
     if (found) {
-        response.set_error(MsgError::MsgErrorInvalidValue);
-        response_size = response.ByteSizeLong();
-        response_buffer = malloc(response_size);
-        response.SerializeToArray(response_buffer, (int)response_size);
-        clientHandler->sendMessage((unsigned char *)response_buffer, response_size);
-        free(response_buffer);
+        /* Send error */
+        clientHandler->sendError(MsgError::MsgErrorInvalidValue);
     } else {
-        player = new Player(login.username());
-
-        this->players.push_front(player);
-        this->clientHandlersMap[clientHandler] = player;
-
-        /* TODO: Add player to lobby */
-
+        /* Create a new user */
+        user = new User(login.username());
+        /* Add user to model */
+        this->users.push_front(user);
+        this->clientHandlersMap[clientHandler] = user;
+        /* Set as logged in */
         clientHandler->setLoggedIn(true);
 
         /* TODO: Send lobby view */
@@ -65,10 +57,25 @@ void Model::call(const MsgCall &call, ClientHandler *const clientHandler)
 
 void Model::disconnect(ClientHandler *const clientHandler)
 {
+    User *user;
+
     std::cout << "disconnect" << std::endl;
+
+    /* Get user */
+    user = clientHandlersMap[clientHandler];
+    /* Remove user from model */
+    this->users.remove(user);
+    auto iterator = this->clientHandlersMap.find(clientHandler);
+    this->clientHandlersMap.erase(iterator);
 }
 
-bool Model::isPlayerWithName(std::string name)
+bool Model::isUserWithName(std::string name)
 {
+    for (auto iterator = this->users.begin(); iterator != this->users.end(); ++iterator) {
+        if ((*iterator)->getName() == name) {
+            return true;
+        }
+    }
 
+    return false;
 }

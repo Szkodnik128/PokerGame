@@ -7,6 +7,7 @@
 
 #include "utils/BlockingQueue.h"
 #include "event/Event.h"
+#include "protocol/Protocol.pb.h"
 
 #include <cstddef>
 
@@ -22,6 +23,7 @@ public:
     ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int clientSock);
     void listen();
     bool sendMessage(unsigned char *const data, size_t size);
+    void sendError(MsgError error);
     void setLoggedIn(bool loggedIn);
 };
 

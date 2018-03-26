@@ -8,14 +8,16 @@
 #include "Player.h"
 
 class Lobby {
-    
+
 private:
-    std::list<Player *>players;
+    std::list<Table *>tables;
 
 public:
-    void addPlayer(Player *const player);
-    void removePlayer(Player *const player);
-    bool isPlayer(Player *const player);
+    const std::list<Table *> &getTables() const;
+    void createTable(); /* TODO: Add more arguments */
+    void addPlayerToTable(int tableId, Player *const player);
+    void removePlayerFromTable(int tableId, Player *const player);
+
 };
 
 

@@ -66,6 +66,20 @@ bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
     return true;
 }
 
+void ClientHandler::sendError(MsgError error)
+{
+    Response response;
+    size_t response_size;
+    void *response_buffer;
+
+    response.set_error(error);
+    response_size = response.ByteSizeLong();
+    response_buffer = malloc(response_size);
+    response.SerializeToArray(response_buffer, (int)response_size);
+    this->sendMessage((unsigned char *)response_buffer, response_size);
+    free(response_buffer);
+}
+
 bool ClientHandler::handleMessage(unsigned char *const data, size_t size)
 {
     Request request;

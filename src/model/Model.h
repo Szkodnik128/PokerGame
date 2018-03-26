@@ -5,7 +5,7 @@
 #ifndef POKERGAME_MODEL_H
 #define POKERGAME_MODEL_H
 
-#include "Player.h"
+#include "User.h"
 #include "Lobby.h"
 #include "server/ClientHandler.h"
 #include "protocol/Protocol.pb.h"
@@ -17,10 +17,10 @@
 class Model {
 
 private:
-    std::list<Player *> players;
-    std::map<const ClientHandler *, Player *> clientHandlersMap;
+    std::list<User *> users;
+    std::map<const ClientHandler *, User *> clientHandlersMap;
     Lobby lobby;
-    bool isPlayerWithName(std::string name);
+    bool isUserWithName(std::string name);
 
 public:
     void login(const MsgLogin &login, ClientHandler *const clientHandler);
