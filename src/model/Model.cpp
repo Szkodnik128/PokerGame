@@ -6,76 +6,145 @@
 
 #include <iostream>
 
-void Model::login(const MsgLogin &login, ClientHandler *const clientHandler)
+void Model::login(const Login &login, ClientHandler *const clientHandler)
 {
-    bool found;
-    User *user;
+    Player *player;
+    DummyLobbyView *dummyLobbyView;
+    DummyTableView *dummyTableView;
 
     std::cout << "login" << std::endl;
 
-    found = isUserWithName(login.username());
-    if (found) {
-        /* Send error */
-        clientHandler->sendError(MsgError::MsgErrorInvalidValue);
-    } else {
+    player = getUserWithName(login.username());
+    if (player == nullptr) {
         /* Create a new user */
-        user = new User(login.username());
+        player = new Player(login.username());
         /* Add user to model */
-        this->users.push_front(user);
-        this->clientHandlersMap[clientHandler] = user;
+        this->players.push_front(player);
+        this->clientHandlersMap[clientHandler] = player;
         /* Set as logged in */
         clientHandler->setLoggedIn(true);
+        /* Mark as connected */
+        player->setConnected(true);
 
+    } else {
+        if (player->isConnected()) {
+            /* Player is connected. Send error */
+            clientHandler->sendError(Error::ErrorInvalidValue);
+            return;
+        } else {
+            /* Player was disconnected. Add to map again */
+            this->clientHandlersMap[clientHandler] = player;
+            /* Set as logged in */
+            clientHandler->setLoggedIn(true);
+            /* Mark as connected */
+            player->setConnected(true);
+        }
+    }
+
+    if (player->isPlaying()) {
+        /* Player was reconnected */
+        /* TODO: Send table view */
+        //dummyTableView = player->getTable()->getTableView(player);
+    } else {
         /* TODO: Send lobby view */
+        dummyLobbyView = this->lobby.getLobbyView();
     }
 }
 
-void Model::joinTable(const MsgJoinTable &joinTable, ClientHandler *const clientHandler)
+void Model::createTable(const CreateTable &createTable, ClientHandler *const clientHandler)
 {
+    Player *player;
+    DummyLobbyView *dummyLobbyView;
+
+    std::cout << "createTable" << std::endl;
+
+    /* Get player */
+    player = clientHandlersMap[clientHandler];
+
+    /* Create table */
+    this->lobby.createTable(createTable.name(), createTable.maxplayers());
+
+    /* TODO: Send lobby view to all players in lobby */
+    dummyLobbyView = this->lobby.getLobbyView();
+}
+
+void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHandler)
+{
+    Player *player;
+    DummyLobbyView *dummyLobbyView;
+
     std::cout << "joinTable" << std::endl;
+
+    /* Get player */
+    player = clientHandlersMap[clientHandler];
+
+    /* Join table */
+    this->lobby.joinTable(joinTable.name(), player);
+
+    /* TODO: Send lobby view to all players in lobby */
+    dummyLobbyView = this->lobby.getLobbyView();
 }
 
-void Model::leaveTable(const MsgLeaveTable &leaveTable, ClientHandler *const clientHandler)
+void Model::leaveTable(const LeaveTable &leaveTable, ClientHandler *const clientHandler)
 {
+    Player *player;
+    DummyLobbyView *dummyLobbyView;
+
     std::cout << "leaveTable" << std::endl;
+
+    /* Get player */
+    player = clientHandlersMap[clientHandler];
+
+    /* Join table */
+    this->lobby.leaveTable(leaveTable.name(), player);
+
+    /* TODO: Send lobby view to all players in lobby */
+    dummyLobbyView = this->lobby.getLobbyView();
 }
 
-void Model::raise(const MsgRaise &raise, ClientHandler *const clientHandler)
+void Model::raise(const Raise &raise, ClientHandler *const clientHandler)
 {
     std::cout << "raise" << std::endl;
 }
 
-void Model::fold(const MsgFold &fold, ClientHandler *const clientHandler)
+void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
 {
     std::cout << "fold" << std::endl;
 }
 
-void Model::call(const MsgCall &call, ClientHandler *const clientHandler)
+void Model::call(const Call &call, ClientHandler *const clientHandler)
 {
     std::cout << "call" << std::endl;
 }
 
 void Model::disconnect(ClientHandler *const clientHandler)
 {
-    User *user;
+    Player *player;
 
     std::cout << "disconnect" << std::endl;
 
-    /* Get user */
-    user = clientHandlersMap[clientHandler];
-    /* Remove user from model */
-    this->users.remove(user);
+    /* Get player */
+    player = clientHandlersMap[clientHandler];
+    /* Mark as disconnected */
+    player->setConnected(false);
+
+    /* Remove player from model if player is not playing */
+    if (!player->isPlaying()) {
+        this->players.remove(player);
+    }
+
+    /* Remove from map */
     auto iterator = this->clientHandlersMap.find(clientHandler);
     this->clientHandlersMap.erase(iterator);
 }
 
-bool Model::isUserWithName(std::string name)
+Player *Model::getUserWithName(std::string name)
 {
-    for (auto iterator = this->users.begin(); iterator != this->users.end(); ++iterator) {
+    for (auto iterator = this->players.begin(); iterator != this->players.end(); ++iterator) {
         if ((*iterator)->getName() == name) {
-            return true;
+            return *iterator;
         }
     }
 
-    return false;
+    return nullptr;
 }

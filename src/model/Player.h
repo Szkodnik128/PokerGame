@@ -6,45 +6,39 @@
 #define POKERGAME_PLAYER_H
 
 #include "Card.h"
-#include "Table.h"
 
 #include <string>
 #include <tuple>
-
 
 class Player {
 
 private:
     /** Player's name */
     std::string name;
-//    /** Player's hand */
-//    std::tuple<Card, Card> hand;
+    /** Connected flag */
+    bool connected;
     /** Player's chips */
     unsigned int chips;
-    /** Table where player is playing */
-    Table *table;
+    /** Playing flag */
+    bool playing;
+    /** Player's hand */
+    std::tuple<Card *, Card *> hand;
 
 public:
-    /**
-     * Player constructor.
-     *
-     * @param name      player name
-     */
-    Player(std::string name);
 
-//    /**
-//     * Sets player's hand.
-//     *
-//     * @param hand      hand to set
-//     */
-//    void setHand(std::tuple<Card, Card> hand);
-//
-//    /**
-//     * Returns player's hand.
-//     *
-//     * @return player's hand
-//     */
-//    std::tuple<Card, Card> getHand();
+    /**
+     * Player's constructor
+     *
+     * @param name      player's name
+     */
+    Player(const std::string &name);
+
+    /**
+     * Returns player's name
+     *
+     * @return player's name
+     */
+    const std::string &getName() const;
 
     /**
      * Sets player's chips.
@@ -60,19 +54,12 @@ public:
      */
     unsigned int getChips();
 
-    /**
-     * Sets table.
-     *
-     * @param table     pointer to table
-     */
-    void setTable(Table *table);
-
-    /**
-     * Returns pointer to table.
-     *
-     * @return pointer to table
-     */
-    Table *getTable();
+    bool isConnected() const;
+    void setConnected(bool connected);
+    bool isPlaying() const;
+    void setPlaying(bool playing);
+    const std::tuple<Card *, Card *> &getHand() const;
+    void setHand(const std::tuple<Card *, Card *> &hand);
 };
 
 #endif //POKERGAME_PLAYER_H

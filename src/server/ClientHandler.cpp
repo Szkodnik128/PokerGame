@@ -66,7 +66,7 @@ bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
     return true;
 }
 
-void ClientHandler::sendError(MsgError error)
+void ClientHandler::sendError(Error error)
 {
     Response response;
     size_t response_size;

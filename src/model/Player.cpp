@@ -4,20 +4,10 @@
 
 #include "Player.h"
 
-Player::Player(std::string name)
+Player::Player(const std::string &name)
+        : name(name), connected(false), playing(false)
 {
-    this->name = name;
 }
-
-//void Player::setHand(std::tuple<Card, Card> hand)
-//{
-//    this->hand = hand;
-//}
-//
-//std::tuple<Card, Card> Player::getHand()
-//{
-//    return hand;
-//}
 
 void Player::setChips(unsigned int chips)
 {
@@ -29,12 +19,30 @@ unsigned int Player::getChips()
     return this->chips;
 }
 
-void Player::setTable(Table *table)
-{
-    this->table = table;
+const std::string &Player::getName() const {
+    return this->name;
 }
 
-Table *Player::getTable()
-{
-    return table;
+bool Player::isConnected() const {
+    return this->connected;
+}
+
+void Player::setConnected(bool connected) {
+    this->connected = connected;
+}
+
+bool Player::isPlaying() const {
+    return this->playing;
+}
+
+void Player::setPlaying(bool playing) {
+    this->playing = playing;
+}
+
+const std::tuple<Card *, Card *> &Player::getHand() const {
+    return this->hand;
+}
+
+void Player::setHand(const std::tuple<Card *, Card *> &hand) {
+    this->hand = hand;
 }

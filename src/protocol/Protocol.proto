@@ -1,122 +1,130 @@
 syntax = "proto3";
 
 // Errors
-enum MsgError {
-    MsgErrorSuccess = 0;
-    MsgErrorWrongMessage = 1;
-    MsgErrorInvalidValue = 2;
+enum Error {
+    ErrorSuccess = 0;
+    ErrorWrongMessage = 1;
+    ErrorInvalidValue = 2;
 }
 
 // Table statuses
-enum MsgTableStatus {
-    MsgTableStatusUnknown = 0;
-    MsgTableStatusWaitingForPlayers = 1;
-    MsgTableStatusGameInProgress = 2;
-    MsgTableStatusGameEnded = 3;
+enum DummyTableStatus {
+    DummyTableStatusUnknown = 0;
+    DummyTableStatusWaitingForPlayers = 1;
+    DummyTableStatusGameInProgress = 2;
+    DummyTableStatusGameEnded = 3;
 }
 
 // Round statuses
-enum MsgRoundStatus {
-    MsgRoundStatusUnknown = 0;
-    MsgRoundStatusPreFlop = 1;
-    MsgRoundStatusFlop = 2;
-    MsgRoundStatusTurn = 3;
-    MsgRoundStatusRiver = 4;
-    MsgRoundStatusEnd = 5;
+enum DummyRoundStatus {
+    DummyRoundStatusUnknown = 0;
+    DummyRoundStatusPreFlop = 1;
+    DummyRoundStatusFlop = 2;
+    DummyRoundStatusTurn = 3;
+    DummyRoundStatusRiver = 4;
+    DummyRoundStatusEnd = 5;
 }
 
 // Card values
-enum MsgCardValue {
-    MsgCardValueUnkown = 0;
-    MsgCardValueTwo = 2;
-    MsgCardValueThree = 3;
-    MsgCardValueFour = 4;
-    MsgCardValueFive = 5;
-    MsgCardValueSix = 6;
-    MsgCardValueSeven = 7;
-    MsgCardValueEight = 8;
-    MsgCardValueNine = 9;
-    MsgCardValueTen = 10;
-    MsgCardValueJack = 11;
-    MsgCardValueQueen = 12;
-    MsgCardValueKing = 13;
-    MsgCardValueAce = 14;
+enum DummyCardValue {
+    DummyCardValueUnkown = 0;
+    DummyCardValueTwo = 2;
+    DummyCardValueThree = 3;
+    DummyCardValueFour = 4;
+    DummyCardValueFive = 5;
+    DummyCardValueSix = 6;
+    DummyCardValueSeven = 7;
+    DummyCardValueEight = 8;
+    DummyCardValueNine = 9;
+    DummyCardValueTen = 10;
+    DummyCardValueJack = 11;
+    DummyCardValueQueen = 12;
+    DummyCardValueKing = 13;
+    DummyCardValueAce = 14;
 }
 
 // Card suits
-enum MsgCardSuit {
-    MsgCardSuitUnkown = 0;
-    MsgCardSuitSpades = 1;
-    MsgCardSuitHearts = 2;
-    MsgCardSuitDiamonds = 3;
-    MsgCardSuitClubs = 4;
+enum DummyCardSuit {
+    DummyCardSuitUnkown = 0;
+    DummyCardSuitSpades = 1;
+    DummyCardSuitHearts = 2;
+    DummyCardSuitDiamonds = 3;
+    DummyCardSuitClubs = 4;
 }
 
 // Request message (sent by client)
 message Request {
     oneof payload {
-        MsgLogin login = 1;
-        MsgJoinTable joinTable = 2;
-        MsgLeaveTable leaveTable = 3;
-        MsgRaise raise = 4;
-        MsgFold fold = 5;
-        MsgCall call = 6;
+        Login login = 1;
+        CreateTable createTable = 2;
+        JoinTable joinTable = 3;
+        LeaveTable leaveTable = 4;
+        Raise raise = 5;
+        Fold fold = 6;
+        Call call = 7;
     }
 }
 
 
 // Response message (sent by server)
 message Response {
-    MsgError error = 1;
+    Error error = 1;
     oneof payload {
-        MsgLobbyView lobbyView = 2;
-        MsgTableView tableView = 3;
+        DummyLobbyView lobbyView = 2;
+        DummyTableView tableView = 3;
     }
 }
 
 // Login request message
-message MsgLogin {
+message Login {
     string username = 1;
 }
 
+// Create table request message
+message CreateTable {
+    string name = 1;
+    uint32 maxPlayers = 2;
+}
+
 // Join table request message
-message MsgJoinTable {
-    uint32 tableId = 1;
+message JoinTable {
+    string name = 1;
 }
 
 // Leave table request message
-message MsgLeaveTable {
+message LeaveTable {
+    string name = 1;
 }
 
 // Raise request message
-message MsgRaise {
+message Raise {
     int32 chips = 1;
 }
 
 // Fold request message
-message MsgFold {
+message Fold {
 }
 
 // Call request message
-message MsgCall {
+message Call {
 }
 
 // Card
-message MsgCard {
-    MsgCardValue cardValue = 1;
-    MsgCardSuit cardSuit = 2;
+message DummyCard {
+    DummyCardValue cardValue = 1;
+    DummyCardSuit cardSuit = 2;
 }
 
 // Player
-message MsgPlayer {
+message DummyPlayer {
     string username = 1;
     uint32 chips = 2;
-    repeated MsgCard hand = 3; // optional
+    repeated DummyCard hand = 3; // optional
     bool dealer = 4;
 }
 
 // Table informations (for Lobby View)
-message MsgTableInfo {
+message DummyTableInfo {
     uint32 index = 1;
     string name = 2;
     uint32 maxPlayers = 3;
@@ -124,15 +132,15 @@ message MsgTableInfo {
 }
 
 // Lobby view response message
-message MsgLobbyView {
-    repeated MsgTableInfo tables = 1; // optional
+message DummyLobbyView {
+    repeated DummyTableInfo tables = 1; // optional
 }
 
 // Table (during the game) response message
-message MsgTableView {
-    MsgTableStatus tableStatus = 1;
-    MsgRoundStatus roundStatus = 2;
-    repeated MsgCard cards = 3; // optional
+message DummyTableView {
+    DummyTableStatus tableStatus = 1;
+    DummyRoundStatus roundStatus = 2;
+    repeated DummyCard cards = 3; // optional
     repeated uint32 pots = 4; // optional
-    repeated MsgPlayer players = 5;
+    repeated DummyPlayer players = 5;
 }

@@ -20,244 +20,244 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Protocol.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0eProtocol.proto\"\xca\x01\n\x07Request\x12\x1a\n\x05login\x18\x01 \x01(\x0b\x32\t.MsgLoginH\x00\x12\"\n\tjoinTable\x18\x02 \x01(\x0b\x32\r.MsgJoinTableH\x00\x12$\n\nleaveTable\x18\x03 \x01(\x0b\x32\x0e.MsgLeaveTableH\x00\x12\x1a\n\x05raise\x18\x04 \x01(\x0b\x32\t.MsgRaiseH\x00\x12\x18\n\x04\x66old\x18\x05 \x01(\x0b\x32\x08.MsgFoldH\x00\x12\x18\n\x04\x63\x61ll\x18\x06 \x01(\x0b\x32\x08.MsgCallH\x00\x42\t\n\x07payload\"w\n\x08Response\x12\x18\n\x05\x65rror\x18\x01 \x01(\x0e\x32\t.MsgError\x12\"\n\tlobbyView\x18\x02 \x01(\x0b\x32\r.MsgLobbyViewH\x00\x12\"\n\ttableView\x18\x03 \x01(\x0b\x32\r.MsgTableViewH\x00\x42\t\n\x07payload\"\x1c\n\x08MsgLogin\x12\x10\n\x08username\x18\x01 \x01(\t\"\x1f\n\x0cMsgJoinTable\x12\x0f\n\x07tableId\x18\x01 \x01(\r\"\x0f\n\rMsgLeaveTable\"\x19\n\x08MsgRaise\x12\r\n\x05\x63hips\x18\x01 \x01(\x05\"\t\n\x07MsgFold\"\t\n\x07MsgCall\"K\n\x07MsgCard\x12 \n\tcardValue\x18\x01 \x01(\x0e\x32\r.MsgCardValue\x12\x1e\n\x08\x63\x61rdSuit\x18\x02 \x01(\x0e\x32\x0c.MsgCardSuit\"T\n\tMsgPlayer\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x63hips\x18\x02 \x01(\r\x12\x16\n\x04hand\x18\x03 \x03(\x0b\x32\x08.MsgCard\x12\x0e\n\x06\x64\x65\x61ler\x18\x04 \x01(\x08\"P\n\x0cMsgTableInfo\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nmaxPlayers\x18\x03 \x01(\r\x12\x0f\n\x07players\x18\x04 \x01(\r\"-\n\x0cMsgLobbyView\x12\x1d\n\x06tables\x18\x01 \x03(\x0b\x32\r.MsgTableInfo\"\x9e\x01\n\x0cMsgTableView\x12$\n\x0btableStatus\x18\x01 \x01(\x0e\x32\x0f.MsgTableStatus\x12$\n\x0broundStatus\x18\x02 \x01(\x0e\x32\x0f.MsgRoundStatus\x12\x17\n\x05\x63\x61rds\x18\x03 \x03(\x0b\x32\x08.MsgCard\x12\x0c\n\x04pots\x18\x04 \x03(\r\x12\x1b\n\x07players\x18\x05 \x03(\x0b\x32\n.MsgPlayer*S\n\x08MsgError\x12\x13\n\x0fMsgErrorSuccess\x10\x00\x12\x18\n\x14MsgErrorWrongMessage\x10\x01\x12\x18\n\x14MsgErrorInvalidValue\x10\x02*\x8f\x01\n\x0eMsgTableStatus\x12\x19\n\x15MsgTableStatusUnknown\x10\x00\x12#\n\x1fMsgTableStatusWaitingForPlayers\x10\x01\x12 \n\x1cMsgTableStatusGameInProgress\x10\x02\x12\x1b\n\x17MsgTableStatusGameEnded\x10\x03*\xa6\x01\n\x0eMsgRoundStatus\x12\x19\n\x15MsgRoundStatusUnknown\x10\x00\x12\x19\n\x15MsgRoundStatusPreFlop\x10\x01\x12\x16\n\x12MsgRoundStatusFlop\x10\x02\x12\x16\n\x12MsgRoundStatusTurn\x10\x03\x12\x17\n\x13MsgRoundStatusRiver\x10\x04\x12\x15\n\x11MsgRoundStatusEnd\x10\x05*\xc4\x02\n\x0cMsgCardValue\x12\x16\n\x12MsgCardValueUnkown\x10\x00\x12\x13\n\x0fMsgCardValueTwo\x10\x02\x12\x15\n\x11MsgCardValueThree\x10\x03\x12\x14\n\x10MsgCardValueFour\x10\x04\x12\x14\n\x10MsgCardValueFive\x10\x05\x12\x13\n\x0fMsgCardValueSix\x10\x06\x12\x15\n\x11MsgCardValueSeven\x10\x07\x12\x15\n\x11MsgCardValueEight\x10\x08\x12\x14\n\x10MsgCardValueNine\x10\t\x12\x13\n\x0fMsgCardValueTen\x10\n\x12\x14\n\x10MsgCardValueJack\x10\x0b\x12\x15\n\x11MsgCardValueQueen\x10\x0c\x12\x14\n\x10MsgCardValueKing\x10\r\x12\x13\n\x0fMsgCardValueAce\x10\x0e*\x81\x01\n\x0bMsgCardSuit\x12\x15\n\x11MsgCardSuitUnkown\x10\x00\x12\x15\n\x11MsgCardSuitSpades\x10\x01\x12\x15\n\x11MsgCardSuitHearts\x10\x02\x12\x17\n\x13MsgCardSuitDiamonds\x10\x03\x12\x14\n\x10MsgCardSuitClubs\x10\x04\x62\x06proto3')
+  serialized_pb=_b('\n\x0eProtocol.proto\"\xdd\x01\n\x07Request\x12\x17\n\x05login\x18\x01 \x01(\x0b\x32\x06.LoginH\x00\x12#\n\x0b\x63reateTable\x18\x02 \x01(\x0b\x32\x0c.CreateTableH\x00\x12\x1f\n\tjoinTable\x18\x03 \x01(\x0b\x32\n.JoinTableH\x00\x12!\n\nleaveTable\x18\x04 \x01(\x0b\x32\x0b.LeaveTableH\x00\x12\x17\n\x05raise\x18\x05 \x01(\x0b\x32\x06.RaiseH\x00\x12\x15\n\x04\x66old\x18\x06 \x01(\x0b\x32\x05.FoldH\x00\x12\x15\n\x04\x63\x61ll\x18\x07 \x01(\x0b\x32\x05.CallH\x00\x42\t\n\x07payload\"x\n\x08Response\x12\x15\n\x05\x65rror\x18\x01 \x01(\x0e\x32\x06.Error\x12$\n\tlobbyView\x18\x02 \x01(\x0b\x32\x0f.DummyLobbyViewH\x00\x12$\n\ttableView\x18\x03 \x01(\x0b\x32\x0f.DummyTableViewH\x00\x42\t\n\x07payload\"\x19\n\x05Login\x12\x10\n\x08username\x18\x01 \x01(\t\"/\n\x0b\x43reateTable\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nmaxPlayers\x18\x02 \x01(\r\"\x19\n\tJoinTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1a\n\nLeaveTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x16\n\x05Raise\x12\r\n\x05\x63hips\x18\x01 \x01(\x05\"\x06\n\x04\x46old\"\x06\n\x04\x43\x61ll\"Q\n\tDummyCard\x12\"\n\tcardValue\x18\x01 \x01(\x0e\x32\x0f.DummyCardValue\x12 \n\x08\x63\x61rdSuit\x18\x02 \x01(\x0e\x32\x0e.DummyCardSuit\"X\n\x0b\x44ummyPlayer\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x63hips\x18\x02 \x01(\r\x12\x18\n\x04hand\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0e\n\x06\x64\x65\x61ler\x18\x04 \x01(\x08\"R\n\x0e\x44ummyTableInfo\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nmaxPlayers\x18\x03 \x01(\r\x12\x0f\n\x07players\x18\x04 \x01(\r\"1\n\x0e\x44ummyLobbyView\x12\x1f\n\x06tables\x18\x01 \x03(\x0b\x32\x0f.DummyTableInfo\"\xa8\x01\n\x0e\x44ummyTableView\x12&\n\x0btableStatus\x18\x01 \x01(\x0e\x32\x11.DummyTableStatus\x12&\n\x0broundStatus\x18\x02 \x01(\x0e\x32\x11.DummyRoundStatus\x12\x19\n\x05\x63\x61rds\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0c\n\x04pots\x18\x04 \x03(\r\x12\x1d\n\x07players\x18\x05 \x03(\x0b\x32\x0c.DummyPlayer*G\n\x05\x45rror\x12\x10\n\x0c\x45rrorSuccess\x10\x00\x12\x15\n\x11\x45rrorWrongMessage\x10\x01\x12\x15\n\x11\x45rrorInvalidValue\x10\x02*\x99\x01\n\x10\x44ummyTableStatus\x12\x1b\n\x17\x44ummyTableStatusUnknown\x10\x00\x12%\n!DummyTableStatusWaitingForPlayers\x10\x01\x12\"\n\x1e\x44ummyTableStatusGameInProgress\x10\x02\x12\x1d\n\x19\x44ummyTableStatusGameEnded\x10\x03*\xb4\x01\n\x10\x44ummyRoundStatus\x12\x1b\n\x17\x44ummyRoundStatusUnknown\x10\x00\x12\x1b\n\x17\x44ummyRoundStatusPreFlop\x10\x01\x12\x18\n\x14\x44ummyRoundStatusFlop\x10\x02\x12\x18\n\x14\x44ummyRoundStatusTurn\x10\x03\x12\x19\n\x15\x44ummyRoundStatusRiver\x10\x04\x12\x17\n\x13\x44ummyRoundStatusEnd\x10\x05*\xe2\x02\n\x0e\x44ummyCardValue\x12\x18\n\x14\x44ummyCardValueUnkown\x10\x00\x12\x15\n\x11\x44ummyCardValueTwo\x10\x02\x12\x17\n\x13\x44ummyCardValueThree\x10\x03\x12\x16\n\x12\x44ummyCardValueFour\x10\x04\x12\x16\n\x12\x44ummyCardValueFive\x10\x05\x12\x15\n\x11\x44ummyCardValueSix\x10\x06\x12\x17\n\x13\x44ummyCardValueSeven\x10\x07\x12\x17\n\x13\x44ummyCardValueEight\x10\x08\x12\x16\n\x12\x44ummyCardValueNine\x10\t\x12\x15\n\x11\x44ummyCardValueTen\x10\n\x12\x16\n\x12\x44ummyCardValueJack\x10\x0b\x12\x17\n\x13\x44ummyCardValueQueen\x10\x0c\x12\x16\n\x12\x44ummyCardValueKing\x10\r\x12\x15\n\x11\x44ummyCardValueAce\x10\x0e*\x8d\x01\n\rDummyCardSuit\x12\x17\n\x13\x44ummyCardSuitUnkown\x10\x00\x12\x17\n\x13\x44ummyCardSuitSpades\x10\x01\x12\x17\n\x13\x44ummyCardSuitHearts\x10\x02\x12\x19\n\x15\x44ummyCardSuitDiamonds\x10\x03\x12\x16\n\x12\x44ummyCardSuitClubs\x10\x04\x62\x06proto3')
 )
 
-_MSGERROR = _descriptor.EnumDescriptor(
-  name='MsgError',
-  full_name='MsgError',
+_ERROR = _descriptor.EnumDescriptor(
+  name='Error',
+  full_name='Error',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='MsgErrorSuccess', index=0, number=0,
+      name='ErrorSuccess', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgErrorWrongMessage', index=1, number=1,
+      name='ErrorWrongMessage', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgErrorInvalidValue', index=2, number=2,
+      name='ErrorInvalidValue', index=2, number=2,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=926,
-  serialized_end=1009,
+  serialized_start=1014,
+  serialized_end=1085,
 )
-_sym_db.RegisterEnumDescriptor(_MSGERROR)
+_sym_db.RegisterEnumDescriptor(_ERROR)
 
-MsgError = enum_type_wrapper.EnumTypeWrapper(_MSGERROR)
-_MSGTABLESTATUS = _descriptor.EnumDescriptor(
-  name='MsgTableStatus',
-  full_name='MsgTableStatus',
+Error = enum_type_wrapper.EnumTypeWrapper(_ERROR)
+_DUMMYTABLESTATUS = _descriptor.EnumDescriptor(
+  name='DummyTableStatus',
+  full_name='DummyTableStatus',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='MsgTableStatusUnknown', index=0, number=0,
+      name='DummyTableStatusUnknown', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgTableStatusWaitingForPlayers', index=1, number=1,
+      name='DummyTableStatusWaitingForPlayers', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgTableStatusGameInProgress', index=2, number=2,
+      name='DummyTableStatusGameInProgress', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgTableStatusGameEnded', index=3, number=3,
+      name='DummyTableStatusGameEnded', index=3, number=3,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1012,
-  serialized_end=1155,
+  serialized_start=1088,
+  serialized_end=1241,
 )
-_sym_db.RegisterEnumDescriptor(_MSGTABLESTATUS)
+_sym_db.RegisterEnumDescriptor(_DUMMYTABLESTATUS)
 
-MsgTableStatus = enum_type_wrapper.EnumTypeWrapper(_MSGTABLESTATUS)
-_MSGROUNDSTATUS = _descriptor.EnumDescriptor(
-  name='MsgRoundStatus',
-  full_name='MsgRoundStatus',
+DummyTableStatus = enum_type_wrapper.EnumTypeWrapper(_DUMMYTABLESTATUS)
+_DUMMYROUNDSTATUS = _descriptor.EnumDescriptor(
+  name='DummyRoundStatus',
+  full_name='DummyRoundStatus',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusUnknown', index=0, number=0,
+      name='DummyRoundStatusUnknown', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusPreFlop', index=1, number=1,
+      name='DummyRoundStatusPreFlop', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusFlop', index=2, number=2,
+      name='DummyRoundStatusFlop', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusTurn', index=3, number=3,
+      name='DummyRoundStatusTurn', index=3, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusRiver', index=4, number=4,
+      name='DummyRoundStatusRiver', index=4, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgRoundStatusEnd', index=5, number=5,
+      name='DummyRoundStatusEnd', index=5, number=5,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1158,
-  serialized_end=1324,
+  serialized_start=1244,
+  serialized_end=1424,
 )
-_sym_db.RegisterEnumDescriptor(_MSGROUNDSTATUS)
+_sym_db.RegisterEnumDescriptor(_DUMMYROUNDSTATUS)
 
-MsgRoundStatus = enum_type_wrapper.EnumTypeWrapper(_MSGROUNDSTATUS)
-_MSGCARDVALUE = _descriptor.EnumDescriptor(
-  name='MsgCardValue',
-  full_name='MsgCardValue',
+DummyRoundStatus = enum_type_wrapper.EnumTypeWrapper(_DUMMYROUNDSTATUS)
+_DUMMYCARDVALUE = _descriptor.EnumDescriptor(
+  name='DummyCardValue',
+  full_name='DummyCardValue',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueUnkown', index=0, number=0,
+      name='DummyCardValueUnkown', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueTwo', index=1, number=2,
+      name='DummyCardValueTwo', index=1, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueThree', index=2, number=3,
+      name='DummyCardValueThree', index=2, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueFour', index=3, number=4,
+      name='DummyCardValueFour', index=3, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueFive', index=4, number=5,
+      name='DummyCardValueFive', index=4, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueSix', index=5, number=6,
+      name='DummyCardValueSix', index=5, number=6,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueSeven', index=6, number=7,
+      name='DummyCardValueSeven', index=6, number=7,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueEight', index=7, number=8,
+      name='DummyCardValueEight', index=7, number=8,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueNine', index=8, number=9,
+      name='DummyCardValueNine', index=8, number=9,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueTen', index=9, number=10,
+      name='DummyCardValueTen', index=9, number=10,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueJack', index=10, number=11,
+      name='DummyCardValueJack', index=10, number=11,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueQueen', index=11, number=12,
+      name='DummyCardValueQueen', index=11, number=12,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueKing', index=12, number=13,
+      name='DummyCardValueKing', index=12, number=13,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardValueAce', index=13, number=14,
+      name='DummyCardValueAce', index=13, number=14,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1327,
-  serialized_end=1651,
+  serialized_start=1427,
+  serialized_end=1781,
 )
-_sym_db.RegisterEnumDescriptor(_MSGCARDVALUE)
+_sym_db.RegisterEnumDescriptor(_DUMMYCARDVALUE)
 
-MsgCardValue = enum_type_wrapper.EnumTypeWrapper(_MSGCARDVALUE)
-_MSGCARDSUIT = _descriptor.EnumDescriptor(
-  name='MsgCardSuit',
-  full_name='MsgCardSuit',
+DummyCardValue = enum_type_wrapper.EnumTypeWrapper(_DUMMYCARDVALUE)
+_DUMMYCARDSUIT = _descriptor.EnumDescriptor(
+  name='DummyCardSuit',
+  full_name='DummyCardSuit',
   filename=None,
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='MsgCardSuitUnkown', index=0, number=0,
+      name='DummyCardSuitUnkown', index=0, number=0,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardSuitSpades', index=1, number=1,
+      name='DummyCardSuitSpades', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardSuitHearts', index=2, number=2,
+      name='DummyCardSuitHearts', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardSuitDiamonds', index=3, number=3,
+      name='DummyCardSuitDiamonds', index=3, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='MsgCardSuitClubs', index=4, number=4,
+      name='DummyCardSuitClubs', index=4, number=4,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=1654,
-  serialized_end=1783,
+  serialized_start=1784,
+  serialized_end=1925,
 )
-_sym_db.RegisterEnumDescriptor(_MSGCARDSUIT)
+_sym_db.RegisterEnumDescriptor(_DUMMYCARDSUIT)
 
-MsgCardSuit = enum_type_wrapper.EnumTypeWrapper(_MSGCARDSUIT)
-MsgErrorSuccess = 0
-MsgErrorWrongMessage = 1
-MsgErrorInvalidValue = 2
-MsgTableStatusUnknown = 0
-MsgTableStatusWaitingForPlayers = 1
-MsgTableStatusGameInProgress = 2
-MsgTableStatusGameEnded = 3
-MsgRoundStatusUnknown = 0
-MsgRoundStatusPreFlop = 1
-MsgRoundStatusFlop = 2
-MsgRoundStatusTurn = 3
-MsgRoundStatusRiver = 4
-MsgRoundStatusEnd = 5
-MsgCardValueUnkown = 0
-MsgCardValueTwo = 2
-MsgCardValueThree = 3
-MsgCardValueFour = 4
-MsgCardValueFive = 5
-MsgCardValueSix = 6
-MsgCardValueSeven = 7
-MsgCardValueEight = 8
-MsgCardValueNine = 9
-MsgCardValueTen = 10
-MsgCardValueJack = 11
-MsgCardValueQueen = 12
-MsgCardValueKing = 13
-MsgCardValueAce = 14
-MsgCardSuitUnkown = 0
-MsgCardSuitSpades = 1
-MsgCardSuitHearts = 2
-MsgCardSuitDiamonds = 3
-MsgCardSuitClubs = 4
+DummyCardSuit = enum_type_wrapper.EnumTypeWrapper(_DUMMYCARDSUIT)
+ErrorSuccess = 0
+ErrorWrongMessage = 1
+ErrorInvalidValue = 2
+DummyTableStatusUnknown = 0
+DummyTableStatusWaitingForPlayers = 1
+DummyTableStatusGameInProgress = 2
+DummyTableStatusGameEnded = 3
+DummyRoundStatusUnknown = 0
+DummyRoundStatusPreFlop = 1
+DummyRoundStatusFlop = 2
+DummyRoundStatusTurn = 3
+DummyRoundStatusRiver = 4
+DummyRoundStatusEnd = 5
+DummyCardValueUnkown = 0
+DummyCardValueTwo = 2
+DummyCardValueThree = 3
+DummyCardValueFour = 4
+DummyCardValueFive = 5
+DummyCardValueSix = 6
+DummyCardValueSeven = 7
+DummyCardValueEight = 8
+DummyCardValueNine = 9
+DummyCardValueTen = 10
+DummyCardValueJack = 11
+DummyCardValueQueen = 12
+DummyCardValueKing = 13
+DummyCardValueAce = 14
+DummyCardSuitUnkown = 0
+DummyCardSuitSpades = 1
+DummyCardSuitHearts = 2
+DummyCardSuitDiamonds = 3
+DummyCardSuitClubs = 4
 
 
 
@@ -276,36 +276,43 @@ _REQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='joinTable', full_name='Request.joinTable', index=1,
+      name='createTable', full_name='Request.createTable', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='leaveTable', full_name='Request.leaveTable', index=2,
+      name='joinTable', full_name='Request.joinTable', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='raise', full_name='Request.raise', index=3,
+      name='leaveTable', full_name='Request.leaveTable', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='fold', full_name='Request.fold', index=4,
+      name='raise', full_name='Request.raise', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='call', full_name='Request.call', index=5,
+      name='fold', full_name='Request.fold', index=5,
       number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='call', full_name='Request.call', index=6,
+      number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -326,7 +333,7 @@ _REQUEST = _descriptor.Descriptor(
       index=0, containing_type=None, fields=[]),
   ],
   serialized_start=19,
-  serialized_end=221,
+  serialized_end=240,
 )
 
 
@@ -373,20 +380,20 @@ _RESPONSE = _descriptor.Descriptor(
       name='payload', full_name='Response.payload',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=223,
-  serialized_end=342,
+  serialized_start=242,
+  serialized_end=362,
 )
 
 
-_MSGLOGIN = _descriptor.Descriptor(
-  name='MsgLogin',
-  full_name='MsgLogin',
+_LOGIN = _descriptor.Descriptor(
+  name='Login',
+  full_name='Login',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='username', full_name='MsgLogin.username', index=0,
+      name='username', full_name='Login.username', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -404,21 +411,28 @@ _MSGLOGIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=344,
-  serialized_end=372,
+  serialized_start=364,
+  serialized_end=389,
 )
 
 
-_MSGJOINTABLE = _descriptor.Descriptor(
-  name='MsgJoinTable',
-  full_name='MsgJoinTable',
+_CREATETABLE = _descriptor.Descriptor(
+  name='CreateTable',
+  full_name='CreateTable',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='tableId', full_name='MsgJoinTable.tableId', index=0,
-      number=1, type=13, cpp_type=3, label=1,
+      name='name', full_name='CreateTable.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='maxPlayers', full_name='CreateTable.maxPlayers', index=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -435,18 +449,25 @@ _MSGJOINTABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=374,
-  serialized_end=405,
+  serialized_start=391,
+  serialized_end=438,
 )
 
 
-_MSGLEAVETABLE = _descriptor.Descriptor(
-  name='MsgLeaveTable',
-  full_name='MsgLeaveTable',
+_JOINTABLE = _descriptor.Descriptor(
+  name='JoinTable',
+  full_name='JoinTable',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='JoinTable.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -459,20 +480,51 @@ _MSGLEAVETABLE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=407,
-  serialized_end=422,
+  serialized_start=440,
+  serialized_end=465,
 )
 
 
-_MSGRAISE = _descriptor.Descriptor(
-  name='MsgRaise',
-  full_name='MsgRaise',
+_LEAVETABLE = _descriptor.Descriptor(
+  name='LeaveTable',
+  full_name='LeaveTable',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='chips', full_name='MsgRaise.chips', index=0,
+      name='name', full_name='LeaveTable.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=467,
+  serialized_end=493,
+)
+
+
+_RAISE = _descriptor.Descriptor(
+  name='Raise',
+  full_name='Raise',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='chips', full_name='Raise.chips', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -490,14 +542,14 @@ _MSGRAISE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=424,
-  serialized_end=449,
+  serialized_start=495,
+  serialized_end=517,
 )
 
 
-_MSGFOLD = _descriptor.Descriptor(
-  name='MsgFold',
-  full_name='MsgFold',
+_FOLD = _descriptor.Descriptor(
+  name='Fold',
+  full_name='Fold',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -514,14 +566,14 @@ _MSGFOLD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=451,
-  serialized_end=460,
+  serialized_start=519,
+  serialized_end=525,
 )
 
 
-_MSGCALL = _descriptor.Descriptor(
-  name='MsgCall',
-  full_name='MsgCall',
+_CALL = _descriptor.Descriptor(
+  name='Call',
+  full_name='Call',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -538,27 +590,27 @@ _MSGCALL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=462,
-  serialized_end=471,
+  serialized_start=527,
+  serialized_end=533,
 )
 
 
-_MSGCARD = _descriptor.Descriptor(
-  name='MsgCard',
-  full_name='MsgCard',
+_DUMMYCARD = _descriptor.Descriptor(
+  name='DummyCard',
+  full_name='DummyCard',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='cardValue', full_name='MsgCard.cardValue', index=0,
+      name='cardValue', full_name='DummyCard.cardValue', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='cardSuit', full_name='MsgCard.cardSuit', index=1,
+      name='cardSuit', full_name='DummyCard.cardSuit', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -576,41 +628,41 @@ _MSGCARD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=473,
-  serialized_end=548,
+  serialized_start=535,
+  serialized_end=616,
 )
 
 
-_MSGPLAYER = _descriptor.Descriptor(
-  name='MsgPlayer',
-  full_name='MsgPlayer',
+_DUMMYPLAYER = _descriptor.Descriptor(
+  name='DummyPlayer',
+  full_name='DummyPlayer',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='username', full_name='MsgPlayer.username', index=0,
+      name='username', full_name='DummyPlayer.username', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='chips', full_name='MsgPlayer.chips', index=1,
+      name='chips', full_name='DummyPlayer.chips', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='hand', full_name='MsgPlayer.hand', index=2,
+      name='hand', full_name='DummyPlayer.hand', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='dealer', full_name='MsgPlayer.dealer', index=3,
+      name='dealer', full_name='DummyPlayer.dealer', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -628,41 +680,41 @@ _MSGPLAYER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=550,
-  serialized_end=634,
+  serialized_start=618,
+  serialized_end=706,
 )
 
 
-_MSGTABLEINFO = _descriptor.Descriptor(
-  name='MsgTableInfo',
-  full_name='MsgTableInfo',
+_DUMMYTABLEINFO = _descriptor.Descriptor(
+  name='DummyTableInfo',
+  full_name='DummyTableInfo',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='index', full_name='MsgTableInfo.index', index=0,
+      name='index', full_name='DummyTableInfo.index', index=0,
       number=1, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name', full_name='MsgTableInfo.name', index=1,
+      name='name', full_name='DummyTableInfo.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='maxPlayers', full_name='MsgTableInfo.maxPlayers', index=2,
+      name='maxPlayers', full_name='DummyTableInfo.maxPlayers', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='players', full_name='MsgTableInfo.players', index=3,
+      name='players', full_name='DummyTableInfo.players', index=3,
       number=4, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -680,20 +732,20 @@ _MSGTABLEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=636,
-  serialized_end=716,
+  serialized_start=708,
+  serialized_end=790,
 )
 
 
-_MSGLOBBYVIEW = _descriptor.Descriptor(
-  name='MsgLobbyView',
-  full_name='MsgLobbyView',
+_DUMMYLOBBYVIEW = _descriptor.Descriptor(
+  name='DummyLobbyView',
+  full_name='DummyLobbyView',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='tables', full_name='MsgLobbyView.tables', index=0,
+      name='tables', full_name='DummyLobbyView.tables', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -711,48 +763,48 @@ _MSGLOBBYVIEW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=718,
-  serialized_end=763,
+  serialized_start=792,
+  serialized_end=841,
 )
 
 
-_MSGTABLEVIEW = _descriptor.Descriptor(
-  name='MsgTableView',
-  full_name='MsgTableView',
+_DUMMYTABLEVIEW = _descriptor.Descriptor(
+  name='DummyTableView',
+  full_name='DummyTableView',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='tableStatus', full_name='MsgTableView.tableStatus', index=0,
+      name='tableStatus', full_name='DummyTableView.tableStatus', index=0,
       number=1, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='roundStatus', full_name='MsgTableView.roundStatus', index=1,
+      name='roundStatus', full_name='DummyTableView.roundStatus', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='cards', full_name='MsgTableView.cards', index=2,
+      name='cards', full_name='DummyTableView.cards', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='pots', full_name='MsgTableView.pots', index=3,
+      name='pots', full_name='DummyTableView.pots', index=3,
       number=4, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='players', full_name='MsgTableView.players', index=4,
+      name='players', full_name='DummyTableView.players', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -770,19 +822,23 @@ _MSGTABLEVIEW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=766,
-  serialized_end=924,
+  serialized_start=844,
+  serialized_end=1012,
 )
 
-_REQUEST.fields_by_name['login'].message_type = _MSGLOGIN
-_REQUEST.fields_by_name['joinTable'].message_type = _MSGJOINTABLE
-_REQUEST.fields_by_name['leaveTable'].message_type = _MSGLEAVETABLE
-_REQUEST.fields_by_name['raise'].message_type = _MSGRAISE
-_REQUEST.fields_by_name['fold'].message_type = _MSGFOLD
-_REQUEST.fields_by_name['call'].message_type = _MSGCALL
+_REQUEST.fields_by_name['login'].message_type = _LOGIN
+_REQUEST.fields_by_name['createTable'].message_type = _CREATETABLE
+_REQUEST.fields_by_name['joinTable'].message_type = _JOINTABLE
+_REQUEST.fields_by_name['leaveTable'].message_type = _LEAVETABLE
+_REQUEST.fields_by_name['raise'].message_type = _RAISE
+_REQUEST.fields_by_name['fold'].message_type = _FOLD
+_REQUEST.fields_by_name['call'].message_type = _CALL
 _REQUEST.oneofs_by_name['payload'].fields.append(
   _REQUEST.fields_by_name['login'])
 _REQUEST.fields_by_name['login'].containing_oneof = _REQUEST.oneofs_by_name['payload']
+_REQUEST.oneofs_by_name['payload'].fields.append(
+  _REQUEST.fields_by_name['createTable'])
+_REQUEST.fields_by_name['createTable'].containing_oneof = _REQUEST.oneofs_by_name['payload']
 _REQUEST.oneofs_by_name['payload'].fields.append(
   _REQUEST.fields_by_name['joinTable'])
 _REQUEST.fields_by_name['joinTable'].containing_oneof = _REQUEST.oneofs_by_name['payload']
@@ -798,41 +854,42 @@ _REQUEST.fields_by_name['fold'].containing_oneof = _REQUEST.oneofs_by_name['payl
 _REQUEST.oneofs_by_name['payload'].fields.append(
   _REQUEST.fields_by_name['call'])
 _REQUEST.fields_by_name['call'].containing_oneof = _REQUEST.oneofs_by_name['payload']
-_RESPONSE.fields_by_name['error'].enum_type = _MSGERROR
-_RESPONSE.fields_by_name['lobbyView'].message_type = _MSGLOBBYVIEW
-_RESPONSE.fields_by_name['tableView'].message_type = _MSGTABLEVIEW
+_RESPONSE.fields_by_name['error'].enum_type = _ERROR
+_RESPONSE.fields_by_name['lobbyView'].message_type = _DUMMYLOBBYVIEW
+_RESPONSE.fields_by_name['tableView'].message_type = _DUMMYTABLEVIEW
 _RESPONSE.oneofs_by_name['payload'].fields.append(
   _RESPONSE.fields_by_name['lobbyView'])
 _RESPONSE.fields_by_name['lobbyView'].containing_oneof = _RESPONSE.oneofs_by_name['payload']
 _RESPONSE.oneofs_by_name['payload'].fields.append(
   _RESPONSE.fields_by_name['tableView'])
 _RESPONSE.fields_by_name['tableView'].containing_oneof = _RESPONSE.oneofs_by_name['payload']
-_MSGCARD.fields_by_name['cardValue'].enum_type = _MSGCARDVALUE
-_MSGCARD.fields_by_name['cardSuit'].enum_type = _MSGCARDSUIT
-_MSGPLAYER.fields_by_name['hand'].message_type = _MSGCARD
-_MSGLOBBYVIEW.fields_by_name['tables'].message_type = _MSGTABLEINFO
-_MSGTABLEVIEW.fields_by_name['tableStatus'].enum_type = _MSGTABLESTATUS
-_MSGTABLEVIEW.fields_by_name['roundStatus'].enum_type = _MSGROUNDSTATUS
-_MSGTABLEVIEW.fields_by_name['cards'].message_type = _MSGCARD
-_MSGTABLEVIEW.fields_by_name['players'].message_type = _MSGPLAYER
+_DUMMYCARD.fields_by_name['cardValue'].enum_type = _DUMMYCARDVALUE
+_DUMMYCARD.fields_by_name['cardSuit'].enum_type = _DUMMYCARDSUIT
+_DUMMYPLAYER.fields_by_name['hand'].message_type = _DUMMYCARD
+_DUMMYLOBBYVIEW.fields_by_name['tables'].message_type = _DUMMYTABLEINFO
+_DUMMYTABLEVIEW.fields_by_name['tableStatus'].enum_type = _DUMMYTABLESTATUS
+_DUMMYTABLEVIEW.fields_by_name['roundStatus'].enum_type = _DUMMYROUNDSTATUS
+_DUMMYTABLEVIEW.fields_by_name['cards'].message_type = _DUMMYCARD
+_DUMMYTABLEVIEW.fields_by_name['players'].message_type = _DUMMYPLAYER
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
-DESCRIPTOR.message_types_by_name['MsgLogin'] = _MSGLOGIN
-DESCRIPTOR.message_types_by_name['MsgJoinTable'] = _MSGJOINTABLE
-DESCRIPTOR.message_types_by_name['MsgLeaveTable'] = _MSGLEAVETABLE
-DESCRIPTOR.message_types_by_name['MsgRaise'] = _MSGRAISE
-DESCRIPTOR.message_types_by_name['MsgFold'] = _MSGFOLD
-DESCRIPTOR.message_types_by_name['MsgCall'] = _MSGCALL
-DESCRIPTOR.message_types_by_name['MsgCard'] = _MSGCARD
-DESCRIPTOR.message_types_by_name['MsgPlayer'] = _MSGPLAYER
-DESCRIPTOR.message_types_by_name['MsgTableInfo'] = _MSGTABLEINFO
-DESCRIPTOR.message_types_by_name['MsgLobbyView'] = _MSGLOBBYVIEW
-DESCRIPTOR.message_types_by_name['MsgTableView'] = _MSGTABLEVIEW
-DESCRIPTOR.enum_types_by_name['MsgError'] = _MSGERROR
-DESCRIPTOR.enum_types_by_name['MsgTableStatus'] = _MSGTABLESTATUS
-DESCRIPTOR.enum_types_by_name['MsgRoundStatus'] = _MSGROUNDSTATUS
-DESCRIPTOR.enum_types_by_name['MsgCardValue'] = _MSGCARDVALUE
-DESCRIPTOR.enum_types_by_name['MsgCardSuit'] = _MSGCARDSUIT
+DESCRIPTOR.message_types_by_name['Login'] = _LOGIN
+DESCRIPTOR.message_types_by_name['CreateTable'] = _CREATETABLE
+DESCRIPTOR.message_types_by_name['JoinTable'] = _JOINTABLE
+DESCRIPTOR.message_types_by_name['LeaveTable'] = _LEAVETABLE
+DESCRIPTOR.message_types_by_name['Raise'] = _RAISE
+DESCRIPTOR.message_types_by_name['Fold'] = _FOLD
+DESCRIPTOR.message_types_by_name['Call'] = _CALL
+DESCRIPTOR.message_types_by_name['DummyCard'] = _DUMMYCARD
+DESCRIPTOR.message_types_by_name['DummyPlayer'] = _DUMMYPLAYER
+DESCRIPTOR.message_types_by_name['DummyTableInfo'] = _DUMMYTABLEINFO
+DESCRIPTOR.message_types_by_name['DummyLobbyView'] = _DUMMYLOBBYVIEW
+DESCRIPTOR.message_types_by_name['DummyTableView'] = _DUMMYTABLEVIEW
+DESCRIPTOR.enum_types_by_name['Error'] = _ERROR
+DESCRIPTOR.enum_types_by_name['DummyTableStatus'] = _DUMMYTABLESTATUS
+DESCRIPTOR.enum_types_by_name['DummyRoundStatus'] = _DUMMYROUNDSTATUS
+DESCRIPTOR.enum_types_by_name['DummyCardValue'] = _DUMMYCARDVALUE
+DESCRIPTOR.enum_types_by_name['DummyCardSuit'] = _DUMMYCARDSUIT
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), dict(
@@ -849,82 +906,89 @@ Response = _reflection.GeneratedProtocolMessageType('Response', (_message.Messag
   ))
 _sym_db.RegisterMessage(Response)
 
-MsgLogin = _reflection.GeneratedProtocolMessageType('MsgLogin', (_message.Message,), dict(
-  DESCRIPTOR = _MSGLOGIN,
+Login = _reflection.GeneratedProtocolMessageType('Login', (_message.Message,), dict(
+  DESCRIPTOR = _LOGIN,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgLogin)
+  # @@protoc_insertion_point(class_scope:Login)
   ))
-_sym_db.RegisterMessage(MsgLogin)
+_sym_db.RegisterMessage(Login)
 
-MsgJoinTable = _reflection.GeneratedProtocolMessageType('MsgJoinTable', (_message.Message,), dict(
-  DESCRIPTOR = _MSGJOINTABLE,
+CreateTable = _reflection.GeneratedProtocolMessageType('CreateTable', (_message.Message,), dict(
+  DESCRIPTOR = _CREATETABLE,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgJoinTable)
+  # @@protoc_insertion_point(class_scope:CreateTable)
   ))
-_sym_db.RegisterMessage(MsgJoinTable)
+_sym_db.RegisterMessage(CreateTable)
 
-MsgLeaveTable = _reflection.GeneratedProtocolMessageType('MsgLeaveTable', (_message.Message,), dict(
-  DESCRIPTOR = _MSGLEAVETABLE,
+JoinTable = _reflection.GeneratedProtocolMessageType('JoinTable', (_message.Message,), dict(
+  DESCRIPTOR = _JOINTABLE,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgLeaveTable)
+  # @@protoc_insertion_point(class_scope:JoinTable)
   ))
-_sym_db.RegisterMessage(MsgLeaveTable)
+_sym_db.RegisterMessage(JoinTable)
 
-MsgRaise = _reflection.GeneratedProtocolMessageType('MsgRaise', (_message.Message,), dict(
-  DESCRIPTOR = _MSGRAISE,
+LeaveTable = _reflection.GeneratedProtocolMessageType('LeaveTable', (_message.Message,), dict(
+  DESCRIPTOR = _LEAVETABLE,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgRaise)
+  # @@protoc_insertion_point(class_scope:LeaveTable)
   ))
-_sym_db.RegisterMessage(MsgRaise)
+_sym_db.RegisterMessage(LeaveTable)
 
-MsgFold = _reflection.GeneratedProtocolMessageType('MsgFold', (_message.Message,), dict(
-  DESCRIPTOR = _MSGFOLD,
+Raise = _reflection.GeneratedProtocolMessageType('Raise', (_message.Message,), dict(
+  DESCRIPTOR = _RAISE,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgFold)
+  # @@protoc_insertion_point(class_scope:Raise)
   ))
-_sym_db.RegisterMessage(MsgFold)
+_sym_db.RegisterMessage(Raise)
 
-MsgCall = _reflection.GeneratedProtocolMessageType('MsgCall', (_message.Message,), dict(
-  DESCRIPTOR = _MSGCALL,
+Fold = _reflection.GeneratedProtocolMessageType('Fold', (_message.Message,), dict(
+  DESCRIPTOR = _FOLD,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgCall)
+  # @@protoc_insertion_point(class_scope:Fold)
   ))
-_sym_db.RegisterMessage(MsgCall)
+_sym_db.RegisterMessage(Fold)
 
-MsgCard = _reflection.GeneratedProtocolMessageType('MsgCard', (_message.Message,), dict(
-  DESCRIPTOR = _MSGCARD,
+Call = _reflection.GeneratedProtocolMessageType('Call', (_message.Message,), dict(
+  DESCRIPTOR = _CALL,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgCard)
+  # @@protoc_insertion_point(class_scope:Call)
   ))
-_sym_db.RegisterMessage(MsgCard)
+_sym_db.RegisterMessage(Call)
 
-MsgPlayer = _reflection.GeneratedProtocolMessageType('MsgPlayer', (_message.Message,), dict(
-  DESCRIPTOR = _MSGPLAYER,
+DummyCard = _reflection.GeneratedProtocolMessageType('DummyCard', (_message.Message,), dict(
+  DESCRIPTOR = _DUMMYCARD,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgPlayer)
+  # @@protoc_insertion_point(class_scope:DummyCard)
   ))
-_sym_db.RegisterMessage(MsgPlayer)
+_sym_db.RegisterMessage(DummyCard)
 
-MsgTableInfo = _reflection.GeneratedProtocolMessageType('MsgTableInfo', (_message.Message,), dict(
-  DESCRIPTOR = _MSGTABLEINFO,
+DummyPlayer = _reflection.GeneratedProtocolMessageType('DummyPlayer', (_message.Message,), dict(
+  DESCRIPTOR = _DUMMYPLAYER,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgTableInfo)
+  # @@protoc_insertion_point(class_scope:DummyPlayer)
   ))
-_sym_db.RegisterMessage(MsgTableInfo)
+_sym_db.RegisterMessage(DummyPlayer)
 
-MsgLobbyView = _reflection.GeneratedProtocolMessageType('MsgLobbyView', (_message.Message,), dict(
-  DESCRIPTOR = _MSGLOBBYVIEW,
+DummyTableInfo = _reflection.GeneratedProtocolMessageType('DummyTableInfo', (_message.Message,), dict(
+  DESCRIPTOR = _DUMMYTABLEINFO,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgLobbyView)
+  # @@protoc_insertion_point(class_scope:DummyTableInfo)
   ))
-_sym_db.RegisterMessage(MsgLobbyView)
+_sym_db.RegisterMessage(DummyTableInfo)
 
-MsgTableView = _reflection.GeneratedProtocolMessageType('MsgTableView', (_message.Message,), dict(
-  DESCRIPTOR = _MSGTABLEVIEW,
+DummyLobbyView = _reflection.GeneratedProtocolMessageType('DummyLobbyView', (_message.Message,), dict(
+  DESCRIPTOR = _DUMMYLOBBYVIEW,
   __module__ = 'Protocol_pb2'
-  # @@protoc_insertion_point(class_scope:MsgTableView)
+  # @@protoc_insertion_point(class_scope:DummyLobbyView)
   ))
-_sym_db.RegisterMessage(MsgTableView)
+_sym_db.RegisterMessage(DummyLobbyView)
+
+DummyTableView = _reflection.GeneratedProtocolMessageType('DummyTableView', (_message.Message,), dict(
+  DESCRIPTOR = _DUMMYTABLEVIEW,
+  __module__ = 'Protocol_pb2'
+  # @@protoc_insertion_point(class_scope:DummyTableView)
+  ))
+_sym_db.RegisterMessage(DummyTableView)
 
 
 # @@protoc_insertion_point(module_scope)

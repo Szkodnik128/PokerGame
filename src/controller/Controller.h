@@ -26,6 +26,7 @@ private:
     void eventRecvRequestHandler(Event *event);
     void eventConnectionClosedHandler(Event *event);
     void messageLoginHandler(const Request *const request, ClientHandler *const clientHandler);
+    void messageCreateTableHandler(const Request *const request, ClientHandler *const clientHandler);
     void messageJoinTableHandler(const Request *const request, ClientHandler *const clientHandler);
     void messageLeaveTableHandler(const Request *const request, ClientHandler *const clientHandler);
     void messageRaiseHandler(const Request *const request, ClientHandler *const clientHandler);

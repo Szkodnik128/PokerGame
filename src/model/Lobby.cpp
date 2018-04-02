@@ -4,21 +4,29 @@
 
 #include "Lobby.h"
 
-void Lobby::createTable()
+void Lobby::createTable(const std::string &name, int maxPlayers)
 {
 
 }
 
-void Lobby::addPlayerToTable(int tableId, Player *const player)
+void Lobby::joinTable(const std::string &name, Player *player)
 {
 
 }
 
-void Lobby::removePlayerFromTable(int tableId, Player *const player)
+void Lobby::leaveTable(const std::string &name, Player *player)
 {
 
 }
 
 const std::list<Table *> &Lobby::getTables() const {
     return this->tables;
+}
+
+DummyLobbyView *Lobby::getLobbyView()
+{
+    DummyLobbyView *dummyLobbyView = new DummyLobbyView();
+
+
+    return dummyLobbyView;
 }

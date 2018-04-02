@@ -23,7 +23,7 @@ public:
     ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int clientSock);
     void listen();
     bool sendMessage(unsigned char *const data, size_t size);
-    void sendError(MsgError error);
+    void sendError(Error error);
     void setLoggedIn(bool loggedIn);
 };
 

@@ -37,7 +37,7 @@ namespace protobuf_Protocol_2eproto {
 struct TableStruct {
   static const ::google::protobuf::internal::ParseTableField entries[];
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[];
-  static const ::google::protobuf::internal::ParseTable schema[13];
+  static const ::google::protobuf::internal::ParseTable schema[14];
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
   static const ::google::protobuf::uint32 offsets[];
@@ -47,77 +47,83 @@ void InitDefaultsRequestImpl();
 void InitDefaultsRequest();
 void InitDefaultsResponseImpl();
 void InitDefaultsResponse();
-void InitDefaultsMsgLoginImpl();
-void InitDefaultsMsgLogin();
-void InitDefaultsMsgJoinTableImpl();
-void InitDefaultsMsgJoinTable();
-void InitDefaultsMsgLeaveTableImpl();
-void InitDefaultsMsgLeaveTable();
-void InitDefaultsMsgRaiseImpl();
-void InitDefaultsMsgRaise();
-void InitDefaultsMsgFoldImpl();
-void InitDefaultsMsgFold();
-void InitDefaultsMsgCallImpl();
-void InitDefaultsMsgCall();
-void InitDefaultsMsgCardImpl();
-void InitDefaultsMsgCard();
-void InitDefaultsMsgPlayerImpl();
-void InitDefaultsMsgPlayer();
-void InitDefaultsMsgTableInfoImpl();
-void InitDefaultsMsgTableInfo();
-void InitDefaultsMsgLobbyViewImpl();
-void InitDefaultsMsgLobbyView();
-void InitDefaultsMsgTableViewImpl();
-void InitDefaultsMsgTableView();
+void InitDefaultsLoginImpl();
+void InitDefaultsLogin();
+void InitDefaultsCreateTableImpl();
+void InitDefaultsCreateTable();
+void InitDefaultsJoinTableImpl();
+void InitDefaultsJoinTable();
+void InitDefaultsLeaveTableImpl();
+void InitDefaultsLeaveTable();
+void InitDefaultsRaiseImpl();
+void InitDefaultsRaise();
+void InitDefaultsFoldImpl();
+void InitDefaultsFold();
+void InitDefaultsCallImpl();
+void InitDefaultsCall();
+void InitDefaultsDummyCardImpl();
+void InitDefaultsDummyCard();
+void InitDefaultsDummyPlayerImpl();
+void InitDefaultsDummyPlayer();
+void InitDefaultsDummyTableInfoImpl();
+void InitDefaultsDummyTableInfo();
+void InitDefaultsDummyLobbyViewImpl();
+void InitDefaultsDummyLobbyView();
+void InitDefaultsDummyTableViewImpl();
+void InitDefaultsDummyTableView();
 inline void InitDefaults() {
   InitDefaultsRequest();
   InitDefaultsResponse();
-  InitDefaultsMsgLogin();
-  InitDefaultsMsgJoinTable();
-  InitDefaultsMsgLeaveTable();
-  InitDefaultsMsgRaise();
-  InitDefaultsMsgFold();
-  InitDefaultsMsgCall();
-  InitDefaultsMsgCard();
-  InitDefaultsMsgPlayer();
-  InitDefaultsMsgTableInfo();
-  InitDefaultsMsgLobbyView();
-  InitDefaultsMsgTableView();
+  InitDefaultsLogin();
+  InitDefaultsCreateTable();
+  InitDefaultsJoinTable();
+  InitDefaultsLeaveTable();
+  InitDefaultsRaise();
+  InitDefaultsFold();
+  InitDefaultsCall();
+  InitDefaultsDummyCard();
+  InitDefaultsDummyPlayer();
+  InitDefaultsDummyTableInfo();
+  InitDefaultsDummyLobbyView();
+  InitDefaultsDummyTableView();
 }
 }  // namespace protobuf_Protocol_2eproto
-class MsgCall;
-class MsgCallDefaultTypeInternal;
-extern MsgCallDefaultTypeInternal _MsgCall_default_instance_;
-class MsgCard;
-class MsgCardDefaultTypeInternal;
-extern MsgCardDefaultTypeInternal _MsgCard_default_instance_;
-class MsgFold;
-class MsgFoldDefaultTypeInternal;
-extern MsgFoldDefaultTypeInternal _MsgFold_default_instance_;
-class MsgJoinTable;
-class MsgJoinTableDefaultTypeInternal;
-extern MsgJoinTableDefaultTypeInternal _MsgJoinTable_default_instance_;
-class MsgLeaveTable;
-class MsgLeaveTableDefaultTypeInternal;
-extern MsgLeaveTableDefaultTypeInternal _MsgLeaveTable_default_instance_;
-class MsgLobbyView;
-class MsgLobbyViewDefaultTypeInternal;
-extern MsgLobbyViewDefaultTypeInternal _MsgLobbyView_default_instance_;
-class MsgLogin;
-class MsgLoginDefaultTypeInternal;
-extern MsgLoginDefaultTypeInternal _MsgLogin_default_instance_;
-class MsgPlayer;
-class MsgPlayerDefaultTypeInternal;
-extern MsgPlayerDefaultTypeInternal _MsgPlayer_default_instance_;
-class MsgRaise;
-class MsgRaiseDefaultTypeInternal;
-extern MsgRaiseDefaultTypeInternal _MsgRaise_default_instance_;
-class MsgTableInfo;
-class MsgTableInfoDefaultTypeInternal;
-extern MsgTableInfoDefaultTypeInternal _MsgTableInfo_default_instance_;
-class MsgTableView;
-class MsgTableViewDefaultTypeInternal;
-extern MsgTableViewDefaultTypeInternal _MsgTableView_default_instance_;
+class Call;
+class CallDefaultTypeInternal;
+extern CallDefaultTypeInternal _Call_default_instance_;
+class CreateTable;
+class CreateTableDefaultTypeInternal;
+extern CreateTableDefaultTypeInternal _CreateTable_default_instance_;
+class DummyCard;
+class DummyCardDefaultTypeInternal;
+extern DummyCardDefaultTypeInternal _DummyCard_default_instance_;
+class DummyLobbyView;
+class DummyLobbyViewDefaultTypeInternal;
+extern DummyLobbyViewDefaultTypeInternal _DummyLobbyView_default_instance_;
+class DummyPlayer;
+class DummyPlayerDefaultTypeInternal;
+extern DummyPlayerDefaultTypeInternal _DummyPlayer_default_instance_;
+class DummyTableInfo;
+class DummyTableInfoDefaultTypeInternal;
+extern DummyTableInfoDefaultTypeInternal _DummyTableInfo_default_instance_;
+class DummyTableView;
+class DummyTableViewDefaultTypeInternal;
+extern DummyTableViewDefaultTypeInternal _DummyTableView_default_instance_;
+class Fold;
+class FoldDefaultTypeInternal;
+extern FoldDefaultTypeInternal _Fold_default_instance_;
+class JoinTable;
+class JoinTableDefaultTypeInternal;
+extern JoinTableDefaultTypeInternal _JoinTable_default_instance_;
+class LeaveTable;
+class LeaveTableDefaultTypeInternal;
+extern LeaveTableDefaultTypeInternal _LeaveTable_default_instance_;
+class Login;
+class LoginDefaultTypeInternal;
+extern LoginDefaultTypeInternal _Login_default_instance_;
+class Raise;
+class RaiseDefaultTypeInternal;
+extern RaiseDefaultTypeInternal _Raise_default_instance_;
 class Request;
 class RequestDefaultTypeInternal;
 extern RequestDefaultTypeInternal _Request_default_instance_;
@@ -125,132 +131,132 @@ class Response;
 class ResponseDefaultTypeInternal;
 extern ResponseDefaultTypeInternal _Response_default_instance_;
 
-enum MsgError {
-  MsgErrorSuccess = 0,
-  MsgErrorWrongMessage = 1,
-  MsgErrorInvalidValue = 2,
-  MsgError_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgError_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum Error {
+  ErrorSuccess = 0,
+  ErrorWrongMessage = 1,
+  ErrorInvalidValue = 2,
+  Error_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  Error_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool MsgError_IsValid(int value);
-const MsgError MsgError_MIN = MsgErrorSuccess;
-const MsgError MsgError_MAX = MsgErrorInvalidValue;
-const int MsgError_ARRAYSIZE = MsgError_MAX + 1;
+bool Error_IsValid(int value);
+const Error Error_MIN = ErrorSuccess;
+const Error Error_MAX = ErrorInvalidValue;
+const int Error_ARRAYSIZE = Error_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MsgError_descriptor();
-inline const ::std::string& MsgError_Name(MsgError value) {
+const ::google::protobuf::EnumDescriptor* Error_descriptor();
+inline const ::std::string& Error_Name(Error value) {
   return ::google::protobuf::internal::NameOfEnum(
-    MsgError_descriptor(), value);
+    Error_descriptor(), value);
 }
-inline bool MsgError_Parse(
-    const ::std::string& name, MsgError* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgError>(
-    MsgError_descriptor(), name, value);
+inline bool Error_Parse(
+    const ::std::string& name, Error* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Error>(
+    Error_descriptor(), name, value);
 }
-enum MsgTableStatus {
-  MsgTableStatusUnknown = 0,
-  MsgTableStatusWaitingForPlayers = 1,
-  MsgTableStatusGameInProgress = 2,
-  MsgTableStatusGameEnded = 3,
-  MsgTableStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgTableStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum DummyTableStatus {
+  DummyTableStatusUnknown = 0,
+  DummyTableStatusWaitingForPlayers = 1,
+  DummyTableStatusGameInProgress = 2,
+  DummyTableStatusGameEnded = 3,
+  DummyTableStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  DummyTableStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool MsgTableStatus_IsValid(int value);
-const MsgTableStatus MsgTableStatus_MIN = MsgTableStatusUnknown;
-const MsgTableStatus MsgTableStatus_MAX = MsgTableStatusGameEnded;
-const int MsgTableStatus_ARRAYSIZE = MsgTableStatus_MAX + 1;
+bool DummyTableStatus_IsValid(int value);
+const DummyTableStatus DummyTableStatus_MIN = DummyTableStatusUnknown;
+const DummyTableStatus DummyTableStatus_MAX = DummyTableStatusGameEnded;
+const int DummyTableStatus_ARRAYSIZE = DummyTableStatus_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MsgTableStatus_descriptor();
-inline const ::std::string& MsgTableStatus_Name(MsgTableStatus value) {
+const ::google::protobuf::EnumDescriptor* DummyTableStatus_descriptor();
+inline const ::std::string& DummyTableStatus_Name(DummyTableStatus value) {
   return ::google::protobuf::internal::NameOfEnum(
-    MsgTableStatus_descriptor(), value);
+    DummyTableStatus_descriptor(), value);
 }
-inline bool MsgTableStatus_Parse(
-    const ::std::string& name, MsgTableStatus* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgTableStatus>(
-    MsgTableStatus_descriptor(), name, value);
+inline bool DummyTableStatus_Parse(
+    const ::std::string& name, DummyTableStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DummyTableStatus>(
+    DummyTableStatus_descriptor(), name, value);
 }
-enum MsgRoundStatus {
-  MsgRoundStatusUnknown = 0,
-  MsgRoundStatusPreFlop = 1,
-  MsgRoundStatusFlop = 2,
-  MsgRoundStatusTurn = 3,
-  MsgRoundStatusRiver = 4,
-  MsgRoundStatusEnd = 5,
-  MsgRoundStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgRoundStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum DummyRoundStatus {
+  DummyRoundStatusUnknown = 0,
+  DummyRoundStatusPreFlop = 1,
+  DummyRoundStatusFlop = 2,
+  DummyRoundStatusTurn = 3,
+  DummyRoundStatusRiver = 4,
+  DummyRoundStatusEnd = 5,
+  DummyRoundStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  DummyRoundStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool MsgRoundStatus_IsValid(int value);
-const MsgRoundStatus MsgRoundStatus_MIN = MsgRoundStatusUnknown;
-const MsgRoundStatus MsgRoundStatus_MAX = MsgRoundStatusEnd;
-const int MsgRoundStatus_ARRAYSIZE = MsgRoundStatus_MAX + 1;
+bool DummyRoundStatus_IsValid(int value);
+const DummyRoundStatus DummyRoundStatus_MIN = DummyRoundStatusUnknown;
+const DummyRoundStatus DummyRoundStatus_MAX = DummyRoundStatusEnd;
+const int DummyRoundStatus_ARRAYSIZE = DummyRoundStatus_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MsgRoundStatus_descriptor();
-inline const ::std::string& MsgRoundStatus_Name(MsgRoundStatus value) {
+const ::google::protobuf::EnumDescriptor* DummyRoundStatus_descriptor();
+inline const ::std::string& DummyRoundStatus_Name(DummyRoundStatus value) {
   return ::google::protobuf::internal::NameOfEnum(
-    MsgRoundStatus_descriptor(), value);
+    DummyRoundStatus_descriptor(), value);
 }
-inline bool MsgRoundStatus_Parse(
-    const ::std::string& name, MsgRoundStatus* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgRoundStatus>(
-    MsgRoundStatus_descriptor(), name, value);
+inline bool DummyRoundStatus_Parse(
+    const ::std::string& name, DummyRoundStatus* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DummyRoundStatus>(
+    DummyRoundStatus_descriptor(), name, value);
 }
-enum MsgCardValue {
-  MsgCardValueUnkown = 0,
-  MsgCardValueTwo = 2,
-  MsgCardValueThree = 3,
-  MsgCardValueFour = 4,
-  MsgCardValueFive = 5,
-  MsgCardValueSix = 6,
-  MsgCardValueSeven = 7,
-  MsgCardValueEight = 8,
-  MsgCardValueNine = 9,
-  MsgCardValueTen = 10,
-  MsgCardValueJack = 11,
-  MsgCardValueQueen = 12,
-  MsgCardValueKing = 13,
-  MsgCardValueAce = 14,
-  MsgCardValue_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgCardValue_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum DummyCardValue {
+  DummyCardValueUnkown = 0,
+  DummyCardValueTwo = 2,
+  DummyCardValueThree = 3,
+  DummyCardValueFour = 4,
+  DummyCardValueFive = 5,
+  DummyCardValueSix = 6,
+  DummyCardValueSeven = 7,
+  DummyCardValueEight = 8,
+  DummyCardValueNine = 9,
+  DummyCardValueTen = 10,
+  DummyCardValueJack = 11,
+  DummyCardValueQueen = 12,
+  DummyCardValueKing = 13,
+  DummyCardValueAce = 14,
+  DummyCardValue_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  DummyCardValue_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool MsgCardValue_IsValid(int value);
-const MsgCardValue MsgCardValue_MIN = MsgCardValueUnkown;
-const MsgCardValue MsgCardValue_MAX = MsgCardValueAce;
-const int MsgCardValue_ARRAYSIZE = MsgCardValue_MAX + 1;
+bool DummyCardValue_IsValid(int value);
+const DummyCardValue DummyCardValue_MIN = DummyCardValueUnkown;
+const DummyCardValue DummyCardValue_MAX = DummyCardValueAce;
+const int DummyCardValue_ARRAYSIZE = DummyCardValue_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MsgCardValue_descriptor();
-inline const ::std::string& MsgCardValue_Name(MsgCardValue value) {
+const ::google::protobuf::EnumDescriptor* DummyCardValue_descriptor();
+inline const ::std::string& DummyCardValue_Name(DummyCardValue value) {
   return ::google::protobuf::internal::NameOfEnum(
-    MsgCardValue_descriptor(), value);
+    DummyCardValue_descriptor(), value);
 }
-inline bool MsgCardValue_Parse(
-    const ::std::string& name, MsgCardValue* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgCardValue>(
-    MsgCardValue_descriptor(), name, value);
+inline bool DummyCardValue_Parse(
+    const ::std::string& name, DummyCardValue* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DummyCardValue>(
+    DummyCardValue_descriptor(), name, value);
 }
-enum MsgCardSuit {
-  MsgCardSuitUnkown = 0,
-  MsgCardSuitSpades = 1,
-  MsgCardSuitHearts = 2,
-  MsgCardSuitDiamonds = 3,
-  MsgCardSuitClubs = 4,
-  MsgCardSuit_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  MsgCardSuit_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
+enum DummyCardSuit {
+  DummyCardSuitUnkown = 0,
+  DummyCardSuitSpades = 1,
+  DummyCardSuitHearts = 2,
+  DummyCardSuitDiamonds = 3,
+  DummyCardSuitClubs = 4,
+  DummyCardSuit_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  DummyCardSuit_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
-bool MsgCardSuit_IsValid(int value);
-const MsgCardSuit MsgCardSuit_MIN = MsgCardSuitUnkown;
-const MsgCardSuit MsgCardSuit_MAX = MsgCardSuitClubs;
-const int MsgCardSuit_ARRAYSIZE = MsgCardSuit_MAX + 1;
+bool DummyCardSuit_IsValid(int value);
+const DummyCardSuit DummyCardSuit_MIN = DummyCardSuitUnkown;
+const DummyCardSuit DummyCardSuit_MAX = DummyCardSuitClubs;
+const int DummyCardSuit_ARRAYSIZE = DummyCardSuit_MAX + 1;
 
-const ::google::protobuf::EnumDescriptor* MsgCardSuit_descriptor();
-inline const ::std::string& MsgCardSuit_Name(MsgCardSuit value) {
+const ::google::protobuf::EnumDescriptor* DummyCardSuit_descriptor();
+inline const ::std::string& DummyCardSuit_Name(DummyCardSuit value) {
   return ::google::protobuf::internal::NameOfEnum(
-    MsgCardSuit_descriptor(), value);
+    DummyCardSuit_descriptor(), value);
 }
-inline bool MsgCardSuit_Parse(
-    const ::std::string& name, MsgCardSuit* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<MsgCardSuit>(
-    MsgCardSuit_descriptor(), name, value);
+inline bool DummyCardSuit_Parse(
+    const ::std::string& name, DummyCardSuit* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<DummyCardSuit>(
+    DummyCardSuit_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -285,11 +291,12 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   enum PayloadCase {
     kLogin = 1,
-    kJoinTable = 2,
-    kLeaveTable = 3,
-    kRaise = 4,
-    kFold = 5,
-    kCall = 6,
+    kCreateTable = 2,
+    kJoinTable = 3,
+    kLeaveTable = 4,
+    kRaise = 5,
+    kFold = 6,
+    kCall = 7,
     PAYLOAD_NOT_SET = 0,
   };
 
@@ -346,64 +353,74 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .MsgLogin login = 1;
+  // .Login login = 1;
   bool has_login() const;
   void clear_login();
   static const int kLoginFieldNumber = 1;
-  const ::MsgLogin& login() const;
-  ::MsgLogin* release_login();
-  ::MsgLogin* mutable_login();
-  void set_allocated_login(::MsgLogin* login);
+  const ::Login& login() const;
+  ::Login* release_login();
+  ::Login* mutable_login();
+  void set_allocated_login(::Login* login);
 
-  // .MsgJoinTable joinTable = 2;
+  // .CreateTable createTable = 2;
+  bool has_createtable() const;
+  void clear_createtable();
+  static const int kCreateTableFieldNumber = 2;
+  const ::CreateTable& createtable() const;
+  ::CreateTable* release_createtable();
+  ::CreateTable* mutable_createtable();
+  void set_allocated_createtable(::CreateTable* createtable);
+
+  // .JoinTable joinTable = 3;
   bool has_jointable() const;
   void clear_jointable();
-  static const int kJoinTableFieldNumber = 2;
-  const ::MsgJoinTable& jointable() const;
-  ::MsgJoinTable* release_jointable();
-  ::MsgJoinTable* mutable_jointable();
-  void set_allocated_jointable(::MsgJoinTable* jointable);
+  static const int kJoinTableFieldNumber = 3;
+  const ::JoinTable& jointable() const;
+  ::JoinTable* release_jointable();
+  ::JoinTable* mutable_jointable();
+  void set_allocated_jointable(::JoinTable* jointable);
 
-  // .MsgLeaveTable leaveTable = 3;
+  // .LeaveTable leaveTable = 4;
   bool has_leavetable() const;
   void clear_leavetable();
-  static const int kLeaveTableFieldNumber = 3;
-  const ::MsgLeaveTable& leavetable() const;
-  ::MsgLeaveTable* release_leavetable();
-  ::MsgLeaveTable* mutable_leavetable();
-  void set_allocated_leavetable(::MsgLeaveTable* leavetable);
+  static const int kLeaveTableFieldNumber = 4;
+  const ::LeaveTable& leavetable() const;
+  ::LeaveTable* release_leavetable();
+  ::LeaveTable* mutable_leavetable();
+  void set_allocated_leavetable(::LeaveTable* leavetable);
 
-  // .MsgRaise raise = 4;
+  // .Raise raise = 5;
   bool has_raise() const;
   void clear_raise();
-  static const int kRaiseFieldNumber = 4;
-  const ::MsgRaise& raise() const;
-  ::MsgRaise* release_raise();
-  ::MsgRaise* mutable_raise();
-  void set_allocated_raise(::MsgRaise* raise);
+  static const int kRaiseFieldNumber = 5;
+  const ::Raise& raise() const;
+  ::Raise* release_raise();
+  ::Raise* mutable_raise();
+  void set_allocated_raise(::Raise* raise);
 
-  // .MsgFold fold = 5;
+  // .Fold fold = 6;
   bool has_fold() const;
   void clear_fold();
-  static const int kFoldFieldNumber = 5;
-  const ::MsgFold& fold() const;
-  ::MsgFold* release_fold();
-  ::MsgFold* mutable_fold();
-  void set_allocated_fold(::MsgFold* fold);
+  static const int kFoldFieldNumber = 6;
+  const ::Fold& fold() const;
+  ::Fold* release_fold();
+  ::Fold* mutable_fold();
+  void set_allocated_fold(::Fold* fold);
 
-  // .MsgCall call = 6;
+  // .Call call = 7;
   bool has_call() const;
   void clear_call();
-  static const int kCallFieldNumber = 6;
-  const ::MsgCall& call() const;
-  ::MsgCall* release_call();
-  ::MsgCall* mutable_call();
-  void set_allocated_call(::MsgCall* call);
+  static const int kCallFieldNumber = 7;
+  const ::Call& call() const;
+  ::Call* release_call();
+  ::Call* mutable_call();
+  void set_allocated_call(::Call* call);
 
   PayloadCase payload_case() const;
   // @@protoc_insertion_point(class_scope:Request)
  private:
   void set_has_login();
+  void set_has_createtable();
   void set_has_jointable();
   void set_has_leavetable();
   void set_has_raise();
@@ -417,12 +434,13 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   union PayloadUnion {
     PayloadUnion() {}
-    ::MsgLogin* login_;
-    ::MsgJoinTable* jointable_;
-    ::MsgLeaveTable* leavetable_;
-    ::MsgRaise* raise_;
-    ::MsgFold* fold_;
-    ::MsgCall* call_;
+    ::Login* login_;
+    ::CreateTable* createtable_;
+    ::JoinTable* jointable_;
+    ::LeaveTable* leavetable_;
+    ::Raise* raise_;
+    ::Fold* fold_;
+    ::Call* call_;
   } payload_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -520,29 +538,29 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
 
   // accessors -------------------------------------------------------
 
-  // .MsgError error = 1;
+  // .Error error = 1;
   void clear_error();
   static const int kErrorFieldNumber = 1;
-  ::MsgError error() const;
-  void set_error(::MsgError value);
+  ::Error error() const;
+  void set_error(::Error value);
 
-  // .MsgLobbyView lobbyView = 2;
+  // .DummyLobbyView lobbyView = 2;
   bool has_lobbyview() const;
   void clear_lobbyview();
   static const int kLobbyViewFieldNumber = 2;
-  const ::MsgLobbyView& lobbyview() const;
-  ::MsgLobbyView* release_lobbyview();
-  ::MsgLobbyView* mutable_lobbyview();
-  void set_allocated_lobbyview(::MsgLobbyView* lobbyview);
+  const ::DummyLobbyView& lobbyview() const;
+  ::DummyLobbyView* release_lobbyview();
+  ::DummyLobbyView* mutable_lobbyview();
+  void set_allocated_lobbyview(::DummyLobbyView* lobbyview);
 
-  // .MsgTableView tableView = 3;
+  // .DummyTableView tableView = 3;
   bool has_tableview() const;
   void clear_tableview();
   static const int kTableViewFieldNumber = 3;
-  const ::MsgTableView& tableview() const;
-  ::MsgTableView* release_tableview();
-  ::MsgTableView* mutable_tableview();
-  void set_allocated_tableview(::MsgTableView* tableview);
+  const ::DummyTableView& tableview() const;
+  ::DummyTableView* release_tableview();
+  ::DummyTableView* mutable_tableview();
+  void set_allocated_tableview(::DummyTableView* tableview);
 
   PayloadCase payload_case() const;
   // @@protoc_insertion_point(class_scope:Response)
@@ -558,8 +576,8 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
   int error_;
   union PayloadUnion {
     PayloadUnion() {}
-    ::MsgLobbyView* lobbyview_;
-    ::MsgTableView* tableview_;
+    ::DummyLobbyView* lobbyview_;
+    ::DummyTableView* tableview_;
   } payload_;
   mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
@@ -569,24 +587,24 @@ class Response : public ::google::protobuf::Message /* @@protoc_insertion_point(
 };
 // -------------------------------------------------------------------
 
-class MsgLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgLogin) */ {
+class Login : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Login) */ {
  public:
-  MsgLogin();
-  virtual ~MsgLogin();
+  Login();
+  virtual ~Login();
 
-  MsgLogin(const MsgLogin& from);
+  Login(const Login& from);
 
-  inline MsgLogin& operator=(const MsgLogin& from) {
+  inline Login& operator=(const Login& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgLogin(MsgLogin&& from) noexcept
-    : MsgLogin() {
+  Login(Login&& from) noexcept
+    : Login() {
     *this = ::std::move(from);
   }
 
-  inline MsgLogin& operator=(MsgLogin&& from) noexcept {
+  inline Login& operator=(Login&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -596,30 +614,30 @@ class MsgLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgLogin& default_instance();
+  static const Login& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgLogin* internal_default_instance() {
-    return reinterpret_cast<const MsgLogin*>(
-               &_MsgLogin_default_instance_);
+  static inline const Login* internal_default_instance() {
+    return reinterpret_cast<const Login*>(
+               &_Login_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     2;
 
-  void Swap(MsgLogin* other);
-  friend void swap(MsgLogin& a, MsgLogin& b) {
+  void Swap(Login* other);
+  friend void swap(Login& a, Login& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgLogin* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Login* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgLogin* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Login* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgLogin& from);
-  void MergeFrom(const MsgLogin& from);
+  void CopyFrom(const Login& from);
+  void MergeFrom(const Login& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -635,7 +653,7 @@ class MsgLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgLogin* other);
+  void InternalSwap(Login* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -665,35 +683,35 @@ class MsgLogin : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::std::string* release_username();
   void set_allocated_username(::std::string* username);
 
-  // @@protoc_insertion_point(class_scope:MsgLogin)
+  // @@protoc_insertion_point(class_scope:Login)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr username_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgLoginImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsLoginImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgJoinTable : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgJoinTable) */ {
+class CreateTable : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:CreateTable) */ {
  public:
-  MsgJoinTable();
-  virtual ~MsgJoinTable();
+  CreateTable();
+  virtual ~CreateTable();
 
-  MsgJoinTable(const MsgJoinTable& from);
+  CreateTable(const CreateTable& from);
 
-  inline MsgJoinTable& operator=(const MsgJoinTable& from) {
+  inline CreateTable& operator=(const CreateTable& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgJoinTable(MsgJoinTable&& from) noexcept
-    : MsgJoinTable() {
+  CreateTable(CreateTable&& from) noexcept
+    : CreateTable() {
     *this = ::std::move(from);
   }
 
-  inline MsgJoinTable& operator=(MsgJoinTable&& from) noexcept {
+  inline CreateTable& operator=(CreateTable&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -703,30 +721,30 @@ class MsgJoinTable : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgJoinTable& default_instance();
+  static const CreateTable& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgJoinTable* internal_default_instance() {
-    return reinterpret_cast<const MsgJoinTable*>(
-               &_MsgJoinTable_default_instance_);
+  static inline const CreateTable* internal_default_instance() {
+    return reinterpret_cast<const CreateTable*>(
+               &_CreateTable_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     3;
 
-  void Swap(MsgJoinTable* other);
-  friend void swap(MsgJoinTable& a, MsgJoinTable& b) {
+  void Swap(CreateTable* other);
+  friend void swap(CreateTable& a, CreateTable& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgJoinTable* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline CreateTable* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgJoinTable* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  CreateTable* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgJoinTable& from);
-  void MergeFrom(const MsgJoinTable& from);
+  void CopyFrom(const CreateTable& from);
+  void MergeFrom(const CreateTable& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -742,7 +760,7 @@ class MsgJoinTable : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgJoinTable* other);
+  void InternalSwap(CreateTable* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -758,41 +776,56 @@ class MsgJoinTable : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // uint32 tableId = 1;
-  void clear_tableid();
-  static const int kTableIdFieldNumber = 1;
-  ::google::protobuf::uint32 tableid() const;
-  void set_tableid(::google::protobuf::uint32 value);
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
 
-  // @@protoc_insertion_point(class_scope:MsgJoinTable)
+  // uint32 maxPlayers = 2;
+  void clear_maxplayers();
+  static const int kMaxPlayersFieldNumber = 2;
+  ::google::protobuf::uint32 maxplayers() const;
+  void set_maxplayers(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:CreateTable)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 tableid_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  ::google::protobuf::uint32 maxplayers_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgJoinTableImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsCreateTableImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgLeaveTable : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgLeaveTable) */ {
+class JoinTable : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:JoinTable) */ {
  public:
-  MsgLeaveTable();
-  virtual ~MsgLeaveTable();
+  JoinTable();
+  virtual ~JoinTable();
 
-  MsgLeaveTable(const MsgLeaveTable& from);
+  JoinTable(const JoinTable& from);
 
-  inline MsgLeaveTable& operator=(const MsgLeaveTable& from) {
+  inline JoinTable& operator=(const JoinTable& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgLeaveTable(MsgLeaveTable&& from) noexcept
-    : MsgLeaveTable() {
+  JoinTable(JoinTable&& from) noexcept
+    : JoinTable() {
     *this = ::std::move(from);
   }
 
-  inline MsgLeaveTable& operator=(MsgLeaveTable&& from) noexcept {
+  inline JoinTable& operator=(JoinTable&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -802,30 +835,30 @@ class MsgLeaveTable : public ::google::protobuf::Message /* @@protoc_insertion_p
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgLeaveTable& default_instance();
+  static const JoinTable& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgLeaveTable* internal_default_instance() {
-    return reinterpret_cast<const MsgLeaveTable*>(
-               &_MsgLeaveTable_default_instance_);
+  static inline const JoinTable* internal_default_instance() {
+    return reinterpret_cast<const JoinTable*>(
+               &_JoinTable_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     4;
 
-  void Swap(MsgLeaveTable* other);
-  friend void swap(MsgLeaveTable& a, MsgLeaveTable& b) {
+  void Swap(JoinTable* other);
+  friend void swap(JoinTable& a, JoinTable& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgLeaveTable* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline JoinTable* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgLeaveTable* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  JoinTable* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgLeaveTable& from);
-  void MergeFrom(const MsgLeaveTable& from);
+  void CopyFrom(const JoinTable& from);
+  void MergeFrom(const JoinTable& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -841,7 +874,7 @@ class MsgLeaveTable : public ::google::protobuf::Message /* @@protoc_insertion_p
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgLeaveTable* other);
+  void InternalSwap(JoinTable* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -857,34 +890,49 @@ class MsgLeaveTable : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:MsgLeaveTable)
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:JoinTable)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgLeaveTableImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsJoinTableImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgRaise : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgRaise) */ {
+class LeaveTable : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:LeaveTable) */ {
  public:
-  MsgRaise();
-  virtual ~MsgRaise();
+  LeaveTable();
+  virtual ~LeaveTable();
 
-  MsgRaise(const MsgRaise& from);
+  LeaveTable(const LeaveTable& from);
 
-  inline MsgRaise& operator=(const MsgRaise& from) {
+  inline LeaveTable& operator=(const LeaveTable& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgRaise(MsgRaise&& from) noexcept
-    : MsgRaise() {
+  LeaveTable(LeaveTable&& from) noexcept
+    : LeaveTable() {
     *this = ::std::move(from);
   }
 
-  inline MsgRaise& operator=(MsgRaise&& from) noexcept {
+  inline LeaveTable& operator=(LeaveTable&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -894,30 +942,30 @@ class MsgRaise : public ::google::protobuf::Message /* @@protoc_insertion_point(
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgRaise& default_instance();
+  static const LeaveTable& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgRaise* internal_default_instance() {
-    return reinterpret_cast<const MsgRaise*>(
-               &_MsgRaise_default_instance_);
+  static inline const LeaveTable* internal_default_instance() {
+    return reinterpret_cast<const LeaveTable*>(
+               &_LeaveTable_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     5;
 
-  void Swap(MsgRaise* other);
-  friend void swap(MsgRaise& a, MsgRaise& b) {
+  void Swap(LeaveTable* other);
+  friend void swap(LeaveTable& a, LeaveTable& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgRaise* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline LeaveTable* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgRaise* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  LeaveTable* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgRaise& from);
-  void MergeFrom(const MsgRaise& from);
+  void CopyFrom(const LeaveTable& from);
+  void MergeFrom(const LeaveTable& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -933,7 +981,114 @@ class MsgRaise : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgRaise* other);
+  void InternalSwap(LeaveTable* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // string name = 1;
+  void clear_name();
+  static const int kNameFieldNumber = 1;
+  const ::std::string& name() const;
+  void set_name(const ::std::string& value);
+  #if LANG_CXX11
+  void set_name(::std::string&& value);
+  #endif
+  void set_name(const char* value);
+  void set_name(const char* value, size_t size);
+  ::std::string* mutable_name();
+  ::std::string* release_name();
+  void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:LeaveTable)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::ArenaStringPtr name_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsLeaveTableImpl();
+};
+// -------------------------------------------------------------------
+
+class Raise : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Raise) */ {
+ public:
+  Raise();
+  virtual ~Raise();
+
+  Raise(const Raise& from);
+
+  inline Raise& operator=(const Raise& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  Raise(Raise&& from) noexcept
+    : Raise() {
+    *this = ::std::move(from);
+  }
+
+  inline Raise& operator=(Raise&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Raise& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Raise* internal_default_instance() {
+    return reinterpret_cast<const Raise*>(
+               &_Raise_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    6;
+
+  void Swap(Raise* other);
+  friend void swap(Raise& a, Raise& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Raise* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  Raise* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const Raise& from);
+  void MergeFrom(const Raise& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(Raise* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -955,35 +1110,35 @@ class MsgRaise : public ::google::protobuf::Message /* @@protoc_insertion_point(
   ::google::protobuf::int32 chips() const;
   void set_chips(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:MsgRaise)
+  // @@protoc_insertion_point(class_scope:Raise)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::int32 chips_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgRaiseImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsRaiseImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgFold : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgFold) */ {
+class Fold : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Fold) */ {
  public:
-  MsgFold();
-  virtual ~MsgFold();
+  Fold();
+  virtual ~Fold();
 
-  MsgFold(const MsgFold& from);
+  Fold(const Fold& from);
 
-  inline MsgFold& operator=(const MsgFold& from) {
+  inline Fold& operator=(const Fold& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgFold(MsgFold&& from) noexcept
-    : MsgFold() {
+  Fold(Fold&& from) noexcept
+    : Fold() {
     *this = ::std::move(from);
   }
 
-  inline MsgFold& operator=(MsgFold&& from) noexcept {
+  inline Fold& operator=(Fold&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -993,122 +1148,30 @@ class MsgFold : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgFold& default_instance();
+  static const Fold& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgFold* internal_default_instance() {
-    return reinterpret_cast<const MsgFold*>(
-               &_MsgFold_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    6;
-
-  void Swap(MsgFold* other);
-  friend void swap(MsgFold& a, MsgFold& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline MsgFold* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  MsgFold* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgFold& from);
-  void MergeFrom(const MsgFold& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgFold* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:MsgFold)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgFoldImpl();
-};
-// -------------------------------------------------------------------
-
-class MsgCall : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgCall) */ {
- public:
-  MsgCall();
-  virtual ~MsgCall();
-
-  MsgCall(const MsgCall& from);
-
-  inline MsgCall& operator=(const MsgCall& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  MsgCall(MsgCall&& from) noexcept
-    : MsgCall() {
-    *this = ::std::move(from);
-  }
-
-  inline MsgCall& operator=(MsgCall&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgCall& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgCall* internal_default_instance() {
-    return reinterpret_cast<const MsgCall*>(
-               &_MsgCall_default_instance_);
+  static inline const Fold* internal_default_instance() {
+    return reinterpret_cast<const Fold*>(
+               &_Fold_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     7;
 
-  void Swap(MsgCall* other);
-  friend void swap(MsgCall& a, MsgCall& b) {
+  void Swap(Fold* other);
+  friend void swap(Fold& a, Fold& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgCall* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Fold* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgCall* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Fold* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgCall& from);
-  void MergeFrom(const MsgCall& from);
+  void CopyFrom(const Fold& from);
+  void MergeFrom(const Fold& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1124,7 +1187,7 @@ class MsgCall : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgCall* other);
+  void InternalSwap(Fold* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1140,34 +1203,34 @@ class MsgCall : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:MsgCall)
+  // @@protoc_insertion_point(class_scope:Fold)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgCallImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsFoldImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgCard : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgCard) */ {
+class Call : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Call) */ {
  public:
-  MsgCard();
-  virtual ~MsgCard();
+  Call();
+  virtual ~Call();
 
-  MsgCard(const MsgCard& from);
+  Call(const Call& from);
 
-  inline MsgCard& operator=(const MsgCard& from) {
+  inline Call& operator=(const Call& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgCard(MsgCard&& from) noexcept
-    : MsgCard() {
+  Call(Call&& from) noexcept
+    : Call() {
     *this = ::std::move(from);
   }
 
-  inline MsgCard& operator=(MsgCard&& from) noexcept {
+  inline Call& operator=(Call&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1177,30 +1240,30 @@ class MsgCard : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgCard& default_instance();
+  static const Call& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgCard* internal_default_instance() {
-    return reinterpret_cast<const MsgCard*>(
-               &_MsgCard_default_instance_);
+  static inline const Call* internal_default_instance() {
+    return reinterpret_cast<const Call*>(
+               &_Call_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     8;
 
-  void Swap(MsgCard* other);
-  friend void swap(MsgCard& a, MsgCard& b) {
+  void Swap(Call* other);
+  friend void swap(Call& a, Call& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgCard* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline Call* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgCard* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  Call* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgCard& from);
-  void MergeFrom(const MsgCard& from);
+  void CopyFrom(const Call& from);
+  void MergeFrom(const Call& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1216,7 +1279,7 @@ class MsgCard : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgCard* other);
+  void InternalSwap(Call* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1232,19 +1295,111 @@ class MsgCard : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 
   // accessors -------------------------------------------------------
 
-  // .MsgCardValue cardValue = 1;
+  // @@protoc_insertion_point(class_scope:Call)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsCallImpl();
+};
+// -------------------------------------------------------------------
+
+class DummyCard : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DummyCard) */ {
+ public:
+  DummyCard();
+  virtual ~DummyCard();
+
+  DummyCard(const DummyCard& from);
+
+  inline DummyCard& operator=(const DummyCard& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DummyCard(DummyCard&& from) noexcept
+    : DummyCard() {
+    *this = ::std::move(from);
+  }
+
+  inline DummyCard& operator=(DummyCard&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DummyCard& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DummyCard* internal_default_instance() {
+    return reinterpret_cast<const DummyCard*>(
+               &_DummyCard_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    9;
+
+  void Swap(DummyCard* other);
+  friend void swap(DummyCard& a, DummyCard& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DummyCard* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  DummyCard* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const DummyCard& from);
+  void MergeFrom(const DummyCard& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(DummyCard* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .DummyCardValue cardValue = 1;
   void clear_cardvalue();
   static const int kCardValueFieldNumber = 1;
-  ::MsgCardValue cardvalue() const;
-  void set_cardvalue(::MsgCardValue value);
+  ::DummyCardValue cardvalue() const;
+  void set_cardvalue(::DummyCardValue value);
 
-  // .MsgCardSuit cardSuit = 2;
+  // .DummyCardSuit cardSuit = 2;
   void clear_cardsuit();
   static const int kCardSuitFieldNumber = 2;
-  ::MsgCardSuit cardsuit() const;
-  void set_cardsuit(::MsgCardSuit value);
+  ::DummyCardSuit cardsuit() const;
+  void set_cardsuit(::DummyCardSuit value);
 
-  // @@protoc_insertion_point(class_scope:MsgCard)
+  // @@protoc_insertion_point(class_scope:DummyCard)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1252,28 +1407,28 @@ class MsgCard : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   int cardsuit_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgCardImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyCardImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgPlayer) */ {
+class DummyPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DummyPlayer) */ {
  public:
-  MsgPlayer();
-  virtual ~MsgPlayer();
+  DummyPlayer();
+  virtual ~DummyPlayer();
 
-  MsgPlayer(const MsgPlayer& from);
+  DummyPlayer(const DummyPlayer& from);
 
-  inline MsgPlayer& operator=(const MsgPlayer& from) {
+  inline DummyPlayer& operator=(const DummyPlayer& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgPlayer(MsgPlayer&& from) noexcept
-    : MsgPlayer() {
+  DummyPlayer(DummyPlayer&& from) noexcept
+    : DummyPlayer() {
     *this = ::std::move(from);
   }
 
-  inline MsgPlayer& operator=(MsgPlayer&& from) noexcept {
+  inline DummyPlayer& operator=(DummyPlayer&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1283,30 +1438,30 @@ class MsgPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgPlayer& default_instance();
+  static const DummyPlayer& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgPlayer* internal_default_instance() {
-    return reinterpret_cast<const MsgPlayer*>(
-               &_MsgPlayer_default_instance_);
+  static inline const DummyPlayer* internal_default_instance() {
+    return reinterpret_cast<const DummyPlayer*>(
+               &_DummyPlayer_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    9;
+    10;
 
-  void Swap(MsgPlayer* other);
-  friend void swap(MsgPlayer& a, MsgPlayer& b) {
+  void Swap(DummyPlayer* other);
+  friend void swap(DummyPlayer& a, DummyPlayer& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgPlayer* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline DummyPlayer* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgPlayer* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  DummyPlayer* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgPlayer& from);
-  void MergeFrom(const MsgPlayer& from);
+  void CopyFrom(const DummyPlayer& from);
+  void MergeFrom(const DummyPlayer& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1322,7 +1477,7 @@ class MsgPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgPlayer* other);
+  void InternalSwap(DummyPlayer* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1338,16 +1493,16 @@ class MsgPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point
 
   // accessors -------------------------------------------------------
 
-  // repeated .MsgCard hand = 3;
+  // repeated .DummyCard hand = 3;
   int hand_size() const;
   void clear_hand();
   static const int kHandFieldNumber = 3;
-  const ::MsgCard& hand(int index) const;
-  ::MsgCard* mutable_hand(int index);
-  ::MsgCard* add_hand();
-  ::google::protobuf::RepeatedPtrField< ::MsgCard >*
+  const ::DummyCard& hand(int index) const;
+  ::DummyCard* mutable_hand(int index);
+  ::DummyCard* add_hand();
+  ::google::protobuf::RepeatedPtrField< ::DummyCard >*
       mutable_hand();
-  const ::google::protobuf::RepeatedPtrField< ::MsgCard >&
+  const ::google::protobuf::RepeatedPtrField< ::DummyCard >&
       hand() const;
 
   // string username = 1;
@@ -1376,38 +1531,38 @@ class MsgPlayer : public ::google::protobuf::Message /* @@protoc_insertion_point
   bool dealer() const;
   void set_dealer(bool value);
 
-  // @@protoc_insertion_point(class_scope:MsgPlayer)
+  // @@protoc_insertion_point(class_scope:DummyPlayer)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::MsgCard > hand_;
+  ::google::protobuf::RepeatedPtrField< ::DummyCard > hand_;
   ::google::protobuf::internal::ArenaStringPtr username_;
   ::google::protobuf::uint32 chips_;
   bool dealer_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgPlayerImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyPlayerImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgTableInfo) */ {
+class DummyTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DummyTableInfo) */ {
  public:
-  MsgTableInfo();
-  virtual ~MsgTableInfo();
+  DummyTableInfo();
+  virtual ~DummyTableInfo();
 
-  MsgTableInfo(const MsgTableInfo& from);
+  DummyTableInfo(const DummyTableInfo& from);
 
-  inline MsgTableInfo& operator=(const MsgTableInfo& from) {
+  inline DummyTableInfo& operator=(const DummyTableInfo& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgTableInfo(MsgTableInfo&& from) noexcept
-    : MsgTableInfo() {
+  DummyTableInfo(DummyTableInfo&& from) noexcept
+    : DummyTableInfo() {
     *this = ::std::move(from);
   }
 
-  inline MsgTableInfo& operator=(MsgTableInfo&& from) noexcept {
+  inline DummyTableInfo& operator=(DummyTableInfo&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1417,30 +1572,30 @@ class MsgTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgTableInfo& default_instance();
+  static const DummyTableInfo& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgTableInfo* internal_default_instance() {
-    return reinterpret_cast<const MsgTableInfo*>(
-               &_MsgTableInfo_default_instance_);
+  static inline const DummyTableInfo* internal_default_instance() {
+    return reinterpret_cast<const DummyTableInfo*>(
+               &_DummyTableInfo_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    10;
+    11;
 
-  void Swap(MsgTableInfo* other);
-  friend void swap(MsgTableInfo& a, MsgTableInfo& b) {
+  void Swap(DummyTableInfo* other);
+  friend void swap(DummyTableInfo& a, DummyTableInfo& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgTableInfo* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline DummyTableInfo* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgTableInfo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  DummyTableInfo* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgTableInfo& from);
-  void MergeFrom(const MsgTableInfo& from);
+  void CopyFrom(const DummyTableInfo& from);
+  void MergeFrom(const DummyTableInfo& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1456,7 +1611,7 @@ class MsgTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgTableInfo* other);
+  void InternalSwap(DummyTableInfo* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1504,7 +1659,7 @@ class MsgTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 players() const;
   void set_players(::google::protobuf::uint32 value);
 
-  // @@protoc_insertion_point(class_scope:MsgTableInfo)
+  // @@protoc_insertion_point(class_scope:DummyTableInfo)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
@@ -1514,28 +1669,28 @@ class MsgTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::uint32 players_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgTableInfoImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyTableInfoImpl();
 };
 // -------------------------------------------------------------------
 
-class MsgLobbyView : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgLobbyView) */ {
+class DummyLobbyView : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DummyLobbyView) */ {
  public:
-  MsgLobbyView();
-  virtual ~MsgLobbyView();
+  DummyLobbyView();
+  virtual ~DummyLobbyView();
 
-  MsgLobbyView(const MsgLobbyView& from);
+  DummyLobbyView(const DummyLobbyView& from);
 
-  inline MsgLobbyView& operator=(const MsgLobbyView& from) {
+  inline DummyLobbyView& operator=(const DummyLobbyView& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  MsgLobbyView(MsgLobbyView&& from) noexcept
-    : MsgLobbyView() {
+  DummyLobbyView(DummyLobbyView&& from) noexcept
+    : DummyLobbyView() {
     *this = ::std::move(from);
   }
 
-  inline MsgLobbyView& operator=(MsgLobbyView&& from) noexcept {
+  inline DummyLobbyView& operator=(DummyLobbyView&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -1545,135 +1700,30 @@ class MsgLobbyView : public ::google::protobuf::Message /* @@protoc_insertion_po
   }
   #endif
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgLobbyView& default_instance();
+  static const DummyLobbyView& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgLobbyView* internal_default_instance() {
-    return reinterpret_cast<const MsgLobbyView*>(
-               &_MsgLobbyView_default_instance_);
-  }
-  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
-    11;
-
-  void Swap(MsgLobbyView* other);
-  friend void swap(MsgLobbyView& a, MsgLobbyView& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline MsgLobbyView* New() const PROTOBUF_FINAL { return New(NULL); }
-
-  MsgLobbyView* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
-  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgLobbyView& from);
-  void MergeFrom(const MsgLobbyView& from);
-  void Clear() PROTOBUF_FINAL;
-  bool IsInitialized() const PROTOBUF_FINAL;
-
-  size_t ByteSizeLong() const PROTOBUF_FINAL;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
-  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgLobbyView* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return NULL;
-  }
-  inline void* MaybeArenaPtr() const {
-    return NULL;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .MsgTableInfo tables = 1;
-  int tables_size() const;
-  void clear_tables();
-  static const int kTablesFieldNumber = 1;
-  const ::MsgTableInfo& tables(int index) const;
-  ::MsgTableInfo* mutable_tables(int index);
-  ::MsgTableInfo* add_tables();
-  ::google::protobuf::RepeatedPtrField< ::MsgTableInfo >*
-      mutable_tables();
-  const ::google::protobuf::RepeatedPtrField< ::MsgTableInfo >&
-      tables() const;
-
-  // @@protoc_insertion_point(class_scope:MsgLobbyView)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::MsgTableInfo > tables_;
-  mutable int _cached_size_;
-  friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgLobbyViewImpl();
-};
-// -------------------------------------------------------------------
-
-class MsgTableView : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MsgTableView) */ {
- public:
-  MsgTableView();
-  virtual ~MsgTableView();
-
-  MsgTableView(const MsgTableView& from);
-
-  inline MsgTableView& operator=(const MsgTableView& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  MsgTableView(MsgTableView&& from) noexcept
-    : MsgTableView() {
-    *this = ::std::move(from);
-  }
-
-  inline MsgTableView& operator=(MsgTableView&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgTableView& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const MsgTableView* internal_default_instance() {
-    return reinterpret_cast<const MsgTableView*>(
-               &_MsgTableView_default_instance_);
+  static inline const DummyLobbyView* internal_default_instance() {
+    return reinterpret_cast<const DummyLobbyView*>(
+               &_DummyLobbyView_default_instance_);
   }
   static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
     12;
 
-  void Swap(MsgTableView* other);
-  friend void swap(MsgTableView& a, MsgTableView& b) {
+  void Swap(DummyLobbyView* other);
+  friend void swap(DummyLobbyView& a, DummyLobbyView& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline MsgTableView* New() const PROTOBUF_FINAL { return New(NULL); }
+  inline DummyLobbyView* New() const PROTOBUF_FINAL { return New(NULL); }
 
-  MsgTableView* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  DummyLobbyView* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
   void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
   void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
-  void CopyFrom(const MsgTableView& from);
-  void MergeFrom(const MsgTableView& from);
+  void CopyFrom(const DummyLobbyView& from);
+  void MergeFrom(const DummyLobbyView& from);
   void Clear() PROTOBUF_FINAL;
   bool IsInitialized() const PROTOBUF_FINAL;
 
@@ -1689,7 +1739,7 @@ class MsgTableView : public ::google::protobuf::Message /* @@protoc_insertion_po
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const PROTOBUF_FINAL;
-  void InternalSwap(MsgTableView* other);
+  void InternalSwap(DummyLobbyView* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return NULL;
@@ -1705,16 +1755,121 @@ class MsgTableView : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // repeated .MsgCard cards = 3;
+  // repeated .DummyTableInfo tables = 1;
+  int tables_size() const;
+  void clear_tables();
+  static const int kTablesFieldNumber = 1;
+  const ::DummyTableInfo& tables(int index) const;
+  ::DummyTableInfo* mutable_tables(int index);
+  ::DummyTableInfo* add_tables();
+  ::google::protobuf::RepeatedPtrField< ::DummyTableInfo >*
+      mutable_tables();
+  const ::google::protobuf::RepeatedPtrField< ::DummyTableInfo >&
+      tables() const;
+
+  // @@protoc_insertion_point(class_scope:DummyLobbyView)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::RepeatedPtrField< ::DummyTableInfo > tables_;
+  mutable int _cached_size_;
+  friend struct ::protobuf_Protocol_2eproto::TableStruct;
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyLobbyViewImpl();
+};
+// -------------------------------------------------------------------
+
+class DummyTableView : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DummyTableView) */ {
+ public:
+  DummyTableView();
+  virtual ~DummyTableView();
+
+  DummyTableView(const DummyTableView& from);
+
+  inline DummyTableView& operator=(const DummyTableView& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  DummyTableView(DummyTableView&& from) noexcept
+    : DummyTableView() {
+    *this = ::std::move(from);
+  }
+
+  inline DummyTableView& operator=(DummyTableView&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DummyTableView& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const DummyTableView* internal_default_instance() {
+    return reinterpret_cast<const DummyTableView*>(
+               &_DummyTableView_default_instance_);
+  }
+  static PROTOBUF_CONSTEXPR int const kIndexInFileMessages =
+    13;
+
+  void Swap(DummyTableView* other);
+  friend void swap(DummyTableView& a, DummyTableView& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DummyTableView* New() const PROTOBUF_FINAL { return New(NULL); }
+
+  DummyTableView* New(::google::protobuf::Arena* arena) const PROTOBUF_FINAL;
+  void CopyFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void MergeFrom(const ::google::protobuf::Message& from) PROTOBUF_FINAL;
+  void CopyFrom(const DummyTableView& from);
+  void MergeFrom(const DummyTableView& from);
+  void Clear() PROTOBUF_FINAL;
+  bool IsInitialized() const PROTOBUF_FINAL;
+
+  size_t ByteSizeLong() const PROTOBUF_FINAL;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) PROTOBUF_FINAL;
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const PROTOBUF_FINAL;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* target) const PROTOBUF_FINAL;
+  int GetCachedSize() const PROTOBUF_FINAL { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const PROTOBUF_FINAL;
+  void InternalSwap(DummyTableView* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return NULL;
+  }
+  inline void* MaybeArenaPtr() const {
+    return NULL;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const PROTOBUF_FINAL;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .DummyCard cards = 3;
   int cards_size() const;
   void clear_cards();
   static const int kCardsFieldNumber = 3;
-  const ::MsgCard& cards(int index) const;
-  ::MsgCard* mutable_cards(int index);
-  ::MsgCard* add_cards();
-  ::google::protobuf::RepeatedPtrField< ::MsgCard >*
+  const ::DummyCard& cards(int index) const;
+  ::DummyCard* mutable_cards(int index);
+  ::DummyCard* add_cards();
+  ::google::protobuf::RepeatedPtrField< ::DummyCard >*
       mutable_cards();
-  const ::google::protobuf::RepeatedPtrField< ::MsgCard >&
+  const ::google::protobuf::RepeatedPtrField< ::DummyCard >&
       cards() const;
 
   // repeated uint32 pots = 4;
@@ -1729,43 +1884,43 @@ class MsgTableView : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
       mutable_pots();
 
-  // repeated .MsgPlayer players = 5;
+  // repeated .DummyPlayer players = 5;
   int players_size() const;
   void clear_players();
   static const int kPlayersFieldNumber = 5;
-  const ::MsgPlayer& players(int index) const;
-  ::MsgPlayer* mutable_players(int index);
-  ::MsgPlayer* add_players();
-  ::google::protobuf::RepeatedPtrField< ::MsgPlayer >*
+  const ::DummyPlayer& players(int index) const;
+  ::DummyPlayer* mutable_players(int index);
+  ::DummyPlayer* add_players();
+  ::google::protobuf::RepeatedPtrField< ::DummyPlayer >*
       mutable_players();
-  const ::google::protobuf::RepeatedPtrField< ::MsgPlayer >&
+  const ::google::protobuf::RepeatedPtrField< ::DummyPlayer >&
       players() const;
 
-  // .MsgTableStatus tableStatus = 1;
+  // .DummyTableStatus tableStatus = 1;
   void clear_tablestatus();
   static const int kTableStatusFieldNumber = 1;
-  ::MsgTableStatus tablestatus() const;
-  void set_tablestatus(::MsgTableStatus value);
+  ::DummyTableStatus tablestatus() const;
+  void set_tablestatus(::DummyTableStatus value);
 
-  // .MsgRoundStatus roundStatus = 2;
+  // .DummyRoundStatus roundStatus = 2;
   void clear_roundstatus();
   static const int kRoundStatusFieldNumber = 2;
-  ::MsgRoundStatus roundstatus() const;
-  void set_roundstatus(::MsgRoundStatus value);
+  ::DummyRoundStatus roundstatus() const;
+  void set_roundstatus(::DummyRoundStatus value);
 
-  // @@protoc_insertion_point(class_scope:MsgTableView)
+  // @@protoc_insertion_point(class_scope:DummyTableView)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::MsgCard > cards_;
+  ::google::protobuf::RepeatedPtrField< ::DummyCard > cards_;
   ::google::protobuf::RepeatedField< ::google::protobuf::uint32 > pots_;
   mutable int _pots_cached_byte_size_;
-  ::google::protobuf::RepeatedPtrField< ::MsgPlayer > players_;
+  ::google::protobuf::RepeatedPtrField< ::DummyPlayer > players_;
   int tablestatus_;
   int roundstatus_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
-  friend void ::protobuf_Protocol_2eproto::InitDefaultsMsgTableViewImpl();
+  friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyTableViewImpl();
 };
 // ===================================================================
 
@@ -1778,7 +1933,7 @@ class MsgTableView : public ::google::protobuf::Message /* @@protoc_insertion_po
 #endif  // __GNUC__
 // Request
 
-// .MsgLogin login = 1;
+// .Login login = 1;
 inline bool Request::has_login() const {
   return payload_case() == kLogin;
 }
@@ -1791,34 +1946,74 @@ inline void Request::clear_login() {
     clear_has_payload();
   }
 }
-inline ::MsgLogin* Request::release_login() {
+inline ::Login* Request::release_login() {
   // @@protoc_insertion_point(field_release:Request.login)
   if (has_login()) {
     clear_has_payload();
-      ::MsgLogin* temp = payload_.login_;
+      ::Login* temp = payload_.login_;
     payload_.login_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgLogin& Request::login() const {
+inline const ::Login& Request::login() const {
   // @@protoc_insertion_point(field_get:Request.login)
   return has_login()
       ? *payload_.login_
-      : *reinterpret_cast< ::MsgLogin*>(&::_MsgLogin_default_instance_);
+      : *reinterpret_cast< ::Login*>(&::_Login_default_instance_);
 }
-inline ::MsgLogin* Request::mutable_login() {
+inline ::Login* Request::mutable_login() {
   if (!has_login()) {
     clear_payload();
     set_has_login();
-    payload_.login_ = new ::MsgLogin;
+    payload_.login_ = new ::Login;
   }
   // @@protoc_insertion_point(field_mutable:Request.login)
   return payload_.login_;
 }
 
-// .MsgJoinTable joinTable = 2;
+// .CreateTable createTable = 2;
+inline bool Request::has_createtable() const {
+  return payload_case() == kCreateTable;
+}
+inline void Request::set_has_createtable() {
+  _oneof_case_[0] = kCreateTable;
+}
+inline void Request::clear_createtable() {
+  if (has_createtable()) {
+    delete payload_.createtable_;
+    clear_has_payload();
+  }
+}
+inline ::CreateTable* Request::release_createtable() {
+  // @@protoc_insertion_point(field_release:Request.createTable)
+  if (has_createtable()) {
+    clear_has_payload();
+      ::CreateTable* temp = payload_.createtable_;
+    payload_.createtable_ = NULL;
+    return temp;
+  } else {
+    return NULL;
+  }
+}
+inline const ::CreateTable& Request::createtable() const {
+  // @@protoc_insertion_point(field_get:Request.createTable)
+  return has_createtable()
+      ? *payload_.createtable_
+      : *reinterpret_cast< ::CreateTable*>(&::_CreateTable_default_instance_);
+}
+inline ::CreateTable* Request::mutable_createtable() {
+  if (!has_createtable()) {
+    clear_payload();
+    set_has_createtable();
+    payload_.createtable_ = new ::CreateTable;
+  }
+  // @@protoc_insertion_point(field_mutable:Request.createTable)
+  return payload_.createtable_;
+}
+
+// .JoinTable joinTable = 3;
 inline bool Request::has_jointable() const {
   return payload_case() == kJoinTable;
 }
@@ -1831,34 +2026,34 @@ inline void Request::clear_jointable() {
     clear_has_payload();
   }
 }
-inline ::MsgJoinTable* Request::release_jointable() {
+inline ::JoinTable* Request::release_jointable() {
   // @@protoc_insertion_point(field_release:Request.joinTable)
   if (has_jointable()) {
     clear_has_payload();
-      ::MsgJoinTable* temp = payload_.jointable_;
+      ::JoinTable* temp = payload_.jointable_;
     payload_.jointable_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgJoinTable& Request::jointable() const {
+inline const ::JoinTable& Request::jointable() const {
   // @@protoc_insertion_point(field_get:Request.joinTable)
   return has_jointable()
       ? *payload_.jointable_
-      : *reinterpret_cast< ::MsgJoinTable*>(&::_MsgJoinTable_default_instance_);
+      : *reinterpret_cast< ::JoinTable*>(&::_JoinTable_default_instance_);
 }
-inline ::MsgJoinTable* Request::mutable_jointable() {
+inline ::JoinTable* Request::mutable_jointable() {
   if (!has_jointable()) {
     clear_payload();
     set_has_jointable();
-    payload_.jointable_ = new ::MsgJoinTable;
+    payload_.jointable_ = new ::JoinTable;
   }
   // @@protoc_insertion_point(field_mutable:Request.joinTable)
   return payload_.jointable_;
 }
 
-// .MsgLeaveTable leaveTable = 3;
+// .LeaveTable leaveTable = 4;
 inline bool Request::has_leavetable() const {
   return payload_case() == kLeaveTable;
 }
@@ -1871,34 +2066,34 @@ inline void Request::clear_leavetable() {
     clear_has_payload();
   }
 }
-inline ::MsgLeaveTable* Request::release_leavetable() {
+inline ::LeaveTable* Request::release_leavetable() {
   // @@protoc_insertion_point(field_release:Request.leaveTable)
   if (has_leavetable()) {
     clear_has_payload();
-      ::MsgLeaveTable* temp = payload_.leavetable_;
+      ::LeaveTable* temp = payload_.leavetable_;
     payload_.leavetable_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgLeaveTable& Request::leavetable() const {
+inline const ::LeaveTable& Request::leavetable() const {
   // @@protoc_insertion_point(field_get:Request.leaveTable)
   return has_leavetable()
       ? *payload_.leavetable_
-      : *reinterpret_cast< ::MsgLeaveTable*>(&::_MsgLeaveTable_default_instance_);
+      : *reinterpret_cast< ::LeaveTable*>(&::_LeaveTable_default_instance_);
 }
-inline ::MsgLeaveTable* Request::mutable_leavetable() {
+inline ::LeaveTable* Request::mutable_leavetable() {
   if (!has_leavetable()) {
     clear_payload();
     set_has_leavetable();
-    payload_.leavetable_ = new ::MsgLeaveTable;
+    payload_.leavetable_ = new ::LeaveTable;
   }
   // @@protoc_insertion_point(field_mutable:Request.leaveTable)
   return payload_.leavetable_;
 }
 
-// .MsgRaise raise = 4;
+// .Raise raise = 5;
 inline bool Request::has_raise() const {
   return payload_case() == kRaise;
 }
@@ -1911,34 +2106,34 @@ inline void Request::clear_raise() {
     clear_has_payload();
   }
 }
-inline ::MsgRaise* Request::release_raise() {
+inline ::Raise* Request::release_raise() {
   // @@protoc_insertion_point(field_release:Request.raise)
   if (has_raise()) {
     clear_has_payload();
-      ::MsgRaise* temp = payload_.raise_;
+      ::Raise* temp = payload_.raise_;
     payload_.raise_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgRaise& Request::raise() const {
+inline const ::Raise& Request::raise() const {
   // @@protoc_insertion_point(field_get:Request.raise)
   return has_raise()
       ? *payload_.raise_
-      : *reinterpret_cast< ::MsgRaise*>(&::_MsgRaise_default_instance_);
+      : *reinterpret_cast< ::Raise*>(&::_Raise_default_instance_);
 }
-inline ::MsgRaise* Request::mutable_raise() {
+inline ::Raise* Request::mutable_raise() {
   if (!has_raise()) {
     clear_payload();
     set_has_raise();
-    payload_.raise_ = new ::MsgRaise;
+    payload_.raise_ = new ::Raise;
   }
   // @@protoc_insertion_point(field_mutable:Request.raise)
   return payload_.raise_;
 }
 
-// .MsgFold fold = 5;
+// .Fold fold = 6;
 inline bool Request::has_fold() const {
   return payload_case() == kFold;
 }
@@ -1951,34 +2146,34 @@ inline void Request::clear_fold() {
     clear_has_payload();
   }
 }
-inline ::MsgFold* Request::release_fold() {
+inline ::Fold* Request::release_fold() {
   // @@protoc_insertion_point(field_release:Request.fold)
   if (has_fold()) {
     clear_has_payload();
-      ::MsgFold* temp = payload_.fold_;
+      ::Fold* temp = payload_.fold_;
     payload_.fold_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgFold& Request::fold() const {
+inline const ::Fold& Request::fold() const {
   // @@protoc_insertion_point(field_get:Request.fold)
   return has_fold()
       ? *payload_.fold_
-      : *reinterpret_cast< ::MsgFold*>(&::_MsgFold_default_instance_);
+      : *reinterpret_cast< ::Fold*>(&::_Fold_default_instance_);
 }
-inline ::MsgFold* Request::mutable_fold() {
+inline ::Fold* Request::mutable_fold() {
   if (!has_fold()) {
     clear_payload();
     set_has_fold();
-    payload_.fold_ = new ::MsgFold;
+    payload_.fold_ = new ::Fold;
   }
   // @@protoc_insertion_point(field_mutable:Request.fold)
   return payload_.fold_;
 }
 
-// .MsgCall call = 6;
+// .Call call = 7;
 inline bool Request::has_call() const {
   return payload_case() == kCall;
 }
@@ -1991,28 +2186,28 @@ inline void Request::clear_call() {
     clear_has_payload();
   }
 }
-inline ::MsgCall* Request::release_call() {
+inline ::Call* Request::release_call() {
   // @@protoc_insertion_point(field_release:Request.call)
   if (has_call()) {
     clear_has_payload();
-      ::MsgCall* temp = payload_.call_;
+      ::Call* temp = payload_.call_;
     payload_.call_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgCall& Request::call() const {
+inline const ::Call& Request::call() const {
   // @@protoc_insertion_point(field_get:Request.call)
   return has_call()
       ? *payload_.call_
-      : *reinterpret_cast< ::MsgCall*>(&::_MsgCall_default_instance_);
+      : *reinterpret_cast< ::Call*>(&::_Call_default_instance_);
 }
-inline ::MsgCall* Request::mutable_call() {
+inline ::Call* Request::mutable_call() {
   if (!has_call()) {
     clear_payload();
     set_has_call();
-    payload_.call_ = new ::MsgCall;
+    payload_.call_ = new ::Call;
   }
   // @@protoc_insertion_point(field_mutable:Request.call)
   return payload_.call_;
@@ -2031,21 +2226,21 @@ inline Request::PayloadCase Request::payload_case() const {
 
 // Response
 
-// .MsgError error = 1;
+// .Error error = 1;
 inline void Response::clear_error() {
   error_ = 0;
 }
-inline ::MsgError Response::error() const {
+inline ::Error Response::error() const {
   // @@protoc_insertion_point(field_get:Response.error)
-  return static_cast< ::MsgError >(error_);
+  return static_cast< ::Error >(error_);
 }
-inline void Response::set_error(::MsgError value) {
+inline void Response::set_error(::Error value) {
   
   error_ = value;
   // @@protoc_insertion_point(field_set:Response.error)
 }
 
-// .MsgLobbyView lobbyView = 2;
+// .DummyLobbyView lobbyView = 2;
 inline bool Response::has_lobbyview() const {
   return payload_case() == kLobbyView;
 }
@@ -2058,34 +2253,34 @@ inline void Response::clear_lobbyview() {
     clear_has_payload();
   }
 }
-inline ::MsgLobbyView* Response::release_lobbyview() {
+inline ::DummyLobbyView* Response::release_lobbyview() {
   // @@protoc_insertion_point(field_release:Response.lobbyView)
   if (has_lobbyview()) {
     clear_has_payload();
-      ::MsgLobbyView* temp = payload_.lobbyview_;
+      ::DummyLobbyView* temp = payload_.lobbyview_;
     payload_.lobbyview_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgLobbyView& Response::lobbyview() const {
+inline const ::DummyLobbyView& Response::lobbyview() const {
   // @@protoc_insertion_point(field_get:Response.lobbyView)
   return has_lobbyview()
       ? *payload_.lobbyview_
-      : *reinterpret_cast< ::MsgLobbyView*>(&::_MsgLobbyView_default_instance_);
+      : *reinterpret_cast< ::DummyLobbyView*>(&::_DummyLobbyView_default_instance_);
 }
-inline ::MsgLobbyView* Response::mutable_lobbyview() {
+inline ::DummyLobbyView* Response::mutable_lobbyview() {
   if (!has_lobbyview()) {
     clear_payload();
     set_has_lobbyview();
-    payload_.lobbyview_ = new ::MsgLobbyView;
+    payload_.lobbyview_ = new ::DummyLobbyView;
   }
   // @@protoc_insertion_point(field_mutable:Response.lobbyView)
   return payload_.lobbyview_;
 }
 
-// .MsgTableView tableView = 3;
+// .DummyTableView tableView = 3;
 inline bool Response::has_tableview() const {
   return payload_case() == kTableView;
 }
@@ -2098,28 +2293,28 @@ inline void Response::clear_tableview() {
     clear_has_payload();
   }
 }
-inline ::MsgTableView* Response::release_tableview() {
+inline ::DummyTableView* Response::release_tableview() {
   // @@protoc_insertion_point(field_release:Response.tableView)
   if (has_tableview()) {
     clear_has_payload();
-      ::MsgTableView* temp = payload_.tableview_;
+      ::DummyTableView* temp = payload_.tableview_;
     payload_.tableview_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::MsgTableView& Response::tableview() const {
+inline const ::DummyTableView& Response::tableview() const {
   // @@protoc_insertion_point(field_get:Response.tableView)
   return has_tableview()
       ? *payload_.tableview_
-      : *reinterpret_cast< ::MsgTableView*>(&::_MsgTableView_default_instance_);
+      : *reinterpret_cast< ::DummyTableView*>(&::_DummyTableView_default_instance_);
 }
-inline ::MsgTableView* Response::mutable_tableview() {
+inline ::DummyTableView* Response::mutable_tableview() {
   if (!has_tableview()) {
     clear_payload();
     set_has_tableview();
-    payload_.tableview_ = new ::MsgTableView;
+    payload_.tableview_ = new ::DummyTableView;
   }
   // @@protoc_insertion_point(field_mutable:Response.tableView)
   return payload_.tableview_;
@@ -2136,514 +2331,679 @@ inline Response::PayloadCase Response::payload_case() const {
 }
 // -------------------------------------------------------------------
 
-// MsgLogin
+// Login
 
 // string username = 1;
-inline void MsgLogin::clear_username() {
+inline void Login::clear_username() {
   username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& MsgLogin::username() const {
-  // @@protoc_insertion_point(field_get:MsgLogin.username)
+inline const ::std::string& Login::username() const {
+  // @@protoc_insertion_point(field_get:Login.username)
   return username_.GetNoArena();
 }
-inline void MsgLogin::set_username(const ::std::string& value) {
+inline void Login::set_username(const ::std::string& value) {
   
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:MsgLogin.username)
+  // @@protoc_insertion_point(field_set:Login.username)
 }
 #if LANG_CXX11
-inline void MsgLogin::set_username(::std::string&& value) {
+inline void Login::set_username(::std::string&& value) {
   
   username_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:MsgLogin.username)
+  // @@protoc_insertion_point(field_set_rvalue:Login.username)
 }
 #endif
-inline void MsgLogin::set_username(const char* value) {
+inline void Login::set_username(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:MsgLogin.username)
+  // @@protoc_insertion_point(field_set_char:Login.username)
 }
-inline void MsgLogin::set_username(const char* value, size_t size) {
+inline void Login::set_username(const char* value, size_t size) {
   
   username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:MsgLogin.username)
+  // @@protoc_insertion_point(field_set_pointer:Login.username)
 }
-inline ::std::string* MsgLogin::mutable_username() {
+inline ::std::string* Login::mutable_username() {
   
-  // @@protoc_insertion_point(field_mutable:MsgLogin.username)
+  // @@protoc_insertion_point(field_mutable:Login.username)
   return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MsgLogin::release_username() {
-  // @@protoc_insertion_point(field_release:MsgLogin.username)
+inline ::std::string* Login::release_username() {
+  // @@protoc_insertion_point(field_release:Login.username)
   
   return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MsgLogin::set_allocated_username(::std::string* username) {
+inline void Login::set_allocated_username(::std::string* username) {
   if (username != NULL) {
     
   } else {
     
   }
   username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
-  // @@protoc_insertion_point(field_set_allocated:MsgLogin.username)
+  // @@protoc_insertion_point(field_set_allocated:Login.username)
 }
 
 // -------------------------------------------------------------------
 
-// MsgJoinTable
+// CreateTable
 
-// uint32 tableId = 1;
-inline void MsgJoinTable::clear_tableid() {
-  tableid_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgJoinTable::tableid() const {
-  // @@protoc_insertion_point(field_get:MsgJoinTable.tableId)
-  return tableid_;
-}
-inline void MsgJoinTable::set_tableid(::google::protobuf::uint32 value) {
-  
-  tableid_ = value;
-  // @@protoc_insertion_point(field_set:MsgJoinTable.tableId)
-}
-
-// -------------------------------------------------------------------
-
-// MsgLeaveTable
-
-// -------------------------------------------------------------------
-
-// MsgRaise
-
-// int32 chips = 1;
-inline void MsgRaise::clear_chips() {
-  chips_ = 0;
-}
-inline ::google::protobuf::int32 MsgRaise::chips() const {
-  // @@protoc_insertion_point(field_get:MsgRaise.chips)
-  return chips_;
-}
-inline void MsgRaise::set_chips(::google::protobuf::int32 value) {
-  
-  chips_ = value;
-  // @@protoc_insertion_point(field_set:MsgRaise.chips)
-}
-
-// -------------------------------------------------------------------
-
-// MsgFold
-
-// -------------------------------------------------------------------
-
-// MsgCall
-
-// -------------------------------------------------------------------
-
-// MsgCard
-
-// .MsgCardValue cardValue = 1;
-inline void MsgCard::clear_cardvalue() {
-  cardvalue_ = 0;
-}
-inline ::MsgCardValue MsgCard::cardvalue() const {
-  // @@protoc_insertion_point(field_get:MsgCard.cardValue)
-  return static_cast< ::MsgCardValue >(cardvalue_);
-}
-inline void MsgCard::set_cardvalue(::MsgCardValue value) {
-  
-  cardvalue_ = value;
-  // @@protoc_insertion_point(field_set:MsgCard.cardValue)
-}
-
-// .MsgCardSuit cardSuit = 2;
-inline void MsgCard::clear_cardsuit() {
-  cardsuit_ = 0;
-}
-inline ::MsgCardSuit MsgCard::cardsuit() const {
-  // @@protoc_insertion_point(field_get:MsgCard.cardSuit)
-  return static_cast< ::MsgCardSuit >(cardsuit_);
-}
-inline void MsgCard::set_cardsuit(::MsgCardSuit value) {
-  
-  cardsuit_ = value;
-  // @@protoc_insertion_point(field_set:MsgCard.cardSuit)
-}
-
-// -------------------------------------------------------------------
-
-// MsgPlayer
-
-// string username = 1;
-inline void MsgPlayer::clear_username() {
-  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& MsgPlayer::username() const {
-  // @@protoc_insertion_point(field_get:MsgPlayer.username)
-  return username_.GetNoArena();
-}
-inline void MsgPlayer::set_username(const ::std::string& value) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:MsgPlayer.username)
-}
-#if LANG_CXX11
-inline void MsgPlayer::set_username(::std::string&& value) {
-  
-  username_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:MsgPlayer.username)
-}
-#endif
-inline void MsgPlayer::set_username(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:MsgPlayer.username)
-}
-inline void MsgPlayer::set_username(const char* value, size_t size) {
-  
-  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:MsgPlayer.username)
-}
-inline ::std::string* MsgPlayer::mutable_username() {
-  
-  // @@protoc_insertion_point(field_mutable:MsgPlayer.username)
-  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* MsgPlayer::release_username() {
-  // @@protoc_insertion_point(field_release:MsgPlayer.username)
-  
-  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void MsgPlayer::set_allocated_username(::std::string* username) {
-  if (username != NULL) {
-    
-  } else {
-    
-  }
-  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
-  // @@protoc_insertion_point(field_set_allocated:MsgPlayer.username)
-}
-
-// uint32 chips = 2;
-inline void MsgPlayer::clear_chips() {
-  chips_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgPlayer::chips() const {
-  // @@protoc_insertion_point(field_get:MsgPlayer.chips)
-  return chips_;
-}
-inline void MsgPlayer::set_chips(::google::protobuf::uint32 value) {
-  
-  chips_ = value;
-  // @@protoc_insertion_point(field_set:MsgPlayer.chips)
-}
-
-// repeated .MsgCard hand = 3;
-inline int MsgPlayer::hand_size() const {
-  return hand_.size();
-}
-inline void MsgPlayer::clear_hand() {
-  hand_.Clear();
-}
-inline const ::MsgCard& MsgPlayer::hand(int index) const {
-  // @@protoc_insertion_point(field_get:MsgPlayer.hand)
-  return hand_.Get(index);
-}
-inline ::MsgCard* MsgPlayer::mutable_hand(int index) {
-  // @@protoc_insertion_point(field_mutable:MsgPlayer.hand)
-  return hand_.Mutable(index);
-}
-inline ::MsgCard* MsgPlayer::add_hand() {
-  // @@protoc_insertion_point(field_add:MsgPlayer.hand)
-  return hand_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::MsgCard >*
-MsgPlayer::mutable_hand() {
-  // @@protoc_insertion_point(field_mutable_list:MsgPlayer.hand)
-  return &hand_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::MsgCard >&
-MsgPlayer::hand() const {
-  // @@protoc_insertion_point(field_list:MsgPlayer.hand)
-  return hand_;
-}
-
-// bool dealer = 4;
-inline void MsgPlayer::clear_dealer() {
-  dealer_ = false;
-}
-inline bool MsgPlayer::dealer() const {
-  // @@protoc_insertion_point(field_get:MsgPlayer.dealer)
-  return dealer_;
-}
-inline void MsgPlayer::set_dealer(bool value) {
-  
-  dealer_ = value;
-  // @@protoc_insertion_point(field_set:MsgPlayer.dealer)
-}
-
-// -------------------------------------------------------------------
-
-// MsgTableInfo
-
-// uint32 index = 1;
-inline void MsgTableInfo::clear_index() {
-  index_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgTableInfo::index() const {
-  // @@protoc_insertion_point(field_get:MsgTableInfo.index)
-  return index_;
-}
-inline void MsgTableInfo::set_index(::google::protobuf::uint32 value) {
-  
-  index_ = value;
-  // @@protoc_insertion_point(field_set:MsgTableInfo.index)
-}
-
-// string name = 2;
-inline void MsgTableInfo::clear_name() {
+// string name = 1;
+inline void CreateTable::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline const ::std::string& MsgTableInfo::name() const {
-  // @@protoc_insertion_point(field_get:MsgTableInfo.name)
+inline const ::std::string& CreateTable::name() const {
+  // @@protoc_insertion_point(field_get:CreateTable.name)
   return name_.GetNoArena();
 }
-inline void MsgTableInfo::set_name(const ::std::string& value) {
+inline void CreateTable::set_name(const ::std::string& value) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_set:CreateTable.name)
 }
 #if LANG_CXX11
-inline void MsgTableInfo::set_name(::std::string&& value) {
+inline void CreateTable::set_name(::std::string&& value) {
   
   name_.SetNoArena(
     &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_set_rvalue:CreateTable.name)
 }
 #endif
-inline void MsgTableInfo::set_name(const char* value) {
+inline void CreateTable::set_name(const char* value) {
   GOOGLE_DCHECK(value != NULL);
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_set_char:CreateTable.name)
 }
-inline void MsgTableInfo::set_name(const char* value, size_t size) {
+inline void CreateTable::set_name(const char* value, size_t size) {
   
   name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_set_pointer:CreateTable.name)
 }
-inline ::std::string* MsgTableInfo::mutable_name() {
+inline ::std::string* CreateTable::mutable_name() {
   
-  // @@protoc_insertion_point(field_mutable:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_mutable:CreateTable.name)
   return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline ::std::string* MsgTableInfo::release_name() {
-  // @@protoc_insertion_point(field_release:MsgTableInfo.name)
+inline ::std::string* CreateTable::release_name() {
+  // @@protoc_insertion_point(field_release:CreateTable.name)
   
   return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
-inline void MsgTableInfo::set_allocated_name(::std::string* name) {
+inline void CreateTable::set_allocated_name(::std::string* name) {
   if (name != NULL) {
     
   } else {
     
   }
   name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:MsgTableInfo.name)
+  // @@protoc_insertion_point(field_set_allocated:CreateTable.name)
 }
 
-// uint32 maxPlayers = 3;
-inline void MsgTableInfo::clear_maxplayers() {
+// uint32 maxPlayers = 2;
+inline void CreateTable::clear_maxplayers() {
   maxplayers_ = 0u;
 }
-inline ::google::protobuf::uint32 MsgTableInfo::maxplayers() const {
-  // @@protoc_insertion_point(field_get:MsgTableInfo.maxPlayers)
+inline ::google::protobuf::uint32 CreateTable::maxplayers() const {
+  // @@protoc_insertion_point(field_get:CreateTable.maxPlayers)
   return maxplayers_;
 }
-inline void MsgTableInfo::set_maxplayers(::google::protobuf::uint32 value) {
+inline void CreateTable::set_maxplayers(::google::protobuf::uint32 value) {
   
   maxplayers_ = value;
-  // @@protoc_insertion_point(field_set:MsgTableInfo.maxPlayers)
-}
-
-// uint32 players = 4;
-inline void MsgTableInfo::clear_players() {
-  players_ = 0u;
-}
-inline ::google::protobuf::uint32 MsgTableInfo::players() const {
-  // @@protoc_insertion_point(field_get:MsgTableInfo.players)
-  return players_;
-}
-inline void MsgTableInfo::set_players(::google::protobuf::uint32 value) {
-  
-  players_ = value;
-  // @@protoc_insertion_point(field_set:MsgTableInfo.players)
+  // @@protoc_insertion_point(field_set:CreateTable.maxPlayers)
 }
 
 // -------------------------------------------------------------------
 
-// MsgLobbyView
+// JoinTable
 
-// repeated .MsgTableInfo tables = 1;
-inline int MsgLobbyView::tables_size() const {
+// string name = 1;
+inline void JoinTable::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& JoinTable::name() const {
+  // @@protoc_insertion_point(field_get:JoinTable.name)
+  return name_.GetNoArena();
+}
+inline void JoinTable::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:JoinTable.name)
+}
+#if LANG_CXX11
+inline void JoinTable::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:JoinTable.name)
+}
+#endif
+inline void JoinTable::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:JoinTable.name)
+}
+inline void JoinTable::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:JoinTable.name)
+}
+inline ::std::string* JoinTable::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:JoinTable.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* JoinTable::release_name() {
+  // @@protoc_insertion_point(field_release:JoinTable.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void JoinTable::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:JoinTable.name)
+}
+
+// -------------------------------------------------------------------
+
+// LeaveTable
+
+// string name = 1;
+inline void LeaveTable::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& LeaveTable::name() const {
+  // @@protoc_insertion_point(field_get:LeaveTable.name)
+  return name_.GetNoArena();
+}
+inline void LeaveTable::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:LeaveTable.name)
+}
+#if LANG_CXX11
+inline void LeaveTable::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:LeaveTable.name)
+}
+#endif
+inline void LeaveTable::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:LeaveTable.name)
+}
+inline void LeaveTable::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:LeaveTable.name)
+}
+inline ::std::string* LeaveTable::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:LeaveTable.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* LeaveTable::release_name() {
+  // @@protoc_insertion_point(field_release:LeaveTable.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void LeaveTable::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:LeaveTable.name)
+}
+
+// -------------------------------------------------------------------
+
+// Raise
+
+// int32 chips = 1;
+inline void Raise::clear_chips() {
+  chips_ = 0;
+}
+inline ::google::protobuf::int32 Raise::chips() const {
+  // @@protoc_insertion_point(field_get:Raise.chips)
+  return chips_;
+}
+inline void Raise::set_chips(::google::protobuf::int32 value) {
+  
+  chips_ = value;
+  // @@protoc_insertion_point(field_set:Raise.chips)
+}
+
+// -------------------------------------------------------------------
+
+// Fold
+
+// -------------------------------------------------------------------
+
+// Call
+
+// -------------------------------------------------------------------
+
+// DummyCard
+
+// .DummyCardValue cardValue = 1;
+inline void DummyCard::clear_cardvalue() {
+  cardvalue_ = 0;
+}
+inline ::DummyCardValue DummyCard::cardvalue() const {
+  // @@protoc_insertion_point(field_get:DummyCard.cardValue)
+  return static_cast< ::DummyCardValue >(cardvalue_);
+}
+inline void DummyCard::set_cardvalue(::DummyCardValue value) {
+  
+  cardvalue_ = value;
+  // @@protoc_insertion_point(field_set:DummyCard.cardValue)
+}
+
+// .DummyCardSuit cardSuit = 2;
+inline void DummyCard::clear_cardsuit() {
+  cardsuit_ = 0;
+}
+inline ::DummyCardSuit DummyCard::cardsuit() const {
+  // @@protoc_insertion_point(field_get:DummyCard.cardSuit)
+  return static_cast< ::DummyCardSuit >(cardsuit_);
+}
+inline void DummyCard::set_cardsuit(::DummyCardSuit value) {
+  
+  cardsuit_ = value;
+  // @@protoc_insertion_point(field_set:DummyCard.cardSuit)
+}
+
+// -------------------------------------------------------------------
+
+// DummyPlayer
+
+// string username = 1;
+inline void DummyPlayer::clear_username() {
+  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DummyPlayer::username() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.username)
+  return username_.GetNoArena();
+}
+inline void DummyPlayer::set_username(const ::std::string& value) {
+  
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DummyPlayer.username)
+}
+#if LANG_CXX11
+inline void DummyPlayer::set_username(::std::string&& value) {
+  
+  username_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DummyPlayer.username)
+}
+#endif
+inline void DummyPlayer::set_username(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DummyPlayer.username)
+}
+inline void DummyPlayer::set_username(const char* value, size_t size) {
+  
+  username_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DummyPlayer.username)
+}
+inline ::std::string* DummyPlayer::mutable_username() {
+  
+  // @@protoc_insertion_point(field_mutable:DummyPlayer.username)
+  return username_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DummyPlayer::release_username() {
+  // @@protoc_insertion_point(field_release:DummyPlayer.username)
+  
+  return username_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DummyPlayer::set_allocated_username(::std::string* username) {
+  if (username != NULL) {
+    
+  } else {
+    
+  }
+  username_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), username);
+  // @@protoc_insertion_point(field_set_allocated:DummyPlayer.username)
+}
+
+// uint32 chips = 2;
+inline void DummyPlayer::clear_chips() {
+  chips_ = 0u;
+}
+inline ::google::protobuf::uint32 DummyPlayer::chips() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.chips)
+  return chips_;
+}
+inline void DummyPlayer::set_chips(::google::protobuf::uint32 value) {
+  
+  chips_ = value;
+  // @@protoc_insertion_point(field_set:DummyPlayer.chips)
+}
+
+// repeated .DummyCard hand = 3;
+inline int DummyPlayer::hand_size() const {
+  return hand_.size();
+}
+inline void DummyPlayer::clear_hand() {
+  hand_.Clear();
+}
+inline const ::DummyCard& DummyPlayer::hand(int index) const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.hand)
+  return hand_.Get(index);
+}
+inline ::DummyCard* DummyPlayer::mutable_hand(int index) {
+  // @@protoc_insertion_point(field_mutable:DummyPlayer.hand)
+  return hand_.Mutable(index);
+}
+inline ::DummyCard* DummyPlayer::add_hand() {
+  // @@protoc_insertion_point(field_add:DummyPlayer.hand)
+  return hand_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::DummyCard >*
+DummyPlayer::mutable_hand() {
+  // @@protoc_insertion_point(field_mutable_list:DummyPlayer.hand)
+  return &hand_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::DummyCard >&
+DummyPlayer::hand() const {
+  // @@protoc_insertion_point(field_list:DummyPlayer.hand)
+  return hand_;
+}
+
+// bool dealer = 4;
+inline void DummyPlayer::clear_dealer() {
+  dealer_ = false;
+}
+inline bool DummyPlayer::dealer() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.dealer)
+  return dealer_;
+}
+inline void DummyPlayer::set_dealer(bool value) {
+  
+  dealer_ = value;
+  // @@protoc_insertion_point(field_set:DummyPlayer.dealer)
+}
+
+// -------------------------------------------------------------------
+
+// DummyTableInfo
+
+// uint32 index = 1;
+inline void DummyTableInfo::clear_index() {
+  index_ = 0u;
+}
+inline ::google::protobuf::uint32 DummyTableInfo::index() const {
+  // @@protoc_insertion_point(field_get:DummyTableInfo.index)
+  return index_;
+}
+inline void DummyTableInfo::set_index(::google::protobuf::uint32 value) {
+  
+  index_ = value;
+  // @@protoc_insertion_point(field_set:DummyTableInfo.index)
+}
+
+// string name = 2;
+inline void DummyTableInfo::clear_name() {
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& DummyTableInfo::name() const {
+  // @@protoc_insertion_point(field_get:DummyTableInfo.name)
+  return name_.GetNoArena();
+}
+inline void DummyTableInfo::set_name(const ::std::string& value) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:DummyTableInfo.name)
+}
+#if LANG_CXX11
+inline void DummyTableInfo::set_name(::std::string&& value) {
+  
+  name_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:DummyTableInfo.name)
+}
+#endif
+inline void DummyTableInfo::set_name(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:DummyTableInfo.name)
+}
+inline void DummyTableInfo::set_name(const char* value, size_t size) {
+  
+  name_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:DummyTableInfo.name)
+}
+inline ::std::string* DummyTableInfo::mutable_name() {
+  
+  // @@protoc_insertion_point(field_mutable:DummyTableInfo.name)
+  return name_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DummyTableInfo::release_name() {
+  // @@protoc_insertion_point(field_release:DummyTableInfo.name)
+  
+  return name_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DummyTableInfo::set_allocated_name(::std::string* name) {
+  if (name != NULL) {
+    
+  } else {
+    
+  }
+  name_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), name);
+  // @@protoc_insertion_point(field_set_allocated:DummyTableInfo.name)
+}
+
+// uint32 maxPlayers = 3;
+inline void DummyTableInfo::clear_maxplayers() {
+  maxplayers_ = 0u;
+}
+inline ::google::protobuf::uint32 DummyTableInfo::maxplayers() const {
+  // @@protoc_insertion_point(field_get:DummyTableInfo.maxPlayers)
+  return maxplayers_;
+}
+inline void DummyTableInfo::set_maxplayers(::google::protobuf::uint32 value) {
+  
+  maxplayers_ = value;
+  // @@protoc_insertion_point(field_set:DummyTableInfo.maxPlayers)
+}
+
+// uint32 players = 4;
+inline void DummyTableInfo::clear_players() {
+  players_ = 0u;
+}
+inline ::google::protobuf::uint32 DummyTableInfo::players() const {
+  // @@protoc_insertion_point(field_get:DummyTableInfo.players)
+  return players_;
+}
+inline void DummyTableInfo::set_players(::google::protobuf::uint32 value) {
+  
+  players_ = value;
+  // @@protoc_insertion_point(field_set:DummyTableInfo.players)
+}
+
+// -------------------------------------------------------------------
+
+// DummyLobbyView
+
+// repeated .DummyTableInfo tables = 1;
+inline int DummyLobbyView::tables_size() const {
   return tables_.size();
 }
-inline void MsgLobbyView::clear_tables() {
+inline void DummyLobbyView::clear_tables() {
   tables_.Clear();
 }
-inline const ::MsgTableInfo& MsgLobbyView::tables(int index) const {
-  // @@protoc_insertion_point(field_get:MsgLobbyView.tables)
+inline const ::DummyTableInfo& DummyLobbyView::tables(int index) const {
+  // @@protoc_insertion_point(field_get:DummyLobbyView.tables)
   return tables_.Get(index);
 }
-inline ::MsgTableInfo* MsgLobbyView::mutable_tables(int index) {
-  // @@protoc_insertion_point(field_mutable:MsgLobbyView.tables)
+inline ::DummyTableInfo* DummyLobbyView::mutable_tables(int index) {
+  // @@protoc_insertion_point(field_mutable:DummyLobbyView.tables)
   return tables_.Mutable(index);
 }
-inline ::MsgTableInfo* MsgLobbyView::add_tables() {
-  // @@protoc_insertion_point(field_add:MsgLobbyView.tables)
+inline ::DummyTableInfo* DummyLobbyView::add_tables() {
+  // @@protoc_insertion_point(field_add:DummyLobbyView.tables)
   return tables_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::MsgTableInfo >*
-MsgLobbyView::mutable_tables() {
-  // @@protoc_insertion_point(field_mutable_list:MsgLobbyView.tables)
+inline ::google::protobuf::RepeatedPtrField< ::DummyTableInfo >*
+DummyLobbyView::mutable_tables() {
+  // @@protoc_insertion_point(field_mutable_list:DummyLobbyView.tables)
   return &tables_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::MsgTableInfo >&
-MsgLobbyView::tables() const {
-  // @@protoc_insertion_point(field_list:MsgLobbyView.tables)
+inline const ::google::protobuf::RepeatedPtrField< ::DummyTableInfo >&
+DummyLobbyView::tables() const {
+  // @@protoc_insertion_point(field_list:DummyLobbyView.tables)
   return tables_;
 }
 
 // -------------------------------------------------------------------
 
-// MsgTableView
+// DummyTableView
 
-// .MsgTableStatus tableStatus = 1;
-inline void MsgTableView::clear_tablestatus() {
+// .DummyTableStatus tableStatus = 1;
+inline void DummyTableView::clear_tablestatus() {
   tablestatus_ = 0;
 }
-inline ::MsgTableStatus MsgTableView::tablestatus() const {
-  // @@protoc_insertion_point(field_get:MsgTableView.tableStatus)
-  return static_cast< ::MsgTableStatus >(tablestatus_);
+inline ::DummyTableStatus DummyTableView::tablestatus() const {
+  // @@protoc_insertion_point(field_get:DummyTableView.tableStatus)
+  return static_cast< ::DummyTableStatus >(tablestatus_);
 }
-inline void MsgTableView::set_tablestatus(::MsgTableStatus value) {
+inline void DummyTableView::set_tablestatus(::DummyTableStatus value) {
   
   tablestatus_ = value;
-  // @@protoc_insertion_point(field_set:MsgTableView.tableStatus)
+  // @@protoc_insertion_point(field_set:DummyTableView.tableStatus)
 }
 
-// .MsgRoundStatus roundStatus = 2;
-inline void MsgTableView::clear_roundstatus() {
+// .DummyRoundStatus roundStatus = 2;
+inline void DummyTableView::clear_roundstatus() {
   roundstatus_ = 0;
 }
-inline ::MsgRoundStatus MsgTableView::roundstatus() const {
-  // @@protoc_insertion_point(field_get:MsgTableView.roundStatus)
-  return static_cast< ::MsgRoundStatus >(roundstatus_);
+inline ::DummyRoundStatus DummyTableView::roundstatus() const {
+  // @@protoc_insertion_point(field_get:DummyTableView.roundStatus)
+  return static_cast< ::DummyRoundStatus >(roundstatus_);
 }
-inline void MsgTableView::set_roundstatus(::MsgRoundStatus value) {
+inline void DummyTableView::set_roundstatus(::DummyRoundStatus value) {
   
   roundstatus_ = value;
-  // @@protoc_insertion_point(field_set:MsgTableView.roundStatus)
+  // @@protoc_insertion_point(field_set:DummyTableView.roundStatus)
 }
 
-// repeated .MsgCard cards = 3;
-inline int MsgTableView::cards_size() const {
+// repeated .DummyCard cards = 3;
+inline int DummyTableView::cards_size() const {
   return cards_.size();
 }
-inline void MsgTableView::clear_cards() {
+inline void DummyTableView::clear_cards() {
   cards_.Clear();
 }
-inline const ::MsgCard& MsgTableView::cards(int index) const {
-  // @@protoc_insertion_point(field_get:MsgTableView.cards)
+inline const ::DummyCard& DummyTableView::cards(int index) const {
+  // @@protoc_insertion_point(field_get:DummyTableView.cards)
   return cards_.Get(index);
 }
-inline ::MsgCard* MsgTableView::mutable_cards(int index) {
-  // @@protoc_insertion_point(field_mutable:MsgTableView.cards)
+inline ::DummyCard* DummyTableView::mutable_cards(int index) {
+  // @@protoc_insertion_point(field_mutable:DummyTableView.cards)
   return cards_.Mutable(index);
 }
-inline ::MsgCard* MsgTableView::add_cards() {
-  // @@protoc_insertion_point(field_add:MsgTableView.cards)
+inline ::DummyCard* DummyTableView::add_cards() {
+  // @@protoc_insertion_point(field_add:DummyTableView.cards)
   return cards_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::MsgCard >*
-MsgTableView::mutable_cards() {
-  // @@protoc_insertion_point(field_mutable_list:MsgTableView.cards)
+inline ::google::protobuf::RepeatedPtrField< ::DummyCard >*
+DummyTableView::mutable_cards() {
+  // @@protoc_insertion_point(field_mutable_list:DummyTableView.cards)
   return &cards_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::MsgCard >&
-MsgTableView::cards() const {
-  // @@protoc_insertion_point(field_list:MsgTableView.cards)
+inline const ::google::protobuf::RepeatedPtrField< ::DummyCard >&
+DummyTableView::cards() const {
+  // @@protoc_insertion_point(field_list:DummyTableView.cards)
   return cards_;
 }
 
 // repeated uint32 pots = 4;
-inline int MsgTableView::pots_size() const {
+inline int DummyTableView::pots_size() const {
   return pots_.size();
 }
-inline void MsgTableView::clear_pots() {
+inline void DummyTableView::clear_pots() {
   pots_.Clear();
 }
-inline ::google::protobuf::uint32 MsgTableView::pots(int index) const {
-  // @@protoc_insertion_point(field_get:MsgTableView.pots)
+inline ::google::protobuf::uint32 DummyTableView::pots(int index) const {
+  // @@protoc_insertion_point(field_get:DummyTableView.pots)
   return pots_.Get(index);
 }
-inline void MsgTableView::set_pots(int index, ::google::protobuf::uint32 value) {
+inline void DummyTableView::set_pots(int index, ::google::protobuf::uint32 value) {
   pots_.Set(index, value);
-  // @@protoc_insertion_point(field_set:MsgTableView.pots)
+  // @@protoc_insertion_point(field_set:DummyTableView.pots)
 }
-inline void MsgTableView::add_pots(::google::protobuf::uint32 value) {
+inline void DummyTableView::add_pots(::google::protobuf::uint32 value) {
   pots_.Add(value);
-  // @@protoc_insertion_point(field_add:MsgTableView.pots)
+  // @@protoc_insertion_point(field_add:DummyTableView.pots)
 }
 inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >&
-MsgTableView::pots() const {
-  // @@protoc_insertion_point(field_list:MsgTableView.pots)
+DummyTableView::pots() const {
+  // @@protoc_insertion_point(field_list:DummyTableView.pots)
   return pots_;
 }
 inline ::google::protobuf::RepeatedField< ::google::protobuf::uint32 >*
-MsgTableView::mutable_pots() {
-  // @@protoc_insertion_point(field_mutable_list:MsgTableView.pots)
+DummyTableView::mutable_pots() {
+  // @@protoc_insertion_point(field_mutable_list:DummyTableView.pots)
   return &pots_;
 }
 
-// repeated .MsgPlayer players = 5;
-inline int MsgTableView::players_size() const {
+// repeated .DummyPlayer players = 5;
+inline int DummyTableView::players_size() const {
   return players_.size();
 }
-inline void MsgTableView::clear_players() {
+inline void DummyTableView::clear_players() {
   players_.Clear();
 }
-inline const ::MsgPlayer& MsgTableView::players(int index) const {
-  // @@protoc_insertion_point(field_get:MsgTableView.players)
+inline const ::DummyPlayer& DummyTableView::players(int index) const {
+  // @@protoc_insertion_point(field_get:DummyTableView.players)
   return players_.Get(index);
 }
-inline ::MsgPlayer* MsgTableView::mutable_players(int index) {
-  // @@protoc_insertion_point(field_mutable:MsgTableView.players)
+inline ::DummyPlayer* DummyTableView::mutable_players(int index) {
+  // @@protoc_insertion_point(field_mutable:DummyTableView.players)
   return players_.Mutable(index);
 }
-inline ::MsgPlayer* MsgTableView::add_players() {
-  // @@protoc_insertion_point(field_add:MsgTableView.players)
+inline ::DummyPlayer* DummyTableView::add_players() {
+  // @@protoc_insertion_point(field_add:DummyTableView.players)
   return players_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::MsgPlayer >*
-MsgTableView::mutable_players() {
-  // @@protoc_insertion_point(field_mutable_list:MsgTableView.players)
+inline ::google::protobuf::RepeatedPtrField< ::DummyPlayer >*
+DummyTableView::mutable_players() {
+  // @@protoc_insertion_point(field_mutable_list:DummyTableView.players)
   return &players_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::MsgPlayer >&
-MsgTableView::players() const {
-  // @@protoc_insertion_point(field_list:MsgTableView.players)
+inline const ::google::protobuf::RepeatedPtrField< ::DummyPlayer >&
+DummyTableView::players() const {
+  // @@protoc_insertion_point(field_list:DummyTableView.players)
   return players_;
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -2675,30 +3035,30 @@ MsgTableView::players() const {
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::MsgError> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::Error> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MsgError>() {
-  return ::MsgError_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::Error>() {
+  return ::Error_descriptor();
 }
-template <> struct is_proto_enum< ::MsgTableStatus> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::DummyTableStatus> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MsgTableStatus>() {
-  return ::MsgTableStatus_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::DummyTableStatus>() {
+  return ::DummyTableStatus_descriptor();
 }
-template <> struct is_proto_enum< ::MsgRoundStatus> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::DummyRoundStatus> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MsgRoundStatus>() {
-  return ::MsgRoundStatus_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::DummyRoundStatus>() {
+  return ::DummyRoundStatus_descriptor();
 }
-template <> struct is_proto_enum< ::MsgCardValue> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::DummyCardValue> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MsgCardValue>() {
-  return ::MsgCardValue_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::DummyCardValue>() {
+  return ::DummyCardValue_descriptor();
 }
-template <> struct is_proto_enum< ::MsgCardSuit> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::DummyCardSuit> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MsgCardSuit>() {
-  return ::MsgCardSuit_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::DummyCardSuit>() {
+  return ::DummyCardSuit_descriptor();
 }
 
 }  // namespace protobuf

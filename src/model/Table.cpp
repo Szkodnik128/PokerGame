@@ -4,7 +4,17 @@
 
 #include "Table.h"
 
-Table::Table()
+Table::Table(const std::string &name, int maxPlayers)
+        : name(name),
+          maxPlayers(maxPlayers),
+          currentPlayers(0),
+          tableStatus(TableStatus::TableStatusWaitingForPlayers)
 {
-
 }
+
+DummyTableView *Table::getTableView(Player *player)
+{
+    return nullptr;
+}
+
+

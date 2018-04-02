@@ -5,19 +5,24 @@
 #ifndef POKERGAME_LOBBY_H
 #define POKERGAME_LOBBY_H
 
+#include "Table.h"
 #include "Player.h"
+
+#include <protocol/Protocol.pb.h>
 
 class Lobby {
 
 private:
     std::list<Table *>tables;
+    std::map<Player *, Table *>playersMap;
 
 public:
     const std::list<Table *> &getTables() const;
-    void createTable(); /* TODO: Add more arguments */
-    void addPlayerToTable(int tableId, Player *const player);
-    void removePlayerFromTable(int tableId, Player *const player);
+    void createTable(const std::string &name, int maxPlayers);
+    void joinTable(const std::string &name, Player *player);
+    void leaveTable(const std::string &name, Player *player);
 
+    DummyLobbyView *getLobbyView();
 };
 
 
