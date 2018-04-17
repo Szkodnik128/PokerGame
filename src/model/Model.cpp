@@ -46,8 +46,10 @@ void Model::login(const Login &login, ClientHandler *const clientHandler)
         /* TODO: Send table view */
         //dummyTableView = player->getTable()->getTableView(player);
     } else {
-        /* TODO: Send lobby view */
+        /* Send lobby view */
         dummyLobbyView = this->lobby.getLobbyView();
+        clientHandler->sendMessage(*dummyLobbyView);
+        free(dummyLobbyView);
     }
 }
 
@@ -63,6 +65,8 @@ void Model::createTable(const CreateTable &createTable, ClientHandler *const cli
 
     /* Create table */
     this->lobby.createTable(createTable.name(), createTable.maxplayers());
+
+    /* TODO: Add player to table */
 
     /* TODO: Send lobby view to all players in lobby */
     dummyLobbyView = this->lobby.getLobbyView();
@@ -125,17 +129,20 @@ void Model::disconnect(ClientHandler *const clientHandler)
 
     /* Get player */
     player = clientHandlersMap[clientHandler];
-    /* Mark as disconnected */
-    player->setConnected(false);
+    /* If player didn't login then will be nullptr */
+    if (player != nullptr) {
+        /* Mark as disconnected */
+        player->setConnected(false);
 
-    /* Remove player from model if player is not playing */
-    if (!player->isPlaying()) {
-        this->players.remove(player);
+        /* Remove player from model if player is not playing */
+        if (!player->isPlaying()) {
+            this->players.remove(player);
+        }
+
+        /* Remove from map */
+        auto iterator = this->clientHandlersMap.find(clientHandler);
+        this->clientHandlersMap.erase(iterator);
     }
-
-    /* Remove from map */
-    auto iterator = this->clientHandlersMap.find(clientHandler);
-    this->clientHandlersMap.erase(iterator);
 }
 
 Player *Model::getUserWithName(std::string name)

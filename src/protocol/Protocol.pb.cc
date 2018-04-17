@@ -494,7 +494,6 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableInfo, index_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableInfo, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableInfo, maxplayers_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableInfo, players_),
@@ -528,8 +527,8 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROT
   { 63, -1, sizeof(::DummyCard)},
   { 70, -1, sizeof(::DummyPlayer)},
   { 79, -1, sizeof(::DummyTableInfo)},
-  { 88, -1, sizeof(::DummyLobbyView)},
-  { 94, -1, sizeof(::DummyTableView)},
+  { 87, -1, sizeof(::DummyLobbyView)},
+  { 93, -1, sizeof(::DummyTableView)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -588,41 +587,40 @@ void AddDescriptorsImpl() {
       "\001 \001(\0162\017.DummyCardValue\022 \n\010cardSuit\030\002 \001(\016"
       "2\016.DummyCardSuit\"X\n\013DummyPlayer\022\020\n\010usern"
       "ame\030\001 \001(\t\022\r\n\005chips\030\002 \001(\r\022\030\n\004hand\030\003 \003(\0132\n"
-      ".DummyCard\022\016\n\006dealer\030\004 \001(\010\"R\n\016DummyTable"
-      "Info\022\r\n\005index\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\022\n\nmax"
-      "Players\030\003 \001(\r\022\017\n\007players\030\004 \001(\r\"1\n\016DummyL"
-      "obbyView\022\037\n\006tables\030\001 \003(\0132\017.DummyTableInf"
-      "o\"\250\001\n\016DummyTableView\022&\n\013tableStatus\030\001 \001("
-      "\0162\021.DummyTableStatus\022&\n\013roundStatus\030\002 \001("
-      "\0162\021.DummyRoundStatus\022\031\n\005cards\030\003 \003(\0132\n.Du"
-      "mmyCard\022\014\n\004pots\030\004 \003(\r\022\035\n\007players\030\005 \003(\0132\014"
-      ".DummyPlayer*G\n\005Error\022\020\n\014ErrorSuccess\020\000\022"
-      "\025\n\021ErrorWrongMessage\020\001\022\025\n\021ErrorInvalidVa"
-      "lue\020\002*\231\001\n\020DummyTableStatus\022\033\n\027DummyTable"
-      "StatusUnknown\020\000\022%\n!DummyTableStatusWaiti"
-      "ngForPlayers\020\001\022\"\n\036DummyTableStatusGameIn"
-      "Progress\020\002\022\035\n\031DummyTableStatusGameEnded\020"
-      "\003*\264\001\n\020DummyRoundStatus\022\033\n\027DummyRoundStat"
-      "usUnknown\020\000\022\033\n\027DummyRoundStatusPreFlop\020\001"
-      "\022\030\n\024DummyRoundStatusFlop\020\002\022\030\n\024DummyRound"
-      "StatusTurn\020\003\022\031\n\025DummyRoundStatusRiver\020\004\022"
-      "\027\n\023DummyRoundStatusEnd\020\005*\342\002\n\016DummyCardVa"
-      "lue\022\030\n\024DummyCardValueUnkown\020\000\022\025\n\021DummyCa"
-      "rdValueTwo\020\002\022\027\n\023DummyCardValueThree\020\003\022\026\n"
-      "\022DummyCardValueFour\020\004\022\026\n\022DummyCardValueF"
-      "ive\020\005\022\025\n\021DummyCardValueSix\020\006\022\027\n\023DummyCar"
-      "dValueSeven\020\007\022\027\n\023DummyCardValueEight\020\010\022\026"
-      "\n\022DummyCardValueNine\020\t\022\025\n\021DummyCardValue"
-      "Ten\020\n\022\026\n\022DummyCardValueJack\020\013\022\027\n\023DummyCa"
-      "rdValueQueen\020\014\022\026\n\022DummyCardValueKing\020\r\022\025"
-      "\n\021DummyCardValueAce\020\016*\215\001\n\rDummyCardSuit\022"
-      "\027\n\023DummyCardSuitUnkown\020\000\022\027\n\023DummyCardSui"
-      "tSpades\020\001\022\027\n\023DummyCardSuitHearts\020\002\022\031\n\025Du"
-      "mmyCardSuitDiamonds\020\003\022\026\n\022DummyCardSuitCl"
-      "ubs\020\004b\006proto3"
+      ".DummyCard\022\016\n\006dealer\030\004 \001(\010\"C\n\016DummyTable"
+      "Info\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001(\r\022\017"
+      "\n\007players\030\003 \001(\r\"1\n\016DummyLobbyView\022\037\n\006tab"
+      "les\030\001 \003(\0132\017.DummyTableInfo\"\250\001\n\016DummyTabl"
+      "eView\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTableS"
+      "tatus\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRoundS"
+      "tatus\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\014\n\004pots"
+      "\030\004 \003(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*G\n"
+      "\005Error\022\020\n\014ErrorSuccess\020\000\022\025\n\021ErrorWrongMe"
+      "ssage\020\001\022\025\n\021ErrorInvalidValue\020\002*\231\001\n\020Dummy"
+      "TableStatus\022\033\n\027DummyTableStatusUnknown\020\000"
+      "\022%\n!DummyTableStatusWaitingForPlayers\020\001\022"
+      "\"\n\036DummyTableStatusGameInProgress\020\002\022\035\n\031D"
+      "ummyTableStatusGameEnded\020\003*\264\001\n\020DummyRoun"
+      "dStatus\022\033\n\027DummyRoundStatusUnknown\020\000\022\033\n\027"
+      "DummyRoundStatusPreFlop\020\001\022\030\n\024DummyRoundS"
+      "tatusFlop\020\002\022\030\n\024DummyRoundStatusTurn\020\003\022\031\n"
+      "\025DummyRoundStatusRiver\020\004\022\027\n\023DummyRoundSt"
+      "atusEnd\020\005*\342\002\n\016DummyCardValue\022\030\n\024DummyCar"
+      "dValueUnkown\020\000\022\025\n\021DummyCardValueTwo\020\002\022\027\n"
+      "\023DummyCardValueThree\020\003\022\026\n\022DummyCardValue"
+      "Four\020\004\022\026\n\022DummyCardValueFive\020\005\022\025\n\021DummyC"
+      "ardValueSix\020\006\022\027\n\023DummyCardValueSeven\020\007\022\027"
+      "\n\023DummyCardValueEight\020\010\022\026\n\022DummyCardValu"
+      "eNine\020\t\022\025\n\021DummyCardValueTen\020\n\022\026\n\022DummyC"
+      "ardValueJack\020\013\022\027\n\023DummyCardValueQueen\020\014\022"
+      "\026\n\022DummyCardValueKing\020\r\022\025\n\021DummyCardValu"
+      "eAce\020\016*\215\001\n\rDummyCardSuit\022\027\n\023DummyCardSui"
+      "tUnkown\020\000\022\027\n\023DummyCardSuitSpades\020\001\022\027\n\023Du"
+      "mmyCardSuitHearts\020\002\022\031\n\025DummyCardSuitDiam"
+      "onds\020\003\022\026\n\022DummyCardSuitClubs\020\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1933);
+      descriptor, 1918);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Protocol.proto", &protobuf_RegisterTypes);
 }
@@ -4142,7 +4140,6 @@ void DummyPlayer::InternalSwap(DummyPlayer* other) {
 void DummyTableInfo::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DummyTableInfo::kIndexFieldNumber;
 const int DummyTableInfo::kNameFieldNumber;
 const int DummyTableInfo::kMaxPlayersFieldNumber;
 const int DummyTableInfo::kPlayersFieldNumber;
@@ -4165,17 +4162,17 @@ DummyTableInfo::DummyTableInfo(const DummyTableInfo& from)
   if (from.name().size() > 0) {
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  ::memcpy(&index_, &from.index_,
+  ::memcpy(&maxplayers_, &from.maxplayers_,
     static_cast<size_t>(reinterpret_cast<char*>(&players_) -
-    reinterpret_cast<char*>(&index_)) + sizeof(players_));
+    reinterpret_cast<char*>(&maxplayers_)) + sizeof(players_));
   // @@protoc_insertion_point(copy_constructor:DummyTableInfo)
 }
 
 void DummyTableInfo::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&index_, 0, static_cast<size_t>(
+  ::memset(&maxplayers_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&players_) -
-      reinterpret_cast<char*>(&index_)) + sizeof(players_));
+      reinterpret_cast<char*>(&maxplayers_)) + sizeof(players_));
   _cached_size_ = 0;
 }
 
@@ -4218,9 +4215,9 @@ void DummyTableInfo::Clear() {
   (void) cached_has_bits;
 
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&index_, 0, static_cast<size_t>(
+  ::memset(&maxplayers_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&players_) -
-      reinterpret_cast<char*>(&index_)) + sizeof(players_));
+      reinterpret_cast<char*>(&maxplayers_)) + sizeof(players_));
   _internal_metadata_.Clear();
 }
 
@@ -4234,24 +4231,10 @@ bool DummyTableInfo::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // uint32 index = 1;
+      // string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &index_)));
-        } else {
-          goto handle_unusual;
-        }
-        break;
-      }
-
-      // string name = 2;
-      case 2: {
-        if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
@@ -4264,10 +4247,10 @@ bool DummyTableInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 maxPlayers = 3;
-      case 3: {
+      // uint32 maxPlayers = 2;
+      case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -4278,10 +4261,10 @@ bool DummyTableInfo::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 players = 4;
-      case 4: {
+      // uint32 players = 3;
+      case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
+            static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
@@ -4318,29 +4301,24 @@ void DummyTableInfo::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 index = 1;
-  if (this->index() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->index(), output);
-  }
-
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
       "DummyTableInfo.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->name(), output);
+      1, this->name(), output);
   }
 
-  // uint32 maxPlayers = 3;
+  // uint32 maxPlayers = 2;
   if (this->maxplayers() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->maxplayers(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->maxplayers(), output);
   }
 
-  // uint32 players = 4;
+  // uint32 players = 3;
   if (this->players() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->players(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->players(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4357,12 +4335,7 @@ void DummyTableInfo::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // uint32 index = 1;
-  if (this->index() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->index(), target);
-  }
-
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
       this->name().data(), static_cast<int>(this->name().length()),
@@ -4370,17 +4343,17 @@ void DummyTableInfo::SerializeWithCachedSizes(
       "DummyTableInfo.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
+        1, this->name(), target);
   }
 
-  // uint32 maxPlayers = 3;
+  // uint32 maxPlayers = 2;
   if (this->maxplayers() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->maxplayers(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->maxplayers(), target);
   }
 
-  // uint32 players = 4;
+  // uint32 players = 3;
   if (this->players() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->players(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->players(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4400,28 +4373,21 @@ size_t DummyTableInfo::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // string name = 2;
+  // string name = 1;
   if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->name());
   }
 
-  // uint32 index = 1;
-  if (this->index() != 0) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->index());
-  }
-
-  // uint32 maxPlayers = 3;
+  // uint32 maxPlayers = 2;
   if (this->maxplayers() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
         this->maxplayers());
   }
 
-  // uint32 players = 4;
+  // uint32 players = 3;
   if (this->players() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
@@ -4461,9 +4427,6 @@ void DummyTableInfo::MergeFrom(const DummyTableInfo& from) {
 
     name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
-  if (from.index() != 0) {
-    set_index(from.index());
-  }
   if (from.maxplayers() != 0) {
     set_maxplayers(from.maxplayers());
   }
@@ -4497,7 +4460,6 @@ void DummyTableInfo::Swap(DummyTableInfo* other) {
 void DummyTableInfo::InternalSwap(DummyTableInfo* other) {
   using std::swap;
   name_.Swap(&other->name_);
-  swap(index_, other->index_);
   swap(maxplayers_, other->maxplayers_);
   swap(players_, other->players_);
   _internal_metadata_.Swap(&other->_internal_metadata_);

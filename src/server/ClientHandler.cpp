@@ -54,7 +54,7 @@ void ClientHandler::listen()
     }
 }
 
-bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
+bool ClientHandler::sendData(unsigned char *const data, size_t size)
 {
     ssize_t ret;
 
@@ -62,6 +62,20 @@ bool ClientHandler::sendMessage(unsigned char *const data, size_t size)
     if (ret < 0) {
         return false;
     }
+
+    return true;
+}
+
+bool ClientHandler::sendMessage(google::protobuf::Message &message)
+{
+    size_t response_size;
+    void *response_buffer;
+
+    response_size = message.ByteSizeLong();
+    response_buffer = malloc(response_size);
+    message.SerializeToArray(response_buffer, (int)response_size);
+    this->sendData((unsigned char *)response_buffer, response_size);
+    free(response_buffer);
 
     return true;
 }
@@ -76,7 +90,7 @@ void ClientHandler::sendError(Error error)
     response_size = response.ByteSizeLong();
     response_buffer = malloc(response_size);
     response.SerializeToArray(response_buffer, (int)response_size);
-    this->sendMessage((unsigned char *)response_buffer, response_size);
+    this->sendData((unsigned char *)response_buffer, response_size);
     free(response_buffer);
 }
 

@@ -34,9 +34,16 @@ private:
     int currentPlayers;
     enum TableStatus tableStatus;
 
-
 public:
     Table(const std::string &name, int maxPlayers);
+
+    const std::string &getName() const;
+    const std::list<Player *> &getPlayers() const;
+    const Deck &getDeck() const;
+    const Pot &getPot() const;
+    int getMaxPlayers() const;
+    int getCurrentPlayers() const;
+    TableStatus getTableStatus() const;
 
     DummyTableView *getTableView(Player *player);
 };

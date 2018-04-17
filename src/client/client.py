@@ -1,4 +1,4 @@
-#/usr/bin/env python
+#!/usr/bin/env python
 
 from transport import Transport
 
@@ -6,8 +6,10 @@ import Protocol_pb2
 
 import thread
 
+
 HOST = "localhost"
 PORT = 9988
+
 
 class Client(object):
 
@@ -23,24 +25,36 @@ class Client(object):
         }
 
         self.transport = Transport(HOST, PORT)
+        self.working_flag = False
 
     def run(self):
+        self.working_flag = True
         thread.start_new_thread(self.recv_response, ())
-        while True:
+
+        while self.working_flag:
             command = raw_input('# ')
-            try:
-                handler = self.command_map[command]
-                msg = handler()
-                self.transport.send(msg)
-            except KeyError:
-                print("Wrong command")
-            except ValueError:
-                print("Wrong argument")
+            if command == 'help' or command == '-h' or command == '--help' or command == 'h' or command == '?':
+                self.print_commands()
+            elif command == 'quit' or command == 'q':
+                self.working_flag = False
+            else:
+                try:
+                    handler = self.command_map[command]
+                    msg = handler()
+                    self.transport.send(msg)
+                except KeyError:
+                    print("Wrong command")
+                except ValueError:
+                    print("Wrong argument")
+
+    def print_commands(self):
+        for key, value in self.command_map.items():
+            print(key)
 
     def recv_response(self):
         data = b''
 
-        while True:
+        while self.working_flag:
             self.transport.recv(data, 2048)
             print("Recv data")
 

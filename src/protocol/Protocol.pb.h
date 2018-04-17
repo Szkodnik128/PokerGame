@@ -1627,9 +1627,9 @@ class DummyTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // string name = 2;
+  // string name = 1;
   void clear_name();
-  static const int kNameFieldNumber = 2;
+  static const int kNameFieldNumber = 1;
   const ::std::string& name() const;
   void set_name(const ::std::string& value);
   #if LANG_CXX11
@@ -1641,21 +1641,15 @@ class DummyTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::std::string* release_name();
   void set_allocated_name(::std::string* name);
 
-  // uint32 index = 1;
-  void clear_index();
-  static const int kIndexFieldNumber = 1;
-  ::google::protobuf::uint32 index() const;
-  void set_index(::google::protobuf::uint32 value);
-
-  // uint32 maxPlayers = 3;
+  // uint32 maxPlayers = 2;
   void clear_maxplayers();
-  static const int kMaxPlayersFieldNumber = 3;
+  static const int kMaxPlayersFieldNumber = 2;
   ::google::protobuf::uint32 maxplayers() const;
   void set_maxplayers(::google::protobuf::uint32 value);
 
-  // uint32 players = 4;
+  // uint32 players = 3;
   void clear_players();
-  static const int kPlayersFieldNumber = 4;
+  static const int kPlayersFieldNumber = 3;
   ::google::protobuf::uint32 players() const;
   void set_players(::google::protobuf::uint32 value);
 
@@ -1664,7 +1658,6 @@ class DummyTableInfo : public ::google::protobuf::Message /* @@protoc_insertion_
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr name_;
-  ::google::protobuf::uint32 index_;
   ::google::protobuf::uint32 maxplayers_;
   ::google::protobuf::uint32 players_;
   mutable int _cached_size_;
@@ -2748,21 +2741,7 @@ inline void DummyPlayer::set_dealer(bool value) {
 
 // DummyTableInfo
 
-// uint32 index = 1;
-inline void DummyTableInfo::clear_index() {
-  index_ = 0u;
-}
-inline ::google::protobuf::uint32 DummyTableInfo::index() const {
-  // @@protoc_insertion_point(field_get:DummyTableInfo.index)
-  return index_;
-}
-inline void DummyTableInfo::set_index(::google::protobuf::uint32 value) {
-  
-  index_ = value;
-  // @@protoc_insertion_point(field_set:DummyTableInfo.index)
-}
-
-// string name = 2;
+// string name = 1;
 inline void DummyTableInfo::clear_name() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -2815,7 +2794,7 @@ inline void DummyTableInfo::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:DummyTableInfo.name)
 }
 
-// uint32 maxPlayers = 3;
+// uint32 maxPlayers = 2;
 inline void DummyTableInfo::clear_maxplayers() {
   maxplayers_ = 0u;
 }
@@ -2829,7 +2808,7 @@ inline void DummyTableInfo::set_maxplayers(::google::protobuf::uint32 value) {
   // @@protoc_insertion_point(field_set:DummyTableInfo.maxPlayers)
 }
 
-// uint32 players = 4;
+// uint32 players = 3;
 inline void DummyTableInfo::clear_players() {
   players_ = 0u;
 }

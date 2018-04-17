@@ -125,10 +125,9 @@ message DummyPlayer {
 
 // Table informations (for Lobby View)
 message DummyTableInfo {
-    uint32 index = 1;
-    string name = 2;
-    uint32 maxPlayers = 3;
-    uint32 players = 4;
+    string name = 1;
+    uint32 maxPlayers = 2;
+    uint32 players = 3;
 }
 
 // Lobby view response message

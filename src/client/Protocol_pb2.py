@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='Protocol.proto',
   package='',
   syntax='proto3',
-  serialized_pb=_b('\n\x0eProtocol.proto\"\xdd\x01\n\x07Request\x12\x17\n\x05login\x18\x01 \x01(\x0b\x32\x06.LoginH\x00\x12#\n\x0b\x63reateTable\x18\x02 \x01(\x0b\x32\x0c.CreateTableH\x00\x12\x1f\n\tjoinTable\x18\x03 \x01(\x0b\x32\n.JoinTableH\x00\x12!\n\nleaveTable\x18\x04 \x01(\x0b\x32\x0b.LeaveTableH\x00\x12\x17\n\x05raise\x18\x05 \x01(\x0b\x32\x06.RaiseH\x00\x12\x15\n\x04\x66old\x18\x06 \x01(\x0b\x32\x05.FoldH\x00\x12\x15\n\x04\x63\x61ll\x18\x07 \x01(\x0b\x32\x05.CallH\x00\x42\t\n\x07payload\"x\n\x08Response\x12\x15\n\x05\x65rror\x18\x01 \x01(\x0e\x32\x06.Error\x12$\n\tlobbyView\x18\x02 \x01(\x0b\x32\x0f.DummyLobbyViewH\x00\x12$\n\ttableView\x18\x03 \x01(\x0b\x32\x0f.DummyTableViewH\x00\x42\t\n\x07payload\"\x19\n\x05Login\x12\x10\n\x08username\x18\x01 \x01(\t\"/\n\x0b\x43reateTable\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nmaxPlayers\x18\x02 \x01(\r\"\x19\n\tJoinTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1a\n\nLeaveTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x16\n\x05Raise\x12\r\n\x05\x63hips\x18\x01 \x01(\x05\"\x06\n\x04\x46old\"\x06\n\x04\x43\x61ll\"Q\n\tDummyCard\x12\"\n\tcardValue\x18\x01 \x01(\x0e\x32\x0f.DummyCardValue\x12 \n\x08\x63\x61rdSuit\x18\x02 \x01(\x0e\x32\x0e.DummyCardSuit\"X\n\x0b\x44ummyPlayer\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x63hips\x18\x02 \x01(\r\x12\x18\n\x04hand\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0e\n\x06\x64\x65\x61ler\x18\x04 \x01(\x08\"R\n\x0e\x44ummyTableInfo\x12\r\n\x05index\x18\x01 \x01(\r\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x12\n\nmaxPlayers\x18\x03 \x01(\r\x12\x0f\n\x07players\x18\x04 \x01(\r\"1\n\x0e\x44ummyLobbyView\x12\x1f\n\x06tables\x18\x01 \x03(\x0b\x32\x0f.DummyTableInfo\"\xa8\x01\n\x0e\x44ummyTableView\x12&\n\x0btableStatus\x18\x01 \x01(\x0e\x32\x11.DummyTableStatus\x12&\n\x0broundStatus\x18\x02 \x01(\x0e\x32\x11.DummyRoundStatus\x12\x19\n\x05\x63\x61rds\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0c\n\x04pots\x18\x04 \x03(\r\x12\x1d\n\x07players\x18\x05 \x03(\x0b\x32\x0c.DummyPlayer*G\n\x05\x45rror\x12\x10\n\x0c\x45rrorSuccess\x10\x00\x12\x15\n\x11\x45rrorWrongMessage\x10\x01\x12\x15\n\x11\x45rrorInvalidValue\x10\x02*\x99\x01\n\x10\x44ummyTableStatus\x12\x1b\n\x17\x44ummyTableStatusUnknown\x10\x00\x12%\n!DummyTableStatusWaitingForPlayers\x10\x01\x12\"\n\x1e\x44ummyTableStatusGameInProgress\x10\x02\x12\x1d\n\x19\x44ummyTableStatusGameEnded\x10\x03*\xb4\x01\n\x10\x44ummyRoundStatus\x12\x1b\n\x17\x44ummyRoundStatusUnknown\x10\x00\x12\x1b\n\x17\x44ummyRoundStatusPreFlop\x10\x01\x12\x18\n\x14\x44ummyRoundStatusFlop\x10\x02\x12\x18\n\x14\x44ummyRoundStatusTurn\x10\x03\x12\x19\n\x15\x44ummyRoundStatusRiver\x10\x04\x12\x17\n\x13\x44ummyRoundStatusEnd\x10\x05*\xe2\x02\n\x0e\x44ummyCardValue\x12\x18\n\x14\x44ummyCardValueUnkown\x10\x00\x12\x15\n\x11\x44ummyCardValueTwo\x10\x02\x12\x17\n\x13\x44ummyCardValueThree\x10\x03\x12\x16\n\x12\x44ummyCardValueFour\x10\x04\x12\x16\n\x12\x44ummyCardValueFive\x10\x05\x12\x15\n\x11\x44ummyCardValueSix\x10\x06\x12\x17\n\x13\x44ummyCardValueSeven\x10\x07\x12\x17\n\x13\x44ummyCardValueEight\x10\x08\x12\x16\n\x12\x44ummyCardValueNine\x10\t\x12\x15\n\x11\x44ummyCardValueTen\x10\n\x12\x16\n\x12\x44ummyCardValueJack\x10\x0b\x12\x17\n\x13\x44ummyCardValueQueen\x10\x0c\x12\x16\n\x12\x44ummyCardValueKing\x10\r\x12\x15\n\x11\x44ummyCardValueAce\x10\x0e*\x8d\x01\n\rDummyCardSuit\x12\x17\n\x13\x44ummyCardSuitUnkown\x10\x00\x12\x17\n\x13\x44ummyCardSuitSpades\x10\x01\x12\x17\n\x13\x44ummyCardSuitHearts\x10\x02\x12\x19\n\x15\x44ummyCardSuitDiamonds\x10\x03\x12\x16\n\x12\x44ummyCardSuitClubs\x10\x04\x62\x06proto3')
+  serialized_pb=_b('\n\x0eProtocol.proto\"\xdd\x01\n\x07Request\x12\x17\n\x05login\x18\x01 \x01(\x0b\x32\x06.LoginH\x00\x12#\n\x0b\x63reateTable\x18\x02 \x01(\x0b\x32\x0c.CreateTableH\x00\x12\x1f\n\tjoinTable\x18\x03 \x01(\x0b\x32\n.JoinTableH\x00\x12!\n\nleaveTable\x18\x04 \x01(\x0b\x32\x0b.LeaveTableH\x00\x12\x17\n\x05raise\x18\x05 \x01(\x0b\x32\x06.RaiseH\x00\x12\x15\n\x04\x66old\x18\x06 \x01(\x0b\x32\x05.FoldH\x00\x12\x15\n\x04\x63\x61ll\x18\x07 \x01(\x0b\x32\x05.CallH\x00\x42\t\n\x07payload\"x\n\x08Response\x12\x15\n\x05\x65rror\x18\x01 \x01(\x0e\x32\x06.Error\x12$\n\tlobbyView\x18\x02 \x01(\x0b\x32\x0f.DummyLobbyViewH\x00\x12$\n\ttableView\x18\x03 \x01(\x0b\x32\x0f.DummyTableViewH\x00\x42\t\n\x07payload\"\x19\n\x05Login\x12\x10\n\x08username\x18\x01 \x01(\t\"/\n\x0b\x43reateTable\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nmaxPlayers\x18\x02 \x01(\r\"\x19\n\tJoinTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1a\n\nLeaveTable\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x16\n\x05Raise\x12\r\n\x05\x63hips\x18\x01 \x01(\x05\"\x06\n\x04\x46old\"\x06\n\x04\x43\x61ll\"Q\n\tDummyCard\x12\"\n\tcardValue\x18\x01 \x01(\x0e\x32\x0f.DummyCardValue\x12 \n\x08\x63\x61rdSuit\x18\x02 \x01(\x0e\x32\x0e.DummyCardSuit\"X\n\x0b\x44ummyPlayer\x12\x10\n\x08username\x18\x01 \x01(\t\x12\r\n\x05\x63hips\x18\x02 \x01(\r\x12\x18\n\x04hand\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0e\n\x06\x64\x65\x61ler\x18\x04 \x01(\x08\"C\n\x0e\x44ummyTableInfo\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nmaxPlayers\x18\x02 \x01(\r\x12\x0f\n\x07players\x18\x03 \x01(\r\"1\n\x0e\x44ummyLobbyView\x12\x1f\n\x06tables\x18\x01 \x03(\x0b\x32\x0f.DummyTableInfo\"\xa8\x01\n\x0e\x44ummyTableView\x12&\n\x0btableStatus\x18\x01 \x01(\x0e\x32\x11.DummyTableStatus\x12&\n\x0broundStatus\x18\x02 \x01(\x0e\x32\x11.DummyRoundStatus\x12\x19\n\x05\x63\x61rds\x18\x03 \x03(\x0b\x32\n.DummyCard\x12\x0c\n\x04pots\x18\x04 \x03(\r\x12\x1d\n\x07players\x18\x05 \x03(\x0b\x32\x0c.DummyPlayer*G\n\x05\x45rror\x12\x10\n\x0c\x45rrorSuccess\x10\x00\x12\x15\n\x11\x45rrorWrongMessage\x10\x01\x12\x15\n\x11\x45rrorInvalidValue\x10\x02*\x99\x01\n\x10\x44ummyTableStatus\x12\x1b\n\x17\x44ummyTableStatusUnknown\x10\x00\x12%\n!DummyTableStatusWaitingForPlayers\x10\x01\x12\"\n\x1e\x44ummyTableStatusGameInProgress\x10\x02\x12\x1d\n\x19\x44ummyTableStatusGameEnded\x10\x03*\xb4\x01\n\x10\x44ummyRoundStatus\x12\x1b\n\x17\x44ummyRoundStatusUnknown\x10\x00\x12\x1b\n\x17\x44ummyRoundStatusPreFlop\x10\x01\x12\x18\n\x14\x44ummyRoundStatusFlop\x10\x02\x12\x18\n\x14\x44ummyRoundStatusTurn\x10\x03\x12\x19\n\x15\x44ummyRoundStatusRiver\x10\x04\x12\x17\n\x13\x44ummyRoundStatusEnd\x10\x05*\xe2\x02\n\x0e\x44ummyCardValue\x12\x18\n\x14\x44ummyCardValueUnkown\x10\x00\x12\x15\n\x11\x44ummyCardValueTwo\x10\x02\x12\x17\n\x13\x44ummyCardValueThree\x10\x03\x12\x16\n\x12\x44ummyCardValueFour\x10\x04\x12\x16\n\x12\x44ummyCardValueFive\x10\x05\x12\x15\n\x11\x44ummyCardValueSix\x10\x06\x12\x17\n\x13\x44ummyCardValueSeven\x10\x07\x12\x17\n\x13\x44ummyCardValueEight\x10\x08\x12\x16\n\x12\x44ummyCardValueNine\x10\t\x12\x15\n\x11\x44ummyCardValueTen\x10\n\x12\x16\n\x12\x44ummyCardValueJack\x10\x0b\x12\x17\n\x13\x44ummyCardValueQueen\x10\x0c\x12\x16\n\x12\x44ummyCardValueKing\x10\r\x12\x15\n\x11\x44ummyCardValueAce\x10\x0e*\x8d\x01\n\rDummyCardSuit\x12\x17\n\x13\x44ummyCardSuitUnkown\x10\x00\x12\x17\n\x13\x44ummyCardSuitSpades\x10\x01\x12\x17\n\x13\x44ummyCardSuitHearts\x10\x02\x12\x19\n\x15\x44ummyCardSuitDiamonds\x10\x03\x12\x16\n\x12\x44ummyCardSuitClubs\x10\x04\x62\x06proto3')
 )
 
 _ERROR = _descriptor.EnumDescriptor(
@@ -44,8 +44,8 @@ _ERROR = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1014,
-  serialized_end=1085,
+  serialized_start=999,
+  serialized_end=1070,
 )
 _sym_db.RegisterEnumDescriptor(_ERROR)
 
@@ -75,8 +75,8 @@ _DUMMYTABLESTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1088,
-  serialized_end=1241,
+  serialized_start=1073,
+  serialized_end=1226,
 )
 _sym_db.RegisterEnumDescriptor(_DUMMYTABLESTATUS)
 
@@ -114,8 +114,8 @@ _DUMMYROUNDSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1244,
-  serialized_end=1424,
+  serialized_start=1229,
+  serialized_end=1409,
 )
 _sym_db.RegisterEnumDescriptor(_DUMMYROUNDSTATUS)
 
@@ -185,8 +185,8 @@ _DUMMYCARDVALUE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1427,
-  serialized_end=1781,
+  serialized_start=1412,
+  serialized_end=1766,
 )
 _sym_db.RegisterEnumDescriptor(_DUMMYCARDVALUE)
 
@@ -220,8 +220,8 @@ _DUMMYCARDSUIT = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=1784,
-  serialized_end=1925,
+  serialized_start=1769,
+  serialized_end=1910,
 )
 _sym_db.RegisterEnumDescriptor(_DUMMYCARDSUIT)
 
@@ -693,29 +693,22 @@ _DUMMYTABLEINFO = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='index', full_name='DummyTableInfo.index', index=0,
-      number=1, type=13, cpp_type=3, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='DummyTableInfo.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
+      name='name', full_name='DummyTableInfo.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='maxPlayers', full_name='DummyTableInfo.maxPlayers', index=2,
-      number=3, type=13, cpp_type=3, label=1,
+      name='maxPlayers', full_name='DummyTableInfo.maxPlayers', index=1,
+      number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='players', full_name='DummyTableInfo.players', index=3,
-      number=4, type=13, cpp_type=3, label=1,
+      name='players', full_name='DummyTableInfo.players', index=2,
+      number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -733,7 +726,7 @@ _DUMMYTABLEINFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=708,
-  serialized_end=790,
+  serialized_end=775,
 )
 
 
@@ -763,8 +756,8 @@ _DUMMYLOBBYVIEW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=792,
-  serialized_end=841,
+  serialized_start=777,
+  serialized_end=826,
 )
 
 
@@ -822,8 +815,8 @@ _DUMMYTABLEVIEW = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=844,
-  serialized_end=1012,
+  serialized_start=829,
+  serialized_end=997,
 )
 
 _REQUEST.fields_by_name['login'].message_type = _LOGIN
