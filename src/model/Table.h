@@ -44,6 +44,7 @@ public:
     int getMaxPlayers() const;
     int getCurrentPlayers() const;
     TableStatus getTableStatus() const;
+    bool addPlayer(Player *player);
 
     DummyTableView *getTableView(Player *player);
 };

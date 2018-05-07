@@ -45,4 +45,18 @@ TableStatus Table::getTableStatus() const {
     return tableStatus;
 }
 
+bool Table::addPlayer(Player *player) {
+    if (this->currentPlayers == this->maxPlayers) {
+        return false;
+    }
+
+    this->players.push_front(player);
+    this->currentPlayers++;
+    player->setInTable(true);
+
+    /* TODO: If all players took a seat the game begins */
+
+    return true;
+}
+
 

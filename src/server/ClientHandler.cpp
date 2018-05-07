@@ -54,7 +54,7 @@ void ClientHandler::listen()
     }
 }
 
-bool ClientHandler::sendData(unsigned char *const data, size_t size)
+bool ClientHandler::sendData(unsigned char *const data, size_t size) const
 {
     ssize_t ret;
 
@@ -66,21 +66,48 @@ bool ClientHandler::sendData(unsigned char *const data, size_t size)
     return true;
 }
 
-bool ClientHandler::sendMessage(google::protobuf::Message &message)
+bool ClientHandler::sendMessage(google::protobuf::Message *message) const
 {
     size_t response_size;
     void *response_buffer;
 
-    response_size = message.ByteSizeLong();
+    response_size = message->ByteSizeLong();
     response_buffer = malloc(response_size);
-    message.SerializeToArray(response_buffer, (int)response_size);
+    message->SerializeToArray(response_buffer, (int)response_size);
     this->sendData((unsigned char *)response_buffer, response_size);
     free(response_buffer);
 
     return true;
 }
 
-void ClientHandler::sendError(Error error)
+bool ClientHandler::sendResponseMessage(google::protobuf::Message *message, Response::PayloadCase payloadCase) const
+{
+    size_t response_size;
+    void *response_buffer;
+    Response response;
+
+    switch (payloadCase) {
+        case Response::PayloadCase::kLobbyView:
+            response.set_allocated_lobbyview((DummyLobbyView *)message);
+            break;
+        case Response::PayloadCase::kTableView:
+            response.set_allocated_tableview((DummyTableView *)message);
+            break;
+        default:
+            response.set_error(Error::ErrorInternalError);
+            break;
+    }
+
+    response_size = response.ByteSizeLong();
+    response_buffer = malloc(response_size);
+    response.SerializeToArray(response_buffer, (int)response_size);
+    this->sendData((unsigned char *)response_buffer, response_size);
+    free(response_buffer);
+
+    return true;
+}
+
+void ClientHandler::sendError(Error error) const
 {
     Response response;
     size_t response_size;

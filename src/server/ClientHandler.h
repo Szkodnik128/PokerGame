@@ -22,10 +22,11 @@ private:
 public:
     ClientHandler(BlockingQueue<Event *> *const blockingQueue, const int clientSock);
     void listen();
-    bool sendData(unsigned char *const data, size_t size);
-    bool sendMessage(google::protobuf::Message &message);
-    void sendError(Error error);
     void setLoggedIn(bool loggedIn);
+    bool sendData(unsigned char *const data, size_t size) const;
+    bool sendMessage(google::protobuf::Message *message) const;
+    bool sendResponseMessage(google::protobuf::Message *message, Response::PayloadCase payloadCase) const;
+    void sendError(Error error) const;
 };
 
 

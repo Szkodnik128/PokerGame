@@ -5,7 +5,7 @@
 #include "Player.h"
 
 Player::Player(const std::string &name)
-        : name(name), connected(false), playing(false)
+        : name(name), connected(false), playing(false), inTable(false)
 {
 }
 
@@ -37,6 +37,14 @@ bool Player::isPlaying() const {
 
 void Player::setPlaying(bool playing) {
     this->playing = playing;
+}
+
+bool Player::isInTable() const {
+    return this->inTable;
+}
+
+void Player::setInTable(bool inTable) {
+    this->inTable = inTable;
 }
 
 const std::tuple<Card *, Card *> &Player::getHand() const {

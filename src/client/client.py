@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from transport import Transport
-
 import Protocol_pb2
 
 import thread
@@ -21,7 +20,7 @@ class Client(object):
             'leave_table': self.leave_table,
             'raise': self.raise_pot,
             'fold': self.fold,
-            'call': self.call
+            'call': self.call,
         }
 
         self.transport = Transport(HOST, PORT)
@@ -37,6 +36,8 @@ class Client(object):
                 self.print_commands()
             elif command == 'quit' or command == 'q':
                 self.working_flag = False
+            elif command == '':
+                continue
             else:
                 try:
                     handler = self.command_map[command]
@@ -52,12 +53,19 @@ class Client(object):
             print(key)
 
     def recv_response(self):
-        data = b''
-
         while self.working_flag:
-            self.transport.recv(data, 2048)
-            print("Recv data")
+            data = self.transport.recv(2048)
+            response = Protocol_pb2.Response()
+            response.ParseFromString(data)
 
+            print('')
+            which_one_of = response.WhichOneof("payload")
+            if which_one_of == "lobbyView":
+                self.recv_lobby_view(response.lobbyView)
+            elif which_one_of == "tableView":
+                self.recv_table_view(response.tableView)
+            else:
+                print('Error: {}'.format(response.error))
 
     def login(self):
         username = raw_input('Username = ')
@@ -74,7 +82,11 @@ class Client(object):
         return msg.SerializeToString()
 
     def join_table(self):
-        pass
+        table_name = raw_input('Table name = ')
+
+        msg = Protocol_pb2.Request(joinTable=Protocol_pb2.JoinTable(name=table_name))
+
+        return msg.SerializeToString()
 
     def leave_table(self):
         pass
@@ -87,6 +99,14 @@ class Client(object):
 
     def call(self):
         pass
+
+    def recv_lobby_view(self, msg):
+        print('lobby view')
+        print(msg)
+
+    def recv_table_view(self, msg):
+        print("table view")
+        print(msg)
 
 
 client = Client()

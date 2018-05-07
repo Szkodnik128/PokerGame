@@ -135,12 +135,13 @@ enum Error {
   ErrorSuccess = 0,
   ErrorWrongMessage = 1,
   ErrorInvalidValue = 2,
+  ErrorInternalError = 3,
   Error_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   Error_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool Error_IsValid(int value);
 const Error Error_MIN = ErrorSuccess;
-const Error Error_MAX = ErrorInvalidValue;
+const Error Error_MAX = ErrorInternalError;
 const int Error_ARRAYSIZE = Error_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* Error_descriptor();

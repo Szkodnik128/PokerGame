@@ -21,6 +21,8 @@ private:
     unsigned int chips;
     /** Playing flag */
     bool playing;
+    /** In the table flag */
+    bool inTable;
     /** Player's hand */
     std::tuple<Card *, Card *> hand;
 
@@ -58,6 +60,8 @@ public:
     void setConnected(bool connected);
     bool isPlaying() const;
     void setPlaying(bool playing);
+    bool isInTable() const;
+    void setInTable(bool inTable);
     const std::tuple<Card *, Card *> &getHand() const;
     void setHand(const std::tuple<Card *, Card *> &hand);
 };

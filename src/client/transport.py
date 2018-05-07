@@ -14,5 +14,6 @@ class Transport(object):
     def send(self, data):
         self.sock.send(data)
 
-    def recv(self, data, length):
+    def recv(self, length):
         data = self.sock.recv(length)
+        return data

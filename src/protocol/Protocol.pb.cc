@@ -594,33 +594,34 @@ void AddDescriptorsImpl() {
       "eView\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTableS"
       "tatus\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRoundS"
       "tatus\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\014\n\004pots"
-      "\030\004 \003(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*G\n"
+      "\030\004 \003(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*_\n"
       "\005Error\022\020\n\014ErrorSuccess\020\000\022\025\n\021ErrorWrongMe"
-      "ssage\020\001\022\025\n\021ErrorInvalidValue\020\002*\231\001\n\020Dummy"
-      "TableStatus\022\033\n\027DummyTableStatusUnknown\020\000"
-      "\022%\n!DummyTableStatusWaitingForPlayers\020\001\022"
-      "\"\n\036DummyTableStatusGameInProgress\020\002\022\035\n\031D"
-      "ummyTableStatusGameEnded\020\003*\264\001\n\020DummyRoun"
-      "dStatus\022\033\n\027DummyRoundStatusUnknown\020\000\022\033\n\027"
-      "DummyRoundStatusPreFlop\020\001\022\030\n\024DummyRoundS"
-      "tatusFlop\020\002\022\030\n\024DummyRoundStatusTurn\020\003\022\031\n"
-      "\025DummyRoundStatusRiver\020\004\022\027\n\023DummyRoundSt"
-      "atusEnd\020\005*\342\002\n\016DummyCardValue\022\030\n\024DummyCar"
-      "dValueUnkown\020\000\022\025\n\021DummyCardValueTwo\020\002\022\027\n"
-      "\023DummyCardValueThree\020\003\022\026\n\022DummyCardValue"
-      "Four\020\004\022\026\n\022DummyCardValueFive\020\005\022\025\n\021DummyC"
-      "ardValueSix\020\006\022\027\n\023DummyCardValueSeven\020\007\022\027"
-      "\n\023DummyCardValueEight\020\010\022\026\n\022DummyCardValu"
-      "eNine\020\t\022\025\n\021DummyCardValueTen\020\n\022\026\n\022DummyC"
-      "ardValueJack\020\013\022\027\n\023DummyCardValueQueen\020\014\022"
-      "\026\n\022DummyCardValueKing\020\r\022\025\n\021DummyCardValu"
-      "eAce\020\016*\215\001\n\rDummyCardSuit\022\027\n\023DummyCardSui"
-      "tUnkown\020\000\022\027\n\023DummyCardSuitSpades\020\001\022\027\n\023Du"
-      "mmyCardSuitHearts\020\002\022\031\n\025DummyCardSuitDiam"
-      "onds\020\003\022\026\n\022DummyCardSuitClubs\020\004b\006proto3"
+      "ssage\020\001\022\025\n\021ErrorInvalidValue\020\002\022\026\n\022ErrorI"
+      "nternalError\020\003*\231\001\n\020DummyTableStatus\022\033\n\027D"
+      "ummyTableStatusUnknown\020\000\022%\n!DummyTableSt"
+      "atusWaitingForPlayers\020\001\022\"\n\036DummyTableSta"
+      "tusGameInProgress\020\002\022\035\n\031DummyTableStatusG"
+      "ameEnded\020\003*\264\001\n\020DummyRoundStatus\022\033\n\027Dummy"
+      "RoundStatusUnknown\020\000\022\033\n\027DummyRoundStatus"
+      "PreFlop\020\001\022\030\n\024DummyRoundStatusFlop\020\002\022\030\n\024D"
+      "ummyRoundStatusTurn\020\003\022\031\n\025DummyRoundStatu"
+      "sRiver\020\004\022\027\n\023DummyRoundStatusEnd\020\005*\342\002\n\016Du"
+      "mmyCardValue\022\030\n\024DummyCardValueUnkown\020\000\022\025"
+      "\n\021DummyCardValueTwo\020\002\022\027\n\023DummyCardValueT"
+      "hree\020\003\022\026\n\022DummyCardValueFour\020\004\022\026\n\022DummyC"
+      "ardValueFive\020\005\022\025\n\021DummyCardValueSix\020\006\022\027\n"
+      "\023DummyCardValueSeven\020\007\022\027\n\023DummyCardValue"
+      "Eight\020\010\022\026\n\022DummyCardValueNine\020\t\022\025\n\021Dummy"
+      "CardValueTen\020\n\022\026\n\022DummyCardValueJack\020\013\022\027"
+      "\n\023DummyCardValueQueen\020\014\022\026\n\022DummyCardValu"
+      "eKing\020\r\022\025\n\021DummyCardValueAce\020\016*\215\001\n\rDummy"
+      "CardSuit\022\027\n\023DummyCardSuitUnkown\020\000\022\027\n\023Dum"
+      "myCardSuitSpades\020\001\022\027\n\023DummyCardSuitHeart"
+      "s\020\002\022\031\n\025DummyCardSuitDiamonds\020\003\022\026\n\022DummyC"
+      "ardSuitClubs\020\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1918);
+      descriptor, 1942);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Protocol.proto", &protobuf_RegisterTypes);
 }
@@ -645,6 +646,7 @@ bool Error_IsValid(int value) {
     case 0:
     case 1:
     case 2:
+    case 3:
       return true;
     default:
       return false;

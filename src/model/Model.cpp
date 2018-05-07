@@ -48,8 +48,7 @@ void Model::login(const Login &login, ClientHandler *const clientHandler)
     } else {
         /* Send lobby view */
         dummyLobbyView = this->lobby.getLobbyView();
-        clientHandler->sendMessage(*dummyLobbyView);
-        free(dummyLobbyView);
+        clientHandler->sendResponseMessage(dummyLobbyView, Response::PayloadCase::kLobbyView);
     }
 }
 
@@ -66,10 +65,18 @@ void Model::createTable(const CreateTable &createTable, ClientHandler *const cli
     /* Create table */
     this->lobby.createTable(createTable.name(), createTable.maxplayers());
 
-    /* TODO: Add player to table */
+    /* Add player to table */
+    this->lobby.joinTable(createTable.name(), player);
 
-    /* TODO: Send lobby view to all players in lobby */
-    dummyLobbyView = this->lobby.getLobbyView();
+    /* TODO: Send tableView to players in table */
+
+    /* Send lobby view to all players in lobby */
+    for (auto const& node : this->clientHandlersMap) {
+        if (!node.second->isInTable()) {
+            dummyLobbyView = this->lobby.getLobbyView();
+            node.first->sendResponseMessage(dummyLobbyView, Response::PayloadCase::kLobbyView);
+        }
+    }
 }
 
 void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHandler)
@@ -85,8 +92,15 @@ void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHan
     /* Join table */
     this->lobby.joinTable(joinTable.name(), player);
 
-    /* TODO: Send lobby view to all players in lobby */
-    dummyLobbyView = this->lobby.getLobbyView();
+    /* TODO: Send tableView to players in table */
+
+    /* Send lobby view to all players in lobby */
+    for (auto const& node : this->clientHandlersMap) {
+        if (!node.second->isInTable()) {
+            dummyLobbyView = this->lobby.getLobbyView();
+            node.first->sendResponseMessage(dummyLobbyView, Response::PayloadCase::kLobbyView);
+        }
+    }
 }
 
 void Model::leaveTable(const LeaveTable &leaveTable, ClientHandler *const clientHandler)
@@ -102,8 +116,13 @@ void Model::leaveTable(const LeaveTable &leaveTable, ClientHandler *const client
     /* Join table */
     this->lobby.leaveTable(leaveTable.name(), player);
 
-    /* TODO: Send lobby view to all players in lobby */
-    dummyLobbyView = this->lobby.getLobbyView();
+    /* Send lobby view to all players in lobby */
+    for (auto const& node : this->clientHandlersMap) {
+        if (!node.second->isInTable()) {
+            dummyLobbyView = this->lobby.getLobbyView();
+            node.first->sendResponseMessage(dummyLobbyView, Response::PayloadCase::kLobbyView);
+        }
+    }
 }
 
 void Model::raise(const Raise &raise, ClientHandler *const clientHandler)

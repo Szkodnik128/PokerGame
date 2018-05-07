@@ -5,6 +5,7 @@ enum Error {
     ErrorSuccess = 0;
     ErrorWrongMessage = 1;
     ErrorInvalidValue = 2;
+    ErrorInternalError = 3;
 }
 
 // Table statuses

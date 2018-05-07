@@ -12,7 +12,11 @@ void Lobby::createTable(const std::string &name, int maxPlayers)
 
 void Lobby::joinTable(const std::string &name, Player *player)
 {
-
+    for (auto const& table : this->tables) {
+        if (table->getName() == name) {
+            table->addPlayer(player);
+        }
+    }
 }
 
 void Lobby::leaveTable(const std::string &name, Player *player)
