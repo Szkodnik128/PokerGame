@@ -12,11 +12,6 @@ Table::Table(const std::string &name, int maxPlayers)
 {
 }
 
-DummyTableView *Table::getTableView(Player *player)
-{
-    return nullptr;
-}
-
 const std::string &Table::getName() const {
     return name;
 }
@@ -57,6 +52,26 @@ bool Table::addPlayer(Player *player) {
     /* TODO: If all players took a seat the game begins */
 
     return true;
+}
+
+bool Table::raise(Player *player, int chips)
+{
+    return false;
+}
+
+bool Table::fold(Player *player)
+{
+    return false;
+}
+
+bool Table::call(Player *player)
+{
+    return false;
+}
+
+DummyTableView *Table::getTableView(Player *player) const
+{
+    return nullptr;
 }
 
 

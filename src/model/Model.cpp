@@ -21,6 +21,7 @@ void Model::login(const Login &login, ClientHandler *const clientHandler)
         /* Add user to model */
         this->players.push_front(player);
         this->clientHandlersMap[clientHandler] = player;
+        this->playersMap[player] = clientHandler;
         /* Set as logged in */
         clientHandler->setLoggedIn(true);
         /* Mark as connected */
@@ -34,6 +35,7 @@ void Model::login(const Login &login, ClientHandler *const clientHandler)
         } else {
             /* Player was disconnected. Add to map again */
             this->clientHandlersMap[clientHandler] = player;
+            this->playersMap[player] = clientHandler;
             /* Set as logged in */
             clientHandler->setLoggedIn(true);
             /* Mark as connected */
@@ -42,9 +44,9 @@ void Model::login(const Login &login, ClientHandler *const clientHandler)
     }
 
     if (player->isPlaying()) {
-        /* Player was reconnected */
-        /* TODO: Send table view */
-        //dummyTableView = player->getTable()->getTableView(player);
+        /* Player was reconnected, send tableView */
+        dummyTableView = this->lobby.getTableByPlayer(player)->getTableView(player);
+        this->playersMap[player]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     } else {
         /* Send lobby view */
         dummyLobbyView = this->lobby.getLobbyView();
@@ -56,6 +58,7 @@ void Model::createTable(const CreateTable &createTable, ClientHandler *const cli
 {
     Player *player;
     DummyLobbyView *dummyLobbyView;
+    DummyTableView *dummyTableView;
 
     std::cout << "createTable" << std::endl;
 
@@ -68,7 +71,13 @@ void Model::createTable(const CreateTable &createTable, ClientHandler *const cli
     /* Add player to table */
     this->lobby.joinTable(createTable.name(), player);
 
-    /* TODO: Send tableView to players in table */
+    /* Send tableView to players in table */
+    auto table = this->lobby.getTableByName(createTable.name());
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 
     /* Send lobby view to all players in lobby */
     for (auto const& node : this->clientHandlersMap) {
@@ -83,6 +92,7 @@ void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHan
 {
     Player *player;
     DummyLobbyView *dummyLobbyView;
+    DummyTableView *dummyTableView;
 
     std::cout << "joinTable" << std::endl;
 
@@ -92,7 +102,13 @@ void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHan
     /* Join table */
     this->lobby.joinTable(joinTable.name(), player);
 
-    /* TODO: Send tableView to players in table */
+    /* Send tableView to players in table */
+    auto table = this->lobby.getTableByName(joinTable.name());
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 
     /* Send lobby view to all players in lobby */
     for (auto const& node : this->clientHandlersMap) {
@@ -107,14 +123,23 @@ void Model::leaveTable(const LeaveTable &leaveTable, ClientHandler *const client
 {
     Player *player;
     DummyLobbyView *dummyLobbyView;
+    DummyTableView *dummyTableView;
 
     std::cout << "leaveTable" << std::endl;
 
     /* Get player */
     player = clientHandlersMap[clientHandler];
 
-    /* Join table */
+    /* Leave table */
     this->lobby.leaveTable(leaveTable.name(), player);
+
+    /* Send tableView to players in table */
+    auto table = this->lobby.getTableByName(leaveTable.name());
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 
     /* Send lobby view to all players in lobby */
     for (auto const& node : this->clientHandlersMap) {
@@ -127,17 +152,74 @@ void Model::leaveTable(const LeaveTable &leaveTable, ClientHandler *const client
 
 void Model::raise(const Raise &raise, ClientHandler *const clientHandler)
 {
+    Player *player;
+    Table *table;
+    DummyTableView *dummyTableView;
+
     std::cout << "raise" << std::endl;
+
+    player = clientHandlersMap[clientHandler];
+    table = this->lobby.getTableByPlayer(player);
+
+    if (!table->raise(player, raise.chips())) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+    }
+
+    /* Send tableView to players in table */
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 }
 
 void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
 {
+    Player *player;
+    Table *table;
+    DummyTableView *dummyTableView;
+
     std::cout << "fold" << std::endl;
+
+    player = clientHandlersMap[clientHandler];
+    table = this->lobby.getTableByPlayer(player);
+
+    if (!table->fold(player)) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+    }
+
+    /* Send tableView to players in table */
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 }
 
 void Model::call(const Call &call, ClientHandler *const clientHandler)
 {
+    Player *player;
+    Table *table;
+    DummyTableView *dummyTableView;
+
     std::cout << "call" << std::endl;
+
+    player = clientHandlersMap[clientHandler];
+    table = this->lobby.getTableByPlayer(player);
+
+    if (!table->call(player)) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+    }
+
+    /* Send tableView to players in table */
+    auto players = table->getPlayers();
+    for (auto const&tablePlayer : players) {
+        dummyTableView = table->getTableView(tablePlayer);
+        this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
 }
 
 void Model::disconnect(ClientHandler *const clientHandler)
@@ -158,9 +240,11 @@ void Model::disconnect(ClientHandler *const clientHandler)
             this->players.remove(player);
         }
 
-        /* Remove from map */
-        auto iterator = this->clientHandlersMap.find(clientHandler);
-        this->clientHandlersMap.erase(iterator);
+        /* Remove from maps */
+        auto handlersIterator = this->clientHandlersMap.find(clientHandler);
+        this->clientHandlersMap.erase(handlersIterator);
+        auto playersIterator = this->playersMap.find(player);
+        this->playersMap.erase(playersIterator);
     }
 }
 

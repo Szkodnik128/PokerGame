@@ -23,7 +23,10 @@ public:
     void leaveTable(const std::string &name, Player *player);
     void deleteTable(const std::string &name);
 
-    DummyLobbyView *getLobbyView();
+    Table *getTableByName(const std::string &name) const;
+    Table *getTableByPlayer(Player *player) const;
+
+    DummyLobbyView *getLobbyView() const;
 };
 
 

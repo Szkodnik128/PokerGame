@@ -46,7 +46,11 @@ public:
     TableStatus getTableStatus() const;
     bool addPlayer(Player *player);
 
-    DummyTableView *getTableView(Player *player);
+    bool raise(Player *player, int chips);
+    bool fold(Player *player);
+    bool call(Player *player);
+
+    DummyTableView *getTableView(Player *player) const;
 };
 
 

@@ -17,6 +17,7 @@ class Model {
 private:
     std::list<Player *> players;
     std::map<const ClientHandler *, Player *> clientHandlersMap;
+    std::map<Player *, const ClientHandler *> playersMap;
     Lobby lobby;
     Player *getUserWithName(std::string name);
 
