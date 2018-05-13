@@ -5,7 +5,7 @@
 #include "Player.h"
 
 Player::Player(const std::string &name)
-        : name(name), connected(false), playing(false), inTable(false)
+        : name(name), connected(false), playing(false), inTable(false), inGame(false), turn(false), chips(0), bet(0)
 {
 }
 
@@ -53,4 +53,28 @@ const std::tuple<Card *, Card *> &Player::getHand() const {
 
 void Player::setHand(const std::tuple<Card *, Card *> &hand) {
     this->hand = hand;
+}
+
+bool Player::isInGame() const {
+    return inGame;
+}
+
+void Player::setInGame(bool inGame) {
+    Player::inGame = inGame;
+}
+
+bool Player::isTurn() const {
+    return turn;
+}
+
+void Player::setTurn(bool turn) {
+    Player::turn = turn;
+}
+
+unsigned int Player::getBet() const {
+    return bet;
+}
+
+void Player::setBet(unsigned int bet) {
+    Player::bet = bet;
 }

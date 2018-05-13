@@ -19,11 +19,12 @@ enum DummyTableStatus {
 // Round statuses
 enum DummyRoundStatus {
     DummyRoundStatusUnknown = 0;
-    DummyRoundStatusPreFlop = 1;
-    DummyRoundStatusFlop = 2;
-    DummyRoundStatusTurn = 3;
-    DummyRoundStatusRiver = 4;
-    DummyRoundStatusEnd = 5;
+    DummyRoundStatusBegining = 1;
+    DummyRoundStatusPreFlop = 2;
+    DummyRoundStatusFlop = 3;
+    DummyRoundStatusTurn = 4;
+    DummyRoundStatusRiver = 5;
+    DummyRoundStatusEnd = 6;
 }
 
 // Card values
@@ -122,6 +123,9 @@ message DummyPlayer {
     uint32 chips = 2;
     repeated DummyCard hand = 3; // optional
     bool dealer = 4;
+    bool inGame = 5;
+    bool turn = 6;
+    uint32 bet = 7;
 }
 
 // Table informations (for Lobby View)
@@ -143,5 +147,4 @@ message DummyTableView {
     repeated DummyCard cards = 3; // optional
     uint32 pot = 4; // optional
     repeated DummyPlayer players = 5;
-    string currentPlayerName = 6; // optional
 }

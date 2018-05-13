@@ -15,9 +15,9 @@ class Client(object):
     def __init__(self):
         self.command_map = {
             'login': self.login,
-            'create_table': self.create_table,
-            'join_table': self.join_table,
-            'leave_table': self.leave_table,
+            'create': self.create_table,
+            'join': self.join_table,
+            'leave': self.leave_table,
             'raise': self.raise_pot,
             'fold': self.fold,
             'call': self.call,

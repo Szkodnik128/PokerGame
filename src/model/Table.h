@@ -28,14 +28,17 @@ enum TableStatus {
  */
 enum RoundStatus {
     RoundStatusUnknown = 0,
-    RoundStatusPreFlop = 1,
-    RoundStatusFlop = 2,
-    RoundStatusTurn = 3,
-    RoundStatusRiver = 4,
-    RoundStatusEnd = 5,
+    RoundStatusBegining = 1,
+    RoundStatusPreFlop = 2,
+    RoundStatusFlop = 3,
+    RoundStatusTurn = 4,
+    RoundStatusRiver = 5,
+    RoundStatusEnd = 6,
 };
 
 class Table {
+
+    typedef void (Table::*RoundHandler)();
 
 private:
     std::string name;
@@ -51,6 +54,25 @@ private:
     std::string currentPlayerName;
     std::list<Card *>cards;
     Player *dealer;
+    int toCheck;
+
+    void dealGame();
+    void handleBegining();
+    void handlePreFlop();
+    void handleFlop();
+    void handleTurn();
+    void handleRiver();
+    void handleEnd();
+
+    void setInGameAllPlayers();
+    void dealCardsForPlayers();
+    void setDealer();
+    void payBlinds();
+    void setFirstTurn();
+
+    Player *getNextPlayer(Player *player);
+
+    std::map<RoundStatus, RoundHandler> roundHandlerMap;
 
 public:
     Table(const std::string &name, int maxPlayers);

@@ -25,10 +25,10 @@ Deck::Deck()
 
 void Deck::shuffle()
 {
-
+    /* TODO: Implement */
 }
 
-Card Deck::getCardFromTop()
+Card *Deck::getCardFromTop()
 {
     Card *card;
 
@@ -44,7 +44,7 @@ Card Deck::getCardFromTop()
     /* Add card to taken list */
     this->taken.push_front(card);
 
-    return *card;
+    return card;
 }
 
 size_t Deck::getDeckSize()

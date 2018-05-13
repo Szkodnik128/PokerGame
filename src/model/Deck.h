@@ -33,7 +33,7 @@ public:
      *
      * @return card
      */
-    Card getCardFromTop();
+    Card *getCardFromTop();
 
     /**
      * Returns deck's size.

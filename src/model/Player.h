@@ -23,8 +23,14 @@ private:
     bool playing;
     /** In the table flag */
     bool inTable;
+    /** In game - player didn't fold yet */
+    bool inGame;
+    /** Turn flag */
+    bool turn;
     /** Player's hand */
     std::tuple<Card *, Card *> hand;
+    /** Player's bet */
+    unsigned int bet;
 
 public:
 
@@ -64,6 +70,12 @@ public:
     void setInTable(bool inTable);
     const std::tuple<Card *, Card *> &getHand() const;
     void setHand(const std::tuple<Card *, Card *> &hand);
+    bool isInGame() const;
+    void setInGame(bool inGame);
+    bool isTurn() const;
+    void setTurn(bool turn);
+    unsigned int getBet() const;
+    void setBet(unsigned int bet);
 };
 
 #endif //POKERGAME_PLAYER_H

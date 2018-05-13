@@ -179,11 +179,12 @@ inline bool DummyTableStatus_Parse(
 }
 enum DummyRoundStatus {
   DummyRoundStatusUnknown = 0,
-  DummyRoundStatusPreFlop = 1,
-  DummyRoundStatusFlop = 2,
-  DummyRoundStatusTurn = 3,
-  DummyRoundStatusRiver = 4,
-  DummyRoundStatusEnd = 5,
+  DummyRoundStatusBegining = 1,
+  DummyRoundStatusPreFlop = 2,
+  DummyRoundStatusFlop = 3,
+  DummyRoundStatusTurn = 4,
+  DummyRoundStatusRiver = 5,
+  DummyRoundStatusEnd = 6,
   DummyRoundStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
   DummyRoundStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
@@ -1532,6 +1533,24 @@ class DummyPlayer : public ::google::protobuf::Message /* @@protoc_insertion_poi
   bool dealer() const;
   void set_dealer(bool value);
 
+  // bool inGame = 5;
+  void clear_ingame();
+  static const int kInGameFieldNumber = 5;
+  bool ingame() const;
+  void set_ingame(bool value);
+
+  // bool turn = 6;
+  void clear_turn();
+  static const int kTurnFieldNumber = 6;
+  bool turn() const;
+  void set_turn(bool value);
+
+  // uint32 bet = 7;
+  void clear_bet();
+  static const int kBetFieldNumber = 7;
+  ::google::protobuf::uint32 bet() const;
+  void set_bet(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:DummyPlayer)
  private:
 
@@ -1540,6 +1559,9 @@ class DummyPlayer : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::internal::ArenaStringPtr name_;
   ::google::protobuf::uint32 chips_;
   bool dealer_;
+  bool ingame_;
+  bool turn_;
+  ::google::protobuf::uint32 bet_;
   mutable int _cached_size_;
   friend struct ::protobuf_Protocol_2eproto::TableStruct;
   friend void ::protobuf_Protocol_2eproto::InitDefaultsDummyPlayerImpl();
@@ -1878,20 +1900,6 @@ class DummyTableView : public ::google::protobuf::Message /* @@protoc_insertion_
   const ::google::protobuf::RepeatedPtrField< ::DummyPlayer >&
       players() const;
 
-  // string currentPlayerName = 6;
-  void clear_currentplayername();
-  static const int kCurrentPlayerNameFieldNumber = 6;
-  const ::std::string& currentplayername() const;
-  void set_currentplayername(const ::std::string& value);
-  #if LANG_CXX11
-  void set_currentplayername(::std::string&& value);
-  #endif
-  void set_currentplayername(const char* value);
-  void set_currentplayername(const char* value, size_t size);
-  ::std::string* mutable_currentplayername();
-  ::std::string* release_currentplayername();
-  void set_allocated_currentplayername(::std::string* currentplayername);
-
   // .DummyTableStatus tableStatus = 1;
   void clear_tablestatus();
   static const int kTableStatusFieldNumber = 1;
@@ -1916,7 +1924,6 @@ class DummyTableView : public ::google::protobuf::Message /* @@protoc_insertion_
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::RepeatedPtrField< ::DummyCard > cards_;
   ::google::protobuf::RepeatedPtrField< ::DummyPlayer > players_;
-  ::google::protobuf::internal::ArenaStringPtr currentplayername_;
   int tablestatus_;
   int roundstatus_;
   ::google::protobuf::uint32 pot_;
@@ -2746,6 +2753,48 @@ inline void DummyPlayer::set_dealer(bool value) {
   // @@protoc_insertion_point(field_set:DummyPlayer.dealer)
 }
 
+// bool inGame = 5;
+inline void DummyPlayer::clear_ingame() {
+  ingame_ = false;
+}
+inline bool DummyPlayer::ingame() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.inGame)
+  return ingame_;
+}
+inline void DummyPlayer::set_ingame(bool value) {
+  
+  ingame_ = value;
+  // @@protoc_insertion_point(field_set:DummyPlayer.inGame)
+}
+
+// bool turn = 6;
+inline void DummyPlayer::clear_turn() {
+  turn_ = false;
+}
+inline bool DummyPlayer::turn() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.turn)
+  return turn_;
+}
+inline void DummyPlayer::set_turn(bool value) {
+  
+  turn_ = value;
+  // @@protoc_insertion_point(field_set:DummyPlayer.turn)
+}
+
+// uint32 bet = 7;
+inline void DummyPlayer::clear_bet() {
+  bet_ = 0u;
+}
+inline ::google::protobuf::uint32 DummyPlayer::bet() const {
+  // @@protoc_insertion_point(field_get:DummyPlayer.bet)
+  return bet_;
+}
+inline void DummyPlayer::set_bet(::google::protobuf::uint32 value) {
+  
+  bet_ = value;
+  // @@protoc_insertion_point(field_set:DummyPlayer.bet)
+}
+
 // -------------------------------------------------------------------
 
 // DummyTableInfo
@@ -2969,59 +3018,6 @@ inline const ::google::protobuf::RepeatedPtrField< ::DummyPlayer >&
 DummyTableView::players() const {
   // @@protoc_insertion_point(field_list:DummyTableView.players)
   return players_;
-}
-
-// string currentPlayerName = 6;
-inline void DummyTableView::clear_currentplayername() {
-  currentplayername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& DummyTableView::currentplayername() const {
-  // @@protoc_insertion_point(field_get:DummyTableView.currentPlayerName)
-  return currentplayername_.GetNoArena();
-}
-inline void DummyTableView::set_currentplayername(const ::std::string& value) {
-  
-  currentplayername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:DummyTableView.currentPlayerName)
-}
-#if LANG_CXX11
-inline void DummyTableView::set_currentplayername(::std::string&& value) {
-  
-  currentplayername_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:DummyTableView.currentPlayerName)
-}
-#endif
-inline void DummyTableView::set_currentplayername(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  
-  currentplayername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:DummyTableView.currentPlayerName)
-}
-inline void DummyTableView::set_currentplayername(const char* value, size_t size) {
-  
-  currentplayername_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:DummyTableView.currentPlayerName)
-}
-inline ::std::string* DummyTableView::mutable_currentplayername() {
-  
-  // @@protoc_insertion_point(field_mutable:DummyTableView.currentPlayerName)
-  return currentplayername_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* DummyTableView::release_currentplayername() {
-  // @@protoc_insertion_point(field_release:DummyTableView.currentPlayerName)
-  
-  return currentplayername_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void DummyTableView::set_allocated_currentplayername(::std::string* currentplayername) {
-  if (currentplayername != NULL) {
-    
-  } else {
-    
-  }
-  currentplayername_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), currentplayername);
-  // @@protoc_insertion_point(field_set_allocated:DummyTableView.currentPlayerName)
 }
 
 #ifdef __GNUC__
