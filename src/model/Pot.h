@@ -20,7 +20,7 @@ public:
      * Returns pot's chips;
      * @return pot's chips
      */
-    unsigned int getChips();
+    unsigned int getChips() const;
 
     /**
      * Adds chips to pot.

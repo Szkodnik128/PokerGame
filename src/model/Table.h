@@ -23,16 +23,34 @@ enum TableStatus {
     TableStatusGameEnded = 3,
 };
 
+/**
+ * Round statuses
+ */
+enum RoundStatus {
+    RoundStatusUnknown = 0,
+    RoundStatusPreFlop = 1,
+    RoundStatusFlop = 2,
+    RoundStatusTurn = 3,
+    RoundStatusRiver = 4,
+    RoundStatusEnd = 5,
+};
+
 class Table {
 
 private:
     std::string name;
     std::list<Player *>players;
-    Deck deck;
-    Pot pot;
     int maxPlayers;
     int currentPlayers;
     enum TableStatus tableStatus;
+
+    /* Valid only when table is in game */
+    enum RoundStatus roundStatus;
+    Deck deck;
+    Pot pot;
+    std::string currentPlayerName;
+    std::list<Card *>cards;
+    Player *dealer;
 
 public:
     Table(const std::string &name, int maxPlayers);

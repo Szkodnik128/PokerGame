@@ -10,7 +10,7 @@ Pot::Pot()
     this->chips = 0;
 }
 
-unsigned int Pot::getChips()
+unsigned int Pot::getChips() const
 {
     return this->chips;
 }

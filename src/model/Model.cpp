@@ -246,6 +246,8 @@ void Model::disconnect(ClientHandler *const clientHandler)
         auto playersIterator = this->playersMap.find(player);
         this->playersMap.erase(playersIterator);
     }
+
+    /* TODO: Remove player from table etc. */
 }
 
 Player *Model::getUserWithName(std::string name)

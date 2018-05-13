@@ -485,7 +485,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyPlayer, username_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyPlayer, name_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyPlayer, chips_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyPlayer, hand_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyPlayer, dealer_),
@@ -511,8 +511,9 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, tablestatus_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, roundstatus_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, cards_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, pots_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, pot_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, players_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::DummyTableView, currentplayername_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Request)},
@@ -585,43 +586,44 @@ void AddDescriptorsImpl() {
       "\014\n\004name\030\001 \001(\t\"\026\n\005Raise\022\r\n\005chips\030\001 \001(\005\"\006\n"
       "\004Fold\"\006\n\004Call\"Q\n\tDummyCard\022\"\n\tcardValue\030"
       "\001 \001(\0162\017.DummyCardValue\022 \n\010cardSuit\030\002 \001(\016"
-      "2\016.DummyCardSuit\"X\n\013DummyPlayer\022\020\n\010usern"
-      "ame\030\001 \001(\t\022\r\n\005chips\030\002 \001(\r\022\030\n\004hand\030\003 \003(\0132\n"
-      ".DummyCard\022\016\n\006dealer\030\004 \001(\010\"C\n\016DummyTable"
-      "Info\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001(\r\022\017"
-      "\n\007players\030\003 \001(\r\"1\n\016DummyLobbyView\022\037\n\006tab"
-      "les\030\001 \003(\0132\017.DummyTableInfo\"\250\001\n\016DummyTabl"
-      "eView\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTableS"
-      "tatus\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRoundS"
-      "tatus\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\014\n\004pots"
-      "\030\004 \003(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*_\n"
-      "\005Error\022\020\n\014ErrorSuccess\020\000\022\025\n\021ErrorWrongMe"
-      "ssage\020\001\022\025\n\021ErrorInvalidValue\020\002\022\026\n\022ErrorI"
-      "nternalError\020\003*\231\001\n\020DummyTableStatus\022\033\n\027D"
-      "ummyTableStatusUnknown\020\000\022%\n!DummyTableSt"
-      "atusWaitingForPlayers\020\001\022\"\n\036DummyTableSta"
-      "tusGameInProgress\020\002\022\035\n\031DummyTableStatusG"
-      "ameEnded\020\003*\264\001\n\020DummyRoundStatus\022\033\n\027Dummy"
-      "RoundStatusUnknown\020\000\022\033\n\027DummyRoundStatus"
-      "PreFlop\020\001\022\030\n\024DummyRoundStatusFlop\020\002\022\030\n\024D"
-      "ummyRoundStatusTurn\020\003\022\031\n\025DummyRoundStatu"
-      "sRiver\020\004\022\027\n\023DummyRoundStatusEnd\020\005*\342\002\n\016Du"
-      "mmyCardValue\022\030\n\024DummyCardValueUnkown\020\000\022\025"
-      "\n\021DummyCardValueTwo\020\002\022\027\n\023DummyCardValueT"
-      "hree\020\003\022\026\n\022DummyCardValueFour\020\004\022\026\n\022DummyC"
-      "ardValueFive\020\005\022\025\n\021DummyCardValueSix\020\006\022\027\n"
-      "\023DummyCardValueSeven\020\007\022\027\n\023DummyCardValue"
-      "Eight\020\010\022\026\n\022DummyCardValueNine\020\t\022\025\n\021Dummy"
-      "CardValueTen\020\n\022\026\n\022DummyCardValueJack\020\013\022\027"
-      "\n\023DummyCardValueQueen\020\014\022\026\n\022DummyCardValu"
-      "eKing\020\r\022\025\n\021DummyCardValueAce\020\016*\215\001\n\rDummy"
-      "CardSuit\022\027\n\023DummyCardSuitUnkown\020\000\022\027\n\023Dum"
-      "myCardSuitSpades\020\001\022\027\n\023DummyCardSuitHeart"
-      "s\020\002\022\031\n\025DummyCardSuitDiamonds\020\003\022\026\n\022DummyC"
-      "ardSuitClubs\020\004b\006proto3"
+      "2\016.DummyCardSuit\"T\n\013DummyPlayer\022\014\n\004name\030"
+      "\001 \001(\t\022\r\n\005chips\030\002 \001(\r\022\030\n\004hand\030\003 \003(\0132\n.Dum"
+      "myCard\022\016\n\006dealer\030\004 \001(\010\"C\n\016DummyTableInfo"
+      "\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001(\r\022\017\n\007pl"
+      "ayers\030\003 \001(\r\"1\n\016DummyLobbyView\022\037\n\006tables\030"
+      "\001 \003(\0132\017.DummyTableInfo\"\302\001\n\016DummyTableVie"
+      "w\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTableStatu"
+      "s\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRoundStatu"
+      "s\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\013\n\003pot\030\004 \001("
+      "\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer\022\031\n\021curr"
+      "entPlayerName\030\006 \001(\t*_\n\005Error\022\020\n\014ErrorSuc"
+      "cess\020\000\022\025\n\021ErrorWrongMessage\020\001\022\025\n\021ErrorIn"
+      "validValue\020\002\022\026\n\022ErrorInternalError\020\003*\231\001\n"
+      "\020DummyTableStatus\022\033\n\027DummyTableStatusUnk"
+      "nown\020\000\022%\n!DummyTableStatusWaitingForPlay"
+      "ers\020\001\022\"\n\036DummyTableStatusGameInProgress\020"
+      "\002\022\035\n\031DummyTableStatusGameEnded\020\003*\264\001\n\020Dum"
+      "myRoundStatus\022\033\n\027DummyRoundStatusUnknown"
+      "\020\000\022\033\n\027DummyRoundStatusPreFlop\020\001\022\030\n\024Dummy"
+      "RoundStatusFlop\020\002\022\030\n\024DummyRoundStatusTur"
+      "n\020\003\022\031\n\025DummyRoundStatusRiver\020\004\022\027\n\023DummyR"
+      "oundStatusEnd\020\005*\342\002\n\016DummyCardValue\022\030\n\024Du"
+      "mmyCardValueUnkown\020\000\022\025\n\021DummyCardValueTw"
+      "o\020\002\022\027\n\023DummyCardValueThree\020\003\022\026\n\022DummyCar"
+      "dValueFour\020\004\022\026\n\022DummyCardValueFive\020\005\022\025\n\021"
+      "DummyCardValueSix\020\006\022\027\n\023DummyCardValueSev"
+      "en\020\007\022\027\n\023DummyCardValueEight\020\010\022\026\n\022DummyCa"
+      "rdValueNine\020\t\022\025\n\021DummyCardValueTen\020\n\022\026\n\022"
+      "DummyCardValueJack\020\013\022\027\n\023DummyCardValueQu"
+      "een\020\014\022\026\n\022DummyCardValueKing\020\r\022\025\n\021DummyCa"
+      "rdValueAce\020\016*\215\001\n\rDummyCardSuit\022\027\n\023DummyC"
+      "ardSuitUnkown\020\000\022\027\n\023DummyCardSuitSpades\020\001"
+      "\022\027\n\023DummyCardSuitHearts\020\002\022\031\n\025DummyCardSu"
+      "itDiamonds\020\003\022\026\n\022DummyCardSuitClubs\020\004b\006pr"
+      "oto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 1942);
+      descriptor, 1964);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Protocol.proto", &protobuf_RegisterTypes);
 }
@@ -3765,7 +3767,7 @@ void DummyCard::InternalSwap(DummyCard* other) {
 void DummyPlayer::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DummyPlayer::kUsernameFieldNumber;
+const int DummyPlayer::kNameFieldNumber;
 const int DummyPlayer::kChipsFieldNumber;
 const int DummyPlayer::kHandFieldNumber;
 const int DummyPlayer::kDealerFieldNumber;
@@ -3785,9 +3787,9 @@ DummyPlayer::DummyPlayer(const DummyPlayer& from)
       hand_(from.hand_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.username().size() > 0) {
-    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.name().size() > 0) {
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   ::memcpy(&chips_, &from.chips_,
     static_cast<size_t>(reinterpret_cast<char*>(&dealer_) -
@@ -3796,7 +3798,7 @@ DummyPlayer::DummyPlayer(const DummyPlayer& from)
 }
 
 void DummyPlayer::SharedCtor() {
-  username_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&chips_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&dealer_) -
       reinterpret_cast<char*>(&chips_)) + sizeof(dealer_));
@@ -3809,7 +3811,7 @@ DummyPlayer::~DummyPlayer() {
 }
 
 void DummyPlayer::SharedDtor() {
-  username_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void DummyPlayer::SetCachedSize(int size) const {
@@ -3842,7 +3844,7 @@ void DummyPlayer::Clear() {
   (void) cached_has_bits;
 
   hand_.Clear();
-  username_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&chips_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&dealer_) -
       reinterpret_cast<char*>(&chips_)) + sizeof(dealer_));
@@ -3859,16 +3861,16 @@ bool DummyPlayer::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // string username = 1;
+      // string name = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_username()));
+                input, this->mutable_name()));
           DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-            this->username().data(), static_cast<int>(this->username().length()),
+            this->name().data(), static_cast<int>(this->name().length()),
             ::google::protobuf::internal::WireFormatLite::PARSE,
-            "DummyPlayer.username"));
+            "DummyPlayer.name"));
         } else {
           goto handle_unusual;
         }
@@ -3940,14 +3942,14 @@ void DummyPlayer::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string username = 1;
-  if (this->username().size() > 0) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->username().data(), static_cast<int>(this->username().length()),
+      this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "DummyPlayer.username");
+      "DummyPlayer.name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      1, this->username(), output);
+      1, this->name(), output);
   }
 
   // uint32 chips = 2;
@@ -3981,15 +3983,15 @@ void DummyPlayer::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string username = 1;
-  if (this->username().size() > 0) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-      this->username().data(), static_cast<int>(this->username().length()),
+      this->name().data(), static_cast<int>(this->name().length()),
       ::google::protobuf::internal::WireFormatLite::SERIALIZE,
-      "DummyPlayer.username");
+      "DummyPlayer.name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->username(), target);
+        1, this->name(), target);
   }
 
   // uint32 chips = 2;
@@ -4038,11 +4040,11 @@ size_t DummyPlayer::ByteSizeLong() const {
     }
   }
 
-  // string username = 1;
-  if (this->username().size() > 0) {
+  // string name = 1;
+  if (this->name().size() > 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->username());
+        this->name());
   }
 
   // uint32 chips = 2;
@@ -4087,9 +4089,9 @@ void DummyPlayer::MergeFrom(const DummyPlayer& from) {
   (void) cached_has_bits;
 
   hand_.MergeFrom(from.hand_);
-  if (from.username().size() > 0) {
+  if (from.name().size() > 0) {
 
-    username_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.username_);
+    name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.name_);
   }
   if (from.chips() != 0) {
     set_chips(from.chips());
@@ -4124,7 +4126,7 @@ void DummyPlayer::Swap(DummyPlayer* other) {
 void DummyPlayer::InternalSwap(DummyPlayer* other) {
   using std::swap;
   hand_.InternalSwap(&other->hand_);
-  username_.Swap(&other->username_);
+  name_.Swap(&other->name_);
   swap(chips_, other->chips_);
   swap(dealer_, other->dealer_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -4723,8 +4725,9 @@ void DummyTableView::InitAsDefaultInstance() {
 const int DummyTableView::kTableStatusFieldNumber;
 const int DummyTableView::kRoundStatusFieldNumber;
 const int DummyTableView::kCardsFieldNumber;
-const int DummyTableView::kPotsFieldNumber;
+const int DummyTableView::kPotFieldNumber;
 const int DummyTableView::kPlayersFieldNumber;
+const int DummyTableView::kCurrentPlayerNameFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 DummyTableView::DummyTableView()
@@ -4739,20 +4742,24 @@ DummyTableView::DummyTableView(const DummyTableView& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       cards_(from.cards_),
-      pots_(from.pots_),
       players_(from.players_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  currentplayername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.currentplayername().size() > 0) {
+    currentplayername_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.currentplayername_);
+  }
   ::memcpy(&tablestatus_, &from.tablestatus_,
-    static_cast<size_t>(reinterpret_cast<char*>(&roundstatus_) -
-    reinterpret_cast<char*>(&tablestatus_)) + sizeof(roundstatus_));
+    static_cast<size_t>(reinterpret_cast<char*>(&pot_) -
+    reinterpret_cast<char*>(&tablestatus_)) + sizeof(pot_));
   // @@protoc_insertion_point(copy_constructor:DummyTableView)
 }
 
 void DummyTableView::SharedCtor() {
+  currentplayername_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&tablestatus_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&roundstatus_) -
-      reinterpret_cast<char*>(&tablestatus_)) + sizeof(roundstatus_));
+      reinterpret_cast<char*>(&pot_) -
+      reinterpret_cast<char*>(&tablestatus_)) + sizeof(pot_));
   _cached_size_ = 0;
 }
 
@@ -4762,6 +4769,7 @@ DummyTableView::~DummyTableView() {
 }
 
 void DummyTableView::SharedDtor() {
+  currentplayername_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void DummyTableView::SetCachedSize(int size) const {
@@ -4794,11 +4802,11 @@ void DummyTableView::Clear() {
   (void) cached_has_bits;
 
   cards_.Clear();
-  pots_.Clear();
   players_.Clear();
+  currentplayername_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&tablestatus_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&roundstatus_) -
-      reinterpret_cast<char*>(&tablestatus_)) + sizeof(roundstatus_));
+      reinterpret_cast<char*>(&pot_) -
+      reinterpret_cast<char*>(&tablestatus_)) + sizeof(pot_));
   _internal_metadata_.Clear();
 }
 
@@ -4853,19 +4861,14 @@ bool DummyTableView::MergePartialFromCodedStream(
         break;
       }
 
-      // repeated uint32 pots = 4;
+      // uint32 pot = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, this->mutable_pots())));
-        } else if (
-            static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(32u /* 32 & 0xFF */)) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitiveNoInline<
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 1, 34u, input, this->mutable_pots())));
+                 input, &pot_)));
         } else {
           goto handle_unusual;
         }
@@ -4877,6 +4880,22 @@ bool DummyTableView::MergePartialFromCodedStream(
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_players()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // string currentPlayerName = 6;
+      case 6: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_currentplayername()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->currentplayername().data(), static_cast<int>(this->currentplayername().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "DummyTableView.currentPlayerName"));
         } else {
           goto handle_unusual;
         }
@@ -4928,15 +4947,9 @@ void DummyTableView::SerializeWithCachedSizes(
       3, this->cards(static_cast<int>(i)), output);
   }
 
-  // repeated uint32 pots = 4;
-  if (this->pots_size() > 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteTag(4, ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED, output);
-    output->WriteVarint32(static_cast< ::google::protobuf::uint32>(
-        _pots_cached_byte_size_));
-  }
-  for (int i = 0, n = this->pots_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32NoTag(
-      this->pots(i), output);
+  // uint32 pot = 4;
+  if (this->pot() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(4, this->pot(), output);
   }
 
   // repeated .DummyPlayer players = 5;
@@ -4944,6 +4957,16 @@ void DummyTableView::SerializeWithCachedSizes(
       n = static_cast<unsigned int>(this->players_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->players(static_cast<int>(i)), output);
+  }
+
+  // string currentPlayerName = 6;
+  if (this->currentplayername().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->currentplayername().data(), static_cast<int>(this->currentplayername().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "DummyTableView.currentPlayerName");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      6, this->currentplayername(), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -4980,17 +5003,9 @@ void DummyTableView::SerializeWithCachedSizes(
         3, this->cards(static_cast<int>(i)), deterministic, target);
   }
 
-  // repeated uint32 pots = 4;
-  if (this->pots_size() > 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteTagToArray(
-      4,
-      ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED,
-      target);
-    target = ::google::protobuf::io::CodedOutputStream::WriteVarint32ToArray(
-        static_cast< ::google::protobuf::int32>(
-            _pots_cached_byte_size_), target);
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteUInt32NoTagToArray(this->pots_, target);
+  // uint32 pot = 4;
+  if (this->pot() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(4, this->pot(), target);
   }
 
   // repeated .DummyPlayer players = 5;
@@ -4999,6 +5014,17 @@ void DummyTableView::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
         5, this->players(static_cast<int>(i)), deterministic, target);
+  }
+
+  // string currentPlayerName = 6;
+  if (this->currentplayername().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->currentplayername().data(), static_cast<int>(this->currentplayername().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "DummyTableView.currentPlayerName");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->currentplayername(), target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -5029,22 +5055,6 @@ size_t DummyTableView::ByteSizeLong() const {
     }
   }
 
-  // repeated uint32 pots = 4;
-  {
-    size_t data_size = ::google::protobuf::internal::WireFormatLite::
-      UInt32Size(this->pots_);
-    if (data_size > 0) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-            static_cast< ::google::protobuf::int32>(data_size));
-    }
-    int cached_size = ::google::protobuf::internal::ToCachedSize(data_size);
-    GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-    _pots_cached_byte_size_ = cached_size;
-    GOOGLE_SAFE_CONCURRENT_WRITES_END();
-    total_size += data_size;
-  }
-
   // repeated .DummyPlayer players = 5;
   {
     unsigned int count = static_cast<unsigned int>(this->players_size());
@@ -5054,6 +5064,13 @@ size_t DummyTableView::ByteSizeLong() const {
         ::google::protobuf::internal::WireFormatLite::MessageSize(
           this->players(static_cast<int>(i)));
     }
+  }
+
+  // string currentPlayerName = 6;
+  if (this->currentplayername().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->currentplayername());
   }
 
   // .DummyTableStatus tableStatus = 1;
@@ -5066,6 +5083,13 @@ size_t DummyTableView::ByteSizeLong() const {
   if (this->roundstatus() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->roundstatus());
+  }
+
+  // uint32 pot = 4;
+  if (this->pot() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->pot());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -5098,13 +5122,19 @@ void DummyTableView::MergeFrom(const DummyTableView& from) {
   (void) cached_has_bits;
 
   cards_.MergeFrom(from.cards_);
-  pots_.MergeFrom(from.pots_);
   players_.MergeFrom(from.players_);
+  if (from.currentplayername().size() > 0) {
+
+    currentplayername_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.currentplayername_);
+  }
   if (from.tablestatus() != 0) {
     set_tablestatus(from.tablestatus());
   }
   if (from.roundstatus() != 0) {
     set_roundstatus(from.roundstatus());
+  }
+  if (from.pot() != 0) {
+    set_pot(from.pot());
   }
 }
 
@@ -5133,10 +5163,11 @@ void DummyTableView::Swap(DummyTableView* other) {
 void DummyTableView::InternalSwap(DummyTableView* other) {
   using std::swap;
   cards_.InternalSwap(&other->cards_);
-  pots_.InternalSwap(&other->pots_);
   players_.InternalSwap(&other->players_);
+  currentplayername_.Swap(&other->currentplayername_);
   swap(tablestatus_, other->tablestatus_);
   swap(roundstatus_, other->roundstatus_);
+  swap(pot_, other->pot_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

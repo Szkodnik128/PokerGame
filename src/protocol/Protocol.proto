@@ -118,7 +118,7 @@ message DummyCard {
 
 // Player
 message DummyPlayer {
-    string username = 1;
+    string name = 1;
     uint32 chips = 2;
     repeated DummyCard hand = 3; // optional
     bool dealer = 4;
@@ -141,6 +141,7 @@ message DummyTableView {
     DummyTableStatus tableStatus = 1;
     DummyRoundStatus roundStatus = 2;
     repeated DummyCard cards = 3; // optional
-    repeated uint32 pots = 4; // optional
+    uint32 pot = 4; // optional
     repeated DummyPlayer players = 5;
+    string currentPlayerName = 6; // optional
 }
