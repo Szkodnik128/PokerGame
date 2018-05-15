@@ -61,7 +61,7 @@ message Request {
         CreateTable createTable = 2;
         JoinTable joinTable = 3;
         LeaveTable leaveTable = 4;
-        Raise raise = 5;
+        Raise raise_bet = 5;
         Fold fold = 6;
         Call call = 7;
     }

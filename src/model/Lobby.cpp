@@ -64,5 +64,11 @@ Table *Lobby::getTableByName(const std::string &name) const
 
 Table *Lobby::getTableByPlayer(Player *player) const
 {
-    return this->playersMap.at(player);
+    for (auto const& [tablePlayer, table] : this->playersMap) {
+        if (tablePlayer == player) {
+            return table;
+        }
+    }
+
+    return nullptr;
 }

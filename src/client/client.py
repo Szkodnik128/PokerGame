@@ -15,10 +15,10 @@ class Client(object):
     def __init__(self):
         self.command_map = {
             'login': self.login,
-            'create': self.create_table,
-            'join': self.join_table,
-            'leave': self.leave_table,
-            'raise': self.raise_pot,
+            'create': self.create,
+            'join': self.join,
+            'leave': self.leave,
+            'raise': self.raise_bet,
             'fold': self.fold,
             'call': self.call,
         }
@@ -73,7 +73,7 @@ class Client(object):
 
         return msg.SerializeToString()
 
-    def create_table(self):
+    def create(self):
         table_name = raw_input('Table name = ')
         max_players = int(raw_input('Max players = '))
 
@@ -81,24 +81,30 @@ class Client(object):
 
         return msg.SerializeToString()
 
-    def join_table(self):
+    def join(self):
         table_name = raw_input('Table name = ')
 
         msg = Protocol_pb2.Request(joinTable=Protocol_pb2.JoinTable(name=table_name))
 
         return msg.SerializeToString()
 
-    def leave_table(self):
+    def leave(self):
         pass
 
-    def raise_pot(self):
-        pass
+    def raise_bet(self):
+        msg = Protocol_pb2.Request(raise_bet=Protocol_pb2.Raise())
+
+        return msg.SerializeToString()
 
     def fold(self):
-        pass
+        msg = Protocol_pb2.Request(fold=Protocol_pb2.Fold())
+
+        return msg.SerializeToString()
 
     def call(self):
-        pass
+        msg = Protocol_pb2.Request(call=Protocol_pb2.Call())
+
+        return msg.SerializeToString()
 
     def recv_lobby_view(self, msg):
         print('lobby view')

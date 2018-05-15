@@ -161,9 +161,14 @@ void Model::raise(const Raise &raise, ClientHandler *const clientHandler)
     player = clientHandlersMap[clientHandler];
     table = this->lobby.getTableByPlayer(player);
 
-    if (!table->raise(player, raise.chips())) {
+    if (table == nullptr) {
         /* Wrong action. Send error */
         clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
+    } else if (!table->raise(player, raise.chips())) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
     }
 
     /* Send tableView to players in table */
@@ -185,9 +190,14 @@ void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
     player = clientHandlersMap[clientHandler];
     table = this->lobby.getTableByPlayer(player);
 
-    if (!table->fold(player)) {
+    if (table == nullptr) {
         /* Wrong action. Send error */
         clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
+    } else if (!table->fold(player)) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
     }
 
     /* Send tableView to players in table */
@@ -209,9 +219,14 @@ void Model::call(const Call &call, ClientHandler *const clientHandler)
     player = clientHandlersMap[clientHandler];
     table = this->lobby.getTableByPlayer(player);
 
-    if (!table->call(player)) {
+    if (table == nullptr) {
         /* Wrong action. Send error */
         clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
+    } else if (!table->call(player)) {
+        /* Wrong action. Send error */
+        clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
     }
 
     /* Send tableView to players in table */

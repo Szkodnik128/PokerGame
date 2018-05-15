@@ -27,7 +27,7 @@ class RequestDefaultTypeInternal {
   const ::CreateTable* createtable_;
   const ::JoinTable* jointable_;
   const ::LeaveTable* leavetable_;
-  const ::Raise* raise_;
+  const ::Raise* raise_bet_;
   const ::Fold* fold_;
   const ::Call* call_;
 } _Request_default_instance_;
@@ -419,7 +419,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   offsetof(::RequestDefaultTypeInternal, createtable_),
   offsetof(::RequestDefaultTypeInternal, jointable_),
   offsetof(::RequestDefaultTypeInternal, leavetable_),
-  offsetof(::RequestDefaultTypeInternal, raise_),
+  offsetof(::RequestDefaultTypeInternal, raise_bet_),
   offsetof(::RequestDefaultTypeInternal, fold_),
   offsetof(::RequestDefaultTypeInternal, call_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::Request, payload_),
@@ -573,60 +573,60 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\016Protocol.proto\"\335\001\n\007Request\022\027\n\005login\030\001 "
+      "\n\016Protocol.proto\"\341\001\n\007Request\022\027\n\005login\030\001 "
       "\001(\0132\006.LoginH\000\022#\n\013createTable\030\002 \001(\0132\014.Cre"
       "ateTableH\000\022\037\n\tjoinTable\030\003 \001(\0132\n.JoinTabl"
-      "eH\000\022!\n\nleaveTable\030\004 \001(\0132\013.LeaveTableH\000\022\027"
-      "\n\005raise\030\005 \001(\0132\006.RaiseH\000\022\025\n\004fold\030\006 \001(\0132\005."
-      "FoldH\000\022\025\n\004call\030\007 \001(\0132\005.CallH\000B\t\n\007payload"
-      "\"x\n\010Response\022\025\n\005error\030\001 \001(\0162\006.Error\022$\n\tl"
-      "obbyView\030\002 \001(\0132\017.DummyLobbyViewH\000\022$\n\ttab"
-      "leView\030\003 \001(\0132\017.DummyTableViewH\000B\t\n\007paylo"
-      "ad\"\031\n\005Login\022\020\n\010username\030\001 \001(\t\"/\n\013CreateT"
-      "able\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001(\r\"\031"
-      "\n\tJoinTable\022\014\n\004name\030\001 \001(\t\"\032\n\nLeaveTable\022"
-      "\014\n\004name\030\001 \001(\t\"\026\n\005Raise\022\r\n\005chips\030\001 \001(\005\"\006\n"
-      "\004Fold\"\006\n\004Call\"Q\n\tDummyCard\022\"\n\tcardValue\030"
-      "\001 \001(\0162\017.DummyCardValue\022 \n\010cardSuit\030\002 \001(\016"
-      "2\016.DummyCardSuit\"\177\n\013DummyPlayer\022\014\n\004name\030"
-      "\001 \001(\t\022\r\n\005chips\030\002 \001(\r\022\030\n\004hand\030\003 \003(\0132\n.Dum"
-      "myCard\022\016\n\006dealer\030\004 \001(\010\022\016\n\006inGame\030\005 \001(\010\022\014"
-      "\n\004turn\030\006 \001(\010\022\013\n\003bet\030\007 \001(\r\"C\n\016DummyTableI"
-      "nfo\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001(\r\022\017\n"
-      "\007players\030\003 \001(\r\"1\n\016DummyLobbyView\022\037\n\006tabl"
-      "es\030\001 \003(\0132\017.DummyTableInfo\"\247\001\n\016DummyTable"
-      "View\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTableSt"
-      "atus\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRoundSt"
-      "atus\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\013\n\003pot\030\004"
-      " \001(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*_\n\005E"
-      "rror\022\020\n\014ErrorSuccess\020\000\022\025\n\021ErrorWrongMess"
-      "age\020\001\022\025\n\021ErrorInvalidValue\020\002\022\026\n\022ErrorInt"
-      "ernalError\020\003*\231\001\n\020DummyTableStatus\022\033\n\027Dum"
-      "myTableStatusUnknown\020\000\022%\n!DummyTableStat"
-      "usWaitingForPlayers\020\001\022\"\n\036DummyTableStatu"
-      "sGameInProgress\020\002\022\035\n\031DummyTableStatusGam"
-      "eEnded\020\003*\322\001\n\020DummyRoundStatus\022\033\n\027DummyRo"
-      "undStatusUnknown\020\000\022\034\n\030DummyRoundStatusBe"
-      "gining\020\001\022\033\n\027DummyRoundStatusPreFlop\020\002\022\030\n"
-      "\024DummyRoundStatusFlop\020\003\022\030\n\024DummyRoundSta"
-      "tusTurn\020\004\022\031\n\025DummyRoundStatusRiver\020\005\022\027\n\023"
-      "DummyRoundStatusEnd\020\006*\342\002\n\016DummyCardValue"
-      "\022\030\n\024DummyCardValueUnkown\020\000\022\025\n\021DummyCardV"
-      "alueTwo\020\002\022\027\n\023DummyCardValueThree\020\003\022\026\n\022Du"
-      "mmyCardValueFour\020\004\022\026\n\022DummyCardValueFive"
-      "\020\005\022\025\n\021DummyCardValueSix\020\006\022\027\n\023DummyCardVa"
-      "lueSeven\020\007\022\027\n\023DummyCardValueEight\020\010\022\026\n\022D"
-      "ummyCardValueNine\020\t\022\025\n\021DummyCardValueTen"
-      "\020\n\022\026\n\022DummyCardValueJack\020\013\022\027\n\023DummyCardV"
-      "alueQueen\020\014\022\026\n\022DummyCardValueKing\020\r\022\025\n\021D"
-      "ummyCardValueAce\020\016*\215\001\n\rDummyCardSuit\022\027\n\023"
-      "DummyCardSuitUnkown\020\000\022\027\n\023DummyCardSuitSp"
-      "ades\020\001\022\027\n\023DummyCardSuitHearts\020\002\022\031\n\025Dummy"
-      "CardSuitDiamonds\020\003\022\026\n\022DummyCardSuitClubs"
-      "\020\004b\006proto3"
+      "eH\000\022!\n\nleaveTable\030\004 \001(\0132\013.LeaveTableH\000\022\033"
+      "\n\traise_bet\030\005 \001(\0132\006.RaiseH\000\022\025\n\004fold\030\006 \001("
+      "\0132\005.FoldH\000\022\025\n\004call\030\007 \001(\0132\005.CallH\000B\t\n\007pay"
+      "load\"x\n\010Response\022\025\n\005error\030\001 \001(\0162\006.Error\022"
+      "$\n\tlobbyView\030\002 \001(\0132\017.DummyLobbyViewH\000\022$\n"
+      "\ttableView\030\003 \001(\0132\017.DummyTableViewH\000B\t\n\007p"
+      "ayload\"\031\n\005Login\022\020\n\010username\030\001 \001(\t\"/\n\013Cre"
+      "ateTable\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001"
+      "(\r\"\031\n\tJoinTable\022\014\n\004name\030\001 \001(\t\"\032\n\nLeaveTa"
+      "ble\022\014\n\004name\030\001 \001(\t\"\026\n\005Raise\022\r\n\005chips\030\001 \001("
+      "\005\"\006\n\004Fold\"\006\n\004Call\"Q\n\tDummyCard\022\"\n\tcardVa"
+      "lue\030\001 \001(\0162\017.DummyCardValue\022 \n\010cardSuit\030\002"
+      " \001(\0162\016.DummyCardSuit\"\177\n\013DummyPlayer\022\014\n\004n"
+      "ame\030\001 \001(\t\022\r\n\005chips\030\002 \001(\r\022\030\n\004hand\030\003 \003(\0132\n"
+      ".DummyCard\022\016\n\006dealer\030\004 \001(\010\022\016\n\006inGame\030\005 \001"
+      "(\010\022\014\n\004turn\030\006 \001(\010\022\013\n\003bet\030\007 \001(\r\"C\n\016DummyTa"
+      "bleInfo\022\014\n\004name\030\001 \001(\t\022\022\n\nmaxPlayers\030\002 \001("
+      "\r\022\017\n\007players\030\003 \001(\r\"1\n\016DummyLobbyView\022\037\n\006"
+      "tables\030\001 \003(\0132\017.DummyTableInfo\"\247\001\n\016DummyT"
+      "ableView\022&\n\013tableStatus\030\001 \001(\0162\021.DummyTab"
+      "leStatus\022&\n\013roundStatus\030\002 \001(\0162\021.DummyRou"
+      "ndStatus\022\031\n\005cards\030\003 \003(\0132\n.DummyCard\022\013\n\003p"
+      "ot\030\004 \001(\r\022\035\n\007players\030\005 \003(\0132\014.DummyPlayer*"
+      "_\n\005Error\022\020\n\014ErrorSuccess\020\000\022\025\n\021ErrorWrong"
+      "Message\020\001\022\025\n\021ErrorInvalidValue\020\002\022\026\n\022Erro"
+      "rInternalError\020\003*\231\001\n\020DummyTableStatus\022\033\n"
+      "\027DummyTableStatusUnknown\020\000\022%\n!DummyTable"
+      "StatusWaitingForPlayers\020\001\022\"\n\036DummyTableS"
+      "tatusGameInProgress\020\002\022\035\n\031DummyTableStatu"
+      "sGameEnded\020\003*\322\001\n\020DummyRoundStatus\022\033\n\027Dum"
+      "myRoundStatusUnknown\020\000\022\034\n\030DummyRoundStat"
+      "usBegining\020\001\022\033\n\027DummyRoundStatusPreFlop\020"
+      "\002\022\030\n\024DummyRoundStatusFlop\020\003\022\030\n\024DummyRoun"
+      "dStatusTurn\020\004\022\031\n\025DummyRoundStatusRiver\020\005"
+      "\022\027\n\023DummyRoundStatusEnd\020\006*\342\002\n\016DummyCardV"
+      "alue\022\030\n\024DummyCardValueUnkown\020\000\022\025\n\021DummyC"
+      "ardValueTwo\020\002\022\027\n\023DummyCardValueThree\020\003\022\026"
+      "\n\022DummyCardValueFour\020\004\022\026\n\022DummyCardValue"
+      "Five\020\005\022\025\n\021DummyCardValueSix\020\006\022\027\n\023DummyCa"
+      "rdValueSeven\020\007\022\027\n\023DummyCardValueEight\020\010\022"
+      "\026\n\022DummyCardValueNine\020\t\022\025\n\021DummyCardValu"
+      "eTen\020\n\022\026\n\022DummyCardValueJack\020\013\022\027\n\023DummyC"
+      "ardValueQueen\020\014\022\026\n\022DummyCardValueKing\020\r\022"
+      "\025\n\021DummyCardValueAce\020\016*\215\001\n\rDummyCardSuit"
+      "\022\027\n\023DummyCardSuitUnkown\020\000\022\027\n\023DummyCardSu"
+      "itSpades\020\001\022\027\n\023DummyCardSuitHearts\020\002\022\031\n\025D"
+      "ummyCardSuitDiamonds\020\003\022\026\n\022DummyCardSuitC"
+      "lubs\020\004b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 2010);
+      descriptor, 2014);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "Protocol.proto", &protobuf_RegisterTypes);
 }
@@ -748,7 +748,7 @@ void Request::InitAsDefaultInstance() {
       ::JoinTable::internal_default_instance());
   ::_Request_default_instance_.leavetable_ = const_cast< ::LeaveTable*>(
       ::LeaveTable::internal_default_instance());
-  ::_Request_default_instance_.raise_ = const_cast< ::Raise*>(
+  ::_Request_default_instance_.raise_bet_ = const_cast< ::Raise*>(
       ::Raise::internal_default_instance());
   ::_Request_default_instance_.fold_ = const_cast< ::Fold*>(
       ::Fold::internal_default_instance());
@@ -811,19 +811,19 @@ void Request::set_allocated_leavetable(::LeaveTable* leavetable) {
   }
   // @@protoc_insertion_point(field_set_allocated:Request.leaveTable)
 }
-void Request::set_allocated_raise(::Raise* raise) {
+void Request::set_allocated_raise_bet(::Raise* raise_bet) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   clear_payload();
-  if (raise) {
+  if (raise_bet) {
     ::google::protobuf::Arena* submessage_arena = NULL;
     if (message_arena != submessage_arena) {
-      raise = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, raise, submessage_arena);
+      raise_bet = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, raise_bet, submessage_arena);
     }
-    set_has_raise();
-    payload_.raise_ = raise;
+    set_has_raise_bet();
+    payload_.raise_bet_ = raise_bet;
   }
-  // @@protoc_insertion_point(field_set_allocated:Request.raise)
+  // @@protoc_insertion_point(field_set_allocated:Request.raise_bet)
 }
 void Request::set_allocated_fold(::Fold* fold) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
@@ -858,7 +858,7 @@ const int Request::kLoginFieldNumber;
 const int Request::kCreateTableFieldNumber;
 const int Request::kJoinTableFieldNumber;
 const int Request::kLeaveTableFieldNumber;
-const int Request::kRaiseFieldNumber;
+const int Request::kRaiseBetFieldNumber;
 const int Request::kFoldFieldNumber;
 const int Request::kCallFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
@@ -894,8 +894,8 @@ Request::Request(const Request& from)
       mutable_leavetable()->::LeaveTable::MergeFrom(from.leavetable());
       break;
     }
-    case kRaise: {
-      mutable_raise()->::Raise::MergeFrom(from.raise());
+    case kRaiseBet: {
+      mutable_raise_bet()->::Raise::MergeFrom(from.raise_bet());
       break;
     }
     case kFold: {
@@ -971,8 +971,8 @@ void Request::clear_payload() {
       delete payload_.leavetable_;
       break;
     }
-    case kRaise: {
-      delete payload_.raise_;
+    case kRaiseBet: {
+      delete payload_.raise_bet_;
       break;
     }
     case kFold: {
@@ -1059,12 +1059,12 @@ bool Request::MergePartialFromCodedStream(
         break;
       }
 
-      // .Raise raise = 5;
+      // .Raise raise_bet = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(
-               input, mutable_raise()));
+               input, mutable_raise_bet()));
         } else {
           goto handle_unusual;
         }
@@ -1145,10 +1145,10 @@ void Request::SerializeWithCachedSizes(
       4, *payload_.leavetable_, output);
   }
 
-  // .Raise raise = 5;
-  if (has_raise()) {
+  // .Raise raise_bet = 5;
+  if (has_raise_bet()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *payload_.raise_, output);
+      5, *payload_.raise_bet_, output);
   }
 
   // .Fold fold = 6;
@@ -1205,11 +1205,11 @@ void Request::SerializeWithCachedSizes(
         4, *payload_.leavetable_, deterministic, target);
   }
 
-  // .Raise raise = 5;
-  if (has_raise()) {
+  // .Raise raise_bet = 5;
+  if (has_raise_bet()) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        5, *payload_.raise_, deterministic, target);
+        5, *payload_.raise_bet_, deterministic, target);
   }
 
   // .Fold fold = 6;
@@ -1272,11 +1272,11 @@ size_t Request::ByteSizeLong() const {
           *payload_.leavetable_);
       break;
     }
-    // .Raise raise = 5;
-    case kRaise: {
+    // .Raise raise_bet = 5;
+    case kRaiseBet: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          *payload_.raise_);
+          *payload_.raise_bet_);
       break;
     }
     // .Fold fold = 6;
@@ -1343,8 +1343,8 @@ void Request::MergeFrom(const Request& from) {
       mutable_leavetable()->::LeaveTable::MergeFrom(from.leavetable());
       break;
     }
-    case kRaise: {
-      mutable_raise()->::Raise::MergeFrom(from.raise());
+    case kRaiseBet: {
+      mutable_raise_bet()->::Raise::MergeFrom(from.raise_bet());
       break;
     }
     case kFold: {

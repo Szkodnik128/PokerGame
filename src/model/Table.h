@@ -54,7 +54,7 @@ private:
     std::string currentPlayerName;
     std::list<Card *>cards;
     Player *dealer;
-    int toCheck;
+    unsigned int toCall;
 
     void dealGame();
     void handleBegining();

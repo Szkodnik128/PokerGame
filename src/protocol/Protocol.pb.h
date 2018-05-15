@@ -296,7 +296,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     kCreateTable = 2,
     kJoinTable = 3,
     kLeaveTable = 4,
-    kRaise = 5,
+    kRaiseBet = 5,
     kFold = 6,
     kCall = 7,
     PAYLOAD_NOT_SET = 0,
@@ -391,14 +391,14 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   ::LeaveTable* mutable_leavetable();
   void set_allocated_leavetable(::LeaveTable* leavetable);
 
-  // .Raise raise = 5;
-  bool has_raise() const;
-  void clear_raise();
-  static const int kRaiseFieldNumber = 5;
-  const ::Raise& raise() const;
-  ::Raise* release_raise();
-  ::Raise* mutable_raise();
-  void set_allocated_raise(::Raise* raise);
+  // .Raise raise_bet = 5;
+  bool has_raise_bet() const;
+  void clear_raise_bet();
+  static const int kRaiseBetFieldNumber = 5;
+  const ::Raise& raise_bet() const;
+  ::Raise* release_raise_bet();
+  ::Raise* mutable_raise_bet();
+  void set_allocated_raise_bet(::Raise* raise_bet);
 
   // .Fold fold = 6;
   bool has_fold() const;
@@ -425,7 +425,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   void set_has_createtable();
   void set_has_jointable();
   void set_has_leavetable();
-  void set_has_raise();
+  void set_has_raise_bet();
   void set_has_fold();
   void set_has_call();
 
@@ -440,7 +440,7 @@ class Request : public ::google::protobuf::Message /* @@protoc_insertion_point(c
     ::CreateTable* createtable_;
     ::JoinTable* jointable_;
     ::LeaveTable* leavetable_;
-    ::Raise* raise_;
+    ::Raise* raise_bet_;
     ::Fold* fold_;
     ::Call* call_;
   } payload_;
@@ -2102,44 +2102,44 @@ inline ::LeaveTable* Request::mutable_leavetable() {
   return payload_.leavetable_;
 }
 
-// .Raise raise = 5;
-inline bool Request::has_raise() const {
-  return payload_case() == kRaise;
+// .Raise raise_bet = 5;
+inline bool Request::has_raise_bet() const {
+  return payload_case() == kRaiseBet;
 }
-inline void Request::set_has_raise() {
-  _oneof_case_[0] = kRaise;
+inline void Request::set_has_raise_bet() {
+  _oneof_case_[0] = kRaiseBet;
 }
-inline void Request::clear_raise() {
-  if (has_raise()) {
-    delete payload_.raise_;
+inline void Request::clear_raise_bet() {
+  if (has_raise_bet()) {
+    delete payload_.raise_bet_;
     clear_has_payload();
   }
 }
-inline ::Raise* Request::release_raise() {
-  // @@protoc_insertion_point(field_release:Request.raise)
-  if (has_raise()) {
+inline ::Raise* Request::release_raise_bet() {
+  // @@protoc_insertion_point(field_release:Request.raise_bet)
+  if (has_raise_bet()) {
     clear_has_payload();
-      ::Raise* temp = payload_.raise_;
-    payload_.raise_ = NULL;
+      ::Raise* temp = payload_.raise_bet_;
+    payload_.raise_bet_ = NULL;
     return temp;
   } else {
     return NULL;
   }
 }
-inline const ::Raise& Request::raise() const {
-  // @@protoc_insertion_point(field_get:Request.raise)
-  return has_raise()
-      ? *payload_.raise_
+inline const ::Raise& Request::raise_bet() const {
+  // @@protoc_insertion_point(field_get:Request.raise_bet)
+  return has_raise_bet()
+      ? *payload_.raise_bet_
       : *reinterpret_cast< ::Raise*>(&::_Raise_default_instance_);
 }
-inline ::Raise* Request::mutable_raise() {
-  if (!has_raise()) {
+inline ::Raise* Request::mutable_raise_bet() {
+  if (!has_raise_bet()) {
     clear_payload();
-    set_has_raise();
-    payload_.raise_ = new ::Raise;
+    set_has_raise_bet();
+    payload_.raise_bet_ = new ::Raise;
   }
-  // @@protoc_insertion_point(field_mutable:Request.raise)
-  return payload_.raise_;
+  // @@protoc_insertion_point(field_mutable:Request.raise_bet)
+  return payload_.raise_bet_;
 }
 
 // .Fold fold = 6;

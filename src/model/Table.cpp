@@ -68,17 +68,51 @@ bool Table::addPlayer(Player *player) {
 
 bool Table::raise(Player *player, int chips)
 {
-    return false;
+    if (this->tableStatus != TableStatusGameInProgress) {
+        return false;
+    }
+
+    if (player->getChips() < chips) {
+        return false;
+    } else {
+        player->setBet(player->getBet() + chips);
+        player->setChips(player->getChips() - chips);
+    }
+
+    return true;
 }
 
 bool Table::fold(Player *player)
 {
-    return false;
+    if (this->tableStatus != TableStatusGameInProgress) {
+        return false;
+    }
+
+    player->setInGame(false);
+
+    return true;
 }
 
 bool Table::call(Player *player)
 {
-    return false;
+    unsigned int toCall;
+
+    if (this->tableStatus != TableStatusGameInProgress) {
+        return false;
+    }
+
+    toCall = this->toCall - player->getBet();
+
+    if (player->getChips() >= toCall) {
+        player->setBet(this->toCall);
+        player->setChips(player->getChips() - toCall);
+    } else {
+        player->setBet(player->getBet() + player->getChips());
+        player->setChips(0);
+
+    }
+
+    return true;
 }
 
 DummyTableView *Table::getTableView(Player *player) const
@@ -154,7 +188,7 @@ void Table::handleBegining()
     this->setDealer();
     this->payBlinds();
     this->setFirstTurn();
-    this->toCheck = 20; /* Big blind */
+    this->toCall = 20; /* Big blind */
 
     /* Change to preflop */
     this->roundStatus = RoundStatusPreFlop;

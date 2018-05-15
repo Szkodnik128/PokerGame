@@ -21,7 +21,7 @@ Controller::Controller(BlockingQueue<Event *> *const blockingQueue, Model *const
     this->messageStrategyMap[Request::PayloadCase::kCreateTable] = &Controller::messageCreateTableHandler;
     this->messageStrategyMap[Request::PayloadCase::kJoinTable] = &Controller::messageJoinTableHandler;
     this->messageStrategyMap[Request::PayloadCase::kLeaveTable] = &Controller::messageLeaveTableHandler;
-    this->messageStrategyMap[Request::PayloadCase::kRaise] = &Controller::messageRaiseHandler;
+    this->messageStrategyMap[Request::PayloadCase::kRaiseBet] = &Controller::messageRaiseHandler;
     this->messageStrategyMap[Request::PayloadCase::kFold] = &Controller::messageFoldHandler;
     this->messageStrategyMap[Request::PayloadCase::kCall] = &Controller::messageCallHandler;
 }
@@ -95,7 +95,7 @@ void Controller::messageLeaveTableHandler(const Request *const request, ClientHa
 
 void Controller::messageRaiseHandler(const Request *const request, ClientHandler *const clientHandler)
 {
-    const Raise &raise = request->raise();
+    const Raise &raise = request->raise_bet();
 
     this->model->raise(raise, clientHandler);
 }
