@@ -51,10 +51,12 @@ private:
     enum RoundStatus roundStatus;
     Deck deck;
     Pot pot;
-    std::string currentPlayerName;
     std::list<Card *>cards;
     Player *dealer;
+    Player *bigBlindPlayer;
+    Player *currentPlayer;
     unsigned int toCall;
+    bool roundCouldFinish;
 
     void dealGame();
     void handleBegining();
@@ -69,6 +71,11 @@ private:
     void setDealer();
     void payBlinds();
     void setFirstTurn();
+    bool isEverybodyFolded();
+    bool isRoundCouldFinish();
+    void setNextTurn();
+    void addBetsToPot();
+    void dealCardsToTable();
 
     Player *getNextPlayer(Player *player);
 

@@ -92,7 +92,9 @@ class Client(object):
         pass
 
     def raise_bet(self):
-        msg = Protocol_pb2.Request(raise_bet=Protocol_pb2.Raise())
+        chips = int(raw_input('Chips = '))
+
+        msg = Protocol_pb2.Request(raise_bet=Protocol_pb2.Raise(chips=chips))
 
         return msg.SerializeToString()
 

@@ -16,7 +16,6 @@ Table::Table(const std::string &name, int maxPlayers)
     this->roundHandlerMap[RoundStatusFlop] = &Table::handleFlop;
     this->roundHandlerMap[RoundStatusTurn] = &Table::handleTurn;
     this->roundHandlerMap[RoundStatusRiver] = &Table::handleRiver;
-    this->roundHandlerMap[RoundStatusEnd] = &Table::handleEnd;
 }
 
 const std::string &Table::getName() const {
@@ -72,12 +71,19 @@ bool Table::raise(Player *player, int chips)
         return false;
     }
 
+    if (player != this->currentPlayer) {
+        return false;
+    }
+
     if (player->getChips() < chips) {
         return false;
     } else {
         player->setBet(player->getBet() + chips);
         player->setChips(player->getChips() - chips);
+        this->toCall = player->getBet();
     }
+
+    this->dealGame();
 
     return true;
 }
@@ -88,7 +94,13 @@ bool Table::fold(Player *player)
         return false;
     }
 
+    if (player != this->currentPlayer) {
+        return false;
+    }
+
     player->setInGame(false);
+
+    this->dealGame();
 
     return true;
 }
@@ -98,6 +110,10 @@ bool Table::call(Player *player)
     unsigned int toCall;
 
     if (this->tableStatus != TableStatusGameInProgress) {
+        return false;
+    }
+
+    if (player != this->currentPlayer) {
         return false;
     }
 
@@ -111,6 +127,8 @@ bool Table::call(Player *player)
         player->setChips(0);
 
     }
+
+    this->dealGame();
 
     return true;
 }
@@ -165,8 +183,6 @@ DummyTableView *Table::getTableView(Player *player) const
     return dummyTableView;
 }
 
-/* Private */
-
 void Table::dealGame()
 {
     RoundHandler handler;
@@ -175,6 +191,8 @@ void Table::dealGame()
     assert(handler != nullptr);
     (this->*handler)();
 }
+
+/* Private */
 
 void Table::handleBegining()
 {
@@ -189,6 +207,7 @@ void Table::handleBegining()
     this->payBlinds();
     this->setFirstTurn();
     this->toCall = 20; /* Big blind */
+    this->roundCouldFinish = false;
 
     /* Change to preflop */
     this->roundStatus = RoundStatusPreFlop;
@@ -197,26 +216,109 @@ void Table::handleBegining()
 void Table::handlePreFlop()
 {
     std::cout << "handle preflop" << std::endl;
+
+    if (isEverybodyFolded()) {
+        this->roundStatus = RoundStatusEnd;
+        return;
+    }
+
+    if (this->currentPlayer == this->bigBlindPlayer) {
+        this->roundCouldFinish = true;
+    }
+
+    if (this->isRoundCouldFinish()) {
+        this->addBetsToPot();
+        this->toCall = 0;
+        this->setFirstTurn();
+        this->roundCouldFinish = false;
+        this->roundStatus = RoundStatusFlop;
+        this->dealCardsToTable();
+    } else {
+        this->setNextTurn();
+    }
 }
 
 void Table::handleFlop()
 {
     std::cout << "handle flop" << std::endl;
+
+    if (isEverybodyFolded()) {
+        this->roundStatus = RoundStatusEnd;
+        return;
+    }
+
+    if (this->currentPlayer == this->dealer) {
+        this->roundCouldFinish = true;
+    }
+
+    if (this->isRoundCouldFinish()) {
+        this->addBetsToPot();
+        this->toCall = 0;
+        this->setFirstTurn();
+        this->roundCouldFinish = false;
+        this->roundStatus = RoundStatusTurn;
+        this->dealCardsToTable();
+    } else {
+        this->setNextTurn();
+    }
 }
 
 void Table::handleTurn()
 {
     std::cout << "handle turn" << std::endl;
+
+    if (isEverybodyFolded()) {
+        this->roundStatus = RoundStatusEnd;
+        return;
+    }
+
+    if (this->currentPlayer == this->dealer) {
+        this->roundCouldFinish = true;
+    }
+
+    if (this->isRoundCouldFinish()) {
+        this->addBetsToPot();
+        this->toCall = 0;
+        this->setFirstTurn();
+        this->roundCouldFinish = false;
+        this->roundStatus = RoundStatusRiver;
+        this->dealCardsToTable();
+    } else {
+        this->setNextTurn();
+    }
 }
 
 void Table::handleRiver()
 {
     std::cout << "handle river" << std::endl;
+
+    if (isEverybodyFolded()) {
+        this->roundStatus = RoundStatusEnd;
+        return;
+    }
+
+    if (this->currentPlayer == this->dealer) {
+        this->roundCouldFinish = true;
+    }
+
+    if (this->isRoundCouldFinish()) {
+        this->addBetsToPot();
+        this->toCall = 0;
+        this->setFirstTurn();
+        this->roundCouldFinish = false;
+        this->roundStatus = RoundStatusEnd;
+        /* Handle end */
+        this->handleEnd();
+    } else {
+        this->setNextTurn();
+    }
 }
 
 void Table::handleEnd()
 {
     std::cout << "handle end" << std::endl;
+
+    /* TODO: select winner, prize winner, check if whole game ended, call handleBegining */
 }
 
 void Table::setInGameAllPlayers()
@@ -259,6 +361,7 @@ void Table::payBlinds()
 
     /* Big blind */
     player = this->getNextPlayer(player);
+    this->bigBlindPlayer = player;
     if (player->getChips() < 20) {
         player->setBet(player->getChips());
         player->setChips(0);
@@ -283,8 +386,11 @@ void Table::setFirstTurn()
         player = getNextPlayer(player); /* Big blind */
         player = getNextPlayer(player); /* Turn player */
         player->setTurn(true);
+        this->currentPlayer = player;
     } else {
-        this->dealer->setTurn(true);
+        player = getNextPlayer(this->dealer);
+        player->setTurn(true);
+        this->currentPlayer = player;
     }
 }
 
@@ -305,3 +411,72 @@ Player *Table::getNextPlayer(Player *player)
     return nullptr;
 }
 
+bool Table::isEverybodyFolded()
+{
+    int notFolded = 0;
+
+    for (auto &player : this->players) {
+        if (player->isInGame()) {
+            notFolded++;
+        }
+    }
+
+    if (notFolded == 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool Table::isRoundCouldFinish()
+{
+    if (this->roundCouldFinish == false) {
+        return false;
+    }
+
+    for (auto &player : this->players) {
+        if (player->getBet() != this->toCall && player->getChips() != 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void Table::setNextTurn()
+{
+    Player *player;
+
+    /* Zero turn */
+    this->currentPlayer->setTurn(false);
+
+    this->currentPlayer = this->getNextPlayer(this->currentPlayer);
+    this->currentPlayer->setTurn(true);
+}
+
+void Table::addBetsToPot()
+{
+    for (auto &player : this->players) {
+        this->pot.addChips(player->getBet());
+        player->setBet(0);
+    }
+}
+
+void Table::dealCardsToTable()
+{
+    switch (this->roundStatus) {
+        case RoundStatusFlop:
+            this->cards.insert(this->cards.end(), this->deck.getCardFromTop());
+            this->cards.insert(this->cards.end(), this->deck.getCardFromTop());
+            this->cards.insert(this->cards.end(), this->deck.getCardFromTop());
+            break;
+        case RoundStatusTurn:
+            this->cards.insert(this->cards.end(), this->deck.getCardFromTop());
+            break;
+        case RoundStatusRiver:
+            this->cards.insert(this->cards.end(), this->deck.getCardFromTop());
+            break;
+        default:
+            break;
+    }
+}
