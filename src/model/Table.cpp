@@ -18,11 +18,13 @@ Table::Table(const std::string &name, int maxPlayers)
     this->roundHandlerMap[RoundStatusRiver] = &Table::handleRiver;
 }
 
-const std::string &Table::getName() const {
+const std::string &Table::getName() const
+{
     return name;
 }
 
-const std::list<Player *> &Table::getPlayers() const {
+const std::list<Player *> &Table::getPlayers() const
+{
     return players;
 }
 
@@ -34,19 +36,23 @@ const Pot &Table::getPot() const {
     return pot;
 }
 
-int Table::getMaxPlayers() const {
+int Table::getMaxPlayers() const
+{
     return maxPlayers;
 }
 
-int Table::getCurrentPlayers() const {
+int Table::getCurrentPlayers() const
+{
     return currentPlayers;
 }
 
-TableStatus Table::getTableStatus() const {
+TableStatus Table::getTableStatus() const
+{
     return tableStatus;
 }
 
-bool Table::addPlayer(Player *player) {
+bool Table::addPlayer(Player *player)
+{
     if (this->currentPlayers == this->maxPlayers) {
         return false;
     }
@@ -385,13 +391,21 @@ void Table::setFirstTurn()
         player = getNextPlayer(this->dealer); /* Small blind */
         player = getNextPlayer(player); /* Big blind */
         player = getNextPlayer(player); /* Turn player */
-        player->setTurn(true);
         this->currentPlayer = player;
     } else {
         player = getNextPlayer(this->dealer);
-        player->setTurn(true);
         this->currentPlayer = player;
     }
+
+    /* Skip players who folded or disconnected */
+    while (this->currentPlayer->isInGame() == false || this->currentPlayer->isConnected() == false) {
+        if (this->currentPlayer->isConnected() == false) {
+            this->currentPlayer->setInGame(false);
+        }
+        this->currentPlayer = getNextPlayer(this->currentPlayer);
+    }
+
+    this->currentPlayer->setTurn(true);
 }
 
 Player *Table::getNextPlayer(Player *player)
@@ -451,6 +465,15 @@ void Table::setNextTurn()
     this->currentPlayer->setTurn(false);
 
     this->currentPlayer = this->getNextPlayer(this->currentPlayer);
+
+    /* Skip players who folded or disconnected */
+    while (this->currentPlayer->isInGame() == false || this->currentPlayer->isConnected() == false) {
+        if (this->currentPlayer->isConnected() == false) {
+            this->currentPlayer->setInGame(false);
+        }
+        this->currentPlayer = getNextPlayer(this->currentPlayer);
+    }
+
     this->currentPlayer->setTurn(true);
 }
 

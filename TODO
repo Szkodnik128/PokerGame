@@ -1,1 +1,2 @@
-- Aplikacja nie zwraca bledu gdy gracz chce dołączyc do pełnego pokoju
+- Gdy status rundy rowny jest end powinny zostac wysłane dwie makiety tableView (z end i z begin), ponieważ miedzy
+  nimi nie bedzie zadnej akcji gracza

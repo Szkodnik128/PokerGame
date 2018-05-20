@@ -18,8 +18,8 @@ private:
 
 public:
     const std::list<Table *> &getTables() const;
-    void createTable(const std::string &name, int maxPlayers);
-    void joinTable(const std::string &name, Player *player);
+    bool createTable(const std::string &name, int maxPlayers);
+    bool joinTable(const std::string &name, Player *player);
     void leaveTable(const std::string &name, Player *player);
     void deleteTable(const std::string &name);
 

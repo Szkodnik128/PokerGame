@@ -4,20 +4,33 @@
 
 #include "Lobby.h"
 
-void Lobby::createTable(const std::string &name, int maxPlayers)
+bool Lobby::createTable(const std::string &name, int maxPlayers)
 {
-    Table *table = new Table(name, maxPlayers);
+    /* Check if exists table with given name */
+    for (auto const& table : this->tables) {
+        if (table->getName() == name) {
+                return false;
+        }
+    }
+
+    auto *table = new Table(name, maxPlayers);
     this->tables.push_front(table);
+
+    return true;
 }
 
-void Lobby::joinTable(const std::string &name, Player *player)
+bool Lobby::joinTable(const std::string &name, Player *player)
 {
     for (auto const& table : this->tables) {
         if (table->getName() == name) {
-            table->addPlayer(player);
+            if (!table->addPlayer(player)) {
+                return false;
+            }
             this->playersMap[player] = table;
         }
     }
+
+    return true;
 }
 
 void Lobby::leaveTable(const std::string &name, Player *player)

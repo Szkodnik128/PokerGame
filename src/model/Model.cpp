@@ -66,10 +66,16 @@ void Model::createTable(const CreateTable &createTable, ClientHandler *const cli
     player = clientHandlersMap[clientHandler];
 
     /* Create table */
-    this->lobby.createTable(createTable.name(), createTable.maxplayers());
+    if (!this->lobby.createTable(createTable.name(), createTable.maxplayers())) {
+        clientHandler->sendError(Error::ErrorInvalidValue);
+        return;
+    }
 
     /* Add player to table */
-    this->lobby.joinTable(createTable.name(), player);
+    if (!this->lobby.joinTable(createTable.name(), player)) {
+        clientHandler->sendError(Error::ErrorInternalError);
+        return;
+    }
 
     /* Send tableView to players in table */
     auto table = this->lobby.getTableByName(createTable.name());
@@ -100,7 +106,10 @@ void Model::joinTable(const JoinTable &joinTable, ClientHandler *const clientHan
     player = clientHandlersMap[clientHandler];
 
     /* Join table */
-    this->lobby.joinTable(joinTable.name(), player);
+    if (!this->lobby.joinTable(joinTable.name(), player)) {
+        clientHandler->sendError(Error::ErrorWrongMessage);
+        return;
+    }
 
     /* Send tableView to players in table */
     auto table = this->lobby.getTableByName(joinTable.name());
