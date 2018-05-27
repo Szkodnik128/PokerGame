@@ -78,3 +78,11 @@ unsigned int Player::getBet() const {
 void Player::setBet(unsigned int bet) {
     Player::bet = bet;
 }
+
+const CardSet &Player::getCardSet() const {
+    return cardSet;
+}
+
+void Player::setCardSet(const CardSet &cardSet) {
+    Player::cardSet = cardSet;
+}

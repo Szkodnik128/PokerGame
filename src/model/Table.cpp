@@ -325,6 +325,7 @@ void Table::handleEnd()
     std::cout << "handle end" << std::endl;
 
     /* TODO: select winner, prize winner, check if whole game ended, call handleBegining */
+    this->selectWinner();
 }
 
 void Table::setInGameAllPlayers()
@@ -501,5 +502,40 @@ void Table::dealCardsToTable()
             break;
         default:
             break;
+    }
+}
+
+Player *Table::selectWinner()
+{
+    Player *winner = nullptr;
+
+    /* Set first player in game as winner */
+    for (auto &player : this->players) {
+        if (player->isInGame()) {
+            winner = player;
+        }
+    }
+
+    if (isEverybodyFolded()) {
+        return winner;
+    }
+
+    /* TODO */
+    this->checkPlayersHand();
+
+    return nullptr;
+}
+
+void Table::checkPlayersHand()
+{
+    for (auto &player : this->players) {
+        if (player->isInGame()) {
+            player->setCardSet(*this->cardAnalyzer.analyzeCardSet(this->cards, player->getHand()));
+
+            std::cout << player->getCardSet().getCardSetCategory() << std::endl;
+            for (auto &card : player->getCardSet().getCards()) {
+                std::cout << card->getCardSuit() << " " << card->getCardValue() << std::endl;
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@
 #define POKERGAME_PLAYER_H
 
 #include "Card.h"
+#include "CardSet.h"
 
 #include <string>
 #include <tuple>
@@ -31,6 +32,8 @@ private:
     std::tuple<Card *, Card *> hand;
     /** Player's bet */
     unsigned int bet;
+    /** Player's card set */
+    CardSet cardSet;
 
 public:
 
@@ -41,27 +44,10 @@ public:
      */
     Player(const std::string &name);
 
-    /**
-     * Returns player's name
-     *
-     * @return player's name
-     */
+    /* Getters and setters */
     const std::string &getName() const;
-
-    /**
-     * Sets player's chips.
-     *
-     * @param chips player's chips
-     */
     void setChips(unsigned int chips);
-
-    /**
-     * Returns player's chips.
-     *
-     * @return player's chips
-     */
     unsigned int getChips();
-
     bool isConnected() const;
     void setConnected(bool connected);
     bool isPlaying() const;
@@ -76,6 +62,8 @@ public:
     void setTurn(bool turn);
     unsigned int getBet() const;
     void setBet(unsigned int bet);
+    const CardSet &getCardSet() const;
+    void setCardSet(const CardSet &cardSet);
 };
 
 #endif //POKERGAME_PLAYER_H

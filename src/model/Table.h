@@ -8,6 +8,7 @@
 #include "Deck.h"
 #include "Pot.h"
 #include "Player.h"
+#include "CardAnalyzer.h"
 
 #include <protocol/Protocol.pb.h>
 
@@ -58,6 +59,8 @@ private:
     unsigned int toCall;
     bool roundCouldFinish;
 
+    CardAnalyzer cardAnalyzer;
+
     void dealGame();
     void handleBegining();
     void handlePreFlop();
@@ -76,6 +79,8 @@ private:
     void setNextTurn();
     void addBetsToPot();
     void dealCardsToTable();
+    Player *selectWinner();
+    void checkPlayersHand();
 
     Player *getNextPlayer(Player *player);
 
