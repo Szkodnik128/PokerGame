@@ -186,6 +186,14 @@ void Model::raise(const Raise &raise, ClientHandler *const clientHandler)
         dummyTableView = table->getTableView(tablePlayer);
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     }
+
+    if (table->getRoundStatus() == RoundStatusEnd) {
+        table->startNextRound();
+        for (auto const&tablePlayer : players) {
+            dummyTableView = table->getTableView(tablePlayer);
+            this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+        }
+    }
 }
 
 void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
@@ -215,6 +223,14 @@ void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
         dummyTableView = table->getTableView(tablePlayer);
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     }
+
+    if (table->getRoundStatus() == RoundStatusEnd) {
+        table->startNextRound();
+        for (auto const&tablePlayer : players) {
+            dummyTableView = table->getTableView(tablePlayer);
+            this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+        }
+    }
 }
 
 void Model::call(const Call &call, ClientHandler *const clientHandler)
@@ -243,6 +259,14 @@ void Model::call(const Call &call, ClientHandler *const clientHandler)
     for (auto const&tablePlayer : players) {
         dummyTableView = table->getTableView(tablePlayer);
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+    }
+
+    if (table->getRoundStatus() == RoundStatusEnd) {
+        table->startNextRound();
+        for (auto const&tablePlayer : players) {
+            dummyTableView = table->getTableView(tablePlayer);
+            this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
+        }
     }
 }
 

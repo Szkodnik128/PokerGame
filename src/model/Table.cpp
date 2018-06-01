@@ -181,12 +181,34 @@ DummyTableView *Table::getTableView(Player *player) const
             dummyCard->set_cardsuit(static_cast<DummyCardSuit>(std::get<1>(tablePlayer->getHand())->getCardSuit()));
             dummyCard->set_cardvalue(static_cast<DummyCardValue >(std::get<1>(tablePlayer->getHand())->getCardValue()));
         } else {
-            /* TODO: Show cards if roundStatus is End and player didn't fold */
+            if (roundStatus == RoundStatusEnd && tablePlayer->isInGame()) {
+                DummyCard *dummyCard;
+
+                /* First */
+                dummyCard = dummyPlayer->add_hand();
+                dummyCard->set_cardsuit(static_cast<DummyCardSuit>(std::get<0>(tablePlayer->getHand())->getCardSuit()));
+                dummyCard->set_cardvalue(static_cast<DummyCardValue >(std::get<0>(tablePlayer->getHand())->getCardValue()));
+
+                /* Second */
+                dummyCard = dummyPlayer->add_hand();
+                dummyCard->set_cardsuit(static_cast<DummyCardSuit>(std::get<1>(tablePlayer->getHand())->getCardSuit()));
+                dummyCard->set_cardvalue(static_cast<DummyCardValue >(std::get<1>(tablePlayer->getHand())->getCardValue()));
+            }
         }
 
     }
 
     return dummyTableView;
+}
+
+void Table::startNextRound()
+{
+    if (this->roundStatus != RoundStatusEnd) {
+        return;
+    }
+
+    this->roundStatus = RoundStatusBegining;
+    this->handleBegining();
 }
 
 void Table::dealGame()
@@ -204,6 +226,7 @@ void Table::handleBegining()
 {
     std::cout << "handle begining" << std::endl;
 
+    this->deck.restartDeck();
     this->deck.shuffle();
     this->pot.zeroChips(); /* It should be already zeroed */
 
@@ -225,6 +248,8 @@ void Table::handlePreFlop()
 
     if (isEverybodyFolded()) {
         this->roundStatus = RoundStatusEnd;
+        /* Handle end */
+        this->handleEnd();
         return;
     }
 
@@ -250,6 +275,8 @@ void Table::handleFlop()
 
     if (isEverybodyFolded()) {
         this->roundStatus = RoundStatusEnd;
+        /* Handle end */
+        this->handleEnd();
         return;
     }
 
@@ -275,6 +302,8 @@ void Table::handleTurn()
 
     if (isEverybodyFolded()) {
         this->roundStatus = RoundStatusEnd;
+        /* Handle end */
+        this->handleEnd();
         return;
     }
 
@@ -300,6 +329,8 @@ void Table::handleRiver()
 
     if (isEverybodyFolded()) {
         this->roundStatus = RoundStatusEnd;
+        /* Handle end */
+        this->handleEnd();
         return;
     }
 
@@ -322,10 +353,13 @@ void Table::handleRiver()
 
 void Table::handleEnd()
 {
+    Player *winner;
+
     std::cout << "handle end" << std::endl;
 
-    /* TODO: select winner, prize winner, check if whole game ended, call handleBegining */
-    this->selectWinner();
+    this->addBetsToPot();
+    winner = this->selectWinner();
+    payPrize(winner);
 }
 
 void Table::setInGameAllPlayers()
@@ -460,8 +494,6 @@ bool Table::isRoundCouldFinish()
 
 void Table::setNextTurn()
 {
-    Player *player;
-
     /* Zero turn */
     this->currentPlayer->setTurn(false);
 
@@ -520,10 +552,17 @@ Player *Table::selectWinner()
         return winner;
     }
 
-    /* TODO */
     this->checkPlayersHand();
 
-    return nullptr;
+    for (auto &player : this->players) {
+        if (player->isInGame()) {
+            if (winner->getCardSet() < player->getCardSet()) {
+                winner = player;
+            }
+        }
+    }
+
+    return winner;
 }
 
 void Table::checkPlayersHand()
@@ -531,11 +570,23 @@ void Table::checkPlayersHand()
     for (auto &player : this->players) {
         if (player->isInGame()) {
             player->setCardSet(*this->cardAnalyzer.analyzeCardSet(this->cards, player->getHand()));
-
-            std::cout << player->getCardSet().getCardSetCategory() << std::endl;
-            for (auto &card : player->getCardSet().getCards()) {
-                std::cout << card->getCardSuit() << " " << card->getCardValue() << std::endl;
-            }
         }
     }
+}
+
+void Table::payPrize(Player *player)
+{
+    player->setChips(player->getChips() + this->pot.getChips());
+    this->pot.zeroChips();
+}
+
+void Table::removeCards()
+{
+    while (!this->cards.empty()) {
+        this->cards.pop_front();
+    }
+}
+
+RoundStatus Table::getRoundStatus() const {
+    return roundStatus;
 }

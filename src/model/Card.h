@@ -28,7 +28,7 @@ enum CardValue {
  * Card suits.
  */
 enum CardSuit {
-    SPADES = 0,
+    SPADES = 1,
     HEARTS,
     DIAMONDS,
     CLUBS
@@ -74,7 +74,7 @@ public:
      * @param card          card
      * @return true if equal to card
      */
-    bool operator==(const Card &card);
+    bool operator==(const Card &card) const;
 
     /**
      * Overloads '<' operator.
@@ -82,7 +82,7 @@ public:
      * @param card          card
      * @return true if lesser than card
      */
-    bool operator<(const Card &card);
+    bool operator<(const Card &card) const;
 
     /**
      * Overloads '>' operator.
@@ -90,7 +90,7 @@ public:
      * @param card          card
      * @return true if greater than card
      */
-    bool operator>(const Card &card);
+    bool operator>(const Card &card) const;
 
     /**
      * Overloads '<=' operator.
@@ -98,7 +98,7 @@ public:
      * @param card          card
      * @return true if lesser or equal to card
      */
-    bool operator<=(const Card &card);
+    bool operator<=(const Card &card) const;
 
     /**
      * Overloads '>=' operator.
@@ -106,7 +106,15 @@ public:
      * @param card          card
      * @return true if greater or equal to card
      */
-    bool operator>=(const Card &card);
+    bool operator>=(const Card &card) const;
+
+    /**
+     * Overloads '!=' operator.
+     *
+     * @param card          card
+     * @return true if greater or equal to card
+     */
+    bool operator!=(const Card &card) const;
 };
 
 

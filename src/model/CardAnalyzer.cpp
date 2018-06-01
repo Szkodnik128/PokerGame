@@ -118,7 +118,7 @@ bool CardAnalyzer::isFourOfAKind(CardSet *cardSet)
         }
     }
 
-
+    cardSet->setFourOfAKindCard(fourOfAKindCard);
     return true;
 }
 
@@ -155,6 +155,8 @@ bool CardAnalyzer::isFullHouse(CardSet *cardSet)
         cardSet->removeCard(card);
     }
 
+    cardSet->setFirstPairCard(pairCard);
+    cardSet->setThreeOfAKindCard(threeOfAKindCard);
     return true;
 }
 
@@ -242,6 +244,7 @@ bool CardAnalyzer::isThreeOfAKind(CardSet *cardSet)
         }
     }
 
+    cardSet->setThreeOfAKindCard(threeOfAKindCard);
     return true;
 }
 
@@ -284,6 +287,8 @@ bool CardAnalyzer::isTwoPairs(CardSet *cardSet)
         }
     }
 
+    cardSet->setFirstPairCard(firstPairCard);
+    cardSet->setSecondPairCard(secondPairCard);
     return true;
 }
 
@@ -313,6 +318,7 @@ bool CardAnalyzer::isPair(CardSet *cardSet)
         }
     }
 
+    cardSet->setFirstPairCard(pairCard);
     return true;
 }
 

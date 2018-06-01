@@ -41,6 +41,11 @@ public:
      * @return deck's size
      */
     size_t getDeckSize();
+
+    /**
+     * Restarts deck
+     */
+    void restartDeck();
 };
 
 

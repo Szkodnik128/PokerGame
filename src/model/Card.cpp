@@ -18,27 +18,32 @@ CardSuit Card::getCardSuit()
     return this->cardSuit;
 }
 
-bool Card::operator==(const Card& card)
+bool Card::operator==(const Card& card) const
 {
     return this->cardValue == card.cardValue;
 }
 
-bool Card::operator<(const Card& card)
+bool Card::operator<(const Card& card) const
 {
     return this->cardValue < card.cardValue;
 }
 
-bool Card::operator>(const Card &card)
+bool Card::operator>(const Card &card) const
 {
     return this->cardValue > card.cardValue;
 }
 
-bool Card::operator<=(const Card &card)
+bool Card::operator<=(const Card &card) const
 {
     return this->cardValue <= card.cardValue;
 }
 
-bool Card::operator>=(const Card &card)
+bool Card::operator>=(const Card &card) const
 {
     return this->cardValue >= card.cardValue;
+}
+
+bool Card::operator!=(const Card &card) const
+{
+    return this->cardValue != card.cardValue;
 }

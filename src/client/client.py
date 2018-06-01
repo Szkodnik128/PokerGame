@@ -4,11 +4,16 @@ from transport import Transport
 import Protocol_pb2
 
 import thread
+import os
 
 
 HOST = "localhost"
 PORT = 9988
 
+CLUBS = u"\u2663"
+HEARTS = u"\033[91m\u2665\033[0m"
+DIAMONDS = u"\033[91m\u2666\033[0m"
+SPADES = u"\u2660"
 
 class Client(object):
 
@@ -21,6 +26,46 @@ class Client(object):
             'raise': self.raise_bet,
             'fold': self.fold,
             'call': self.call,
+        }
+
+        self.card_suit_map = {
+            1: SPADES,
+            2: HEARTS,
+            3: DIAMONDS,
+            4: CLUBS,
+        }
+
+        self.card_value_map = {
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5',
+            6: '6',
+            7: '7',
+            8: '8',
+            9: '9',
+            10: '10',
+            11: 'J',
+            12: 'Q',
+            13: 'K',
+            14: 'A',
+        }
+
+        self.round_status_map = {
+            0: 'Unknown',
+            1: 'Begining',
+            2: 'Preflop',
+            3: 'Flop',
+            4: 'Turn',
+            5: 'River',
+            6: 'End',
+        }
+
+        self.table_status_map = {
+            0: 'Unknown',
+            1: 'Waiting for players',
+            2: 'Game in progress',
+            3: 'Game ended',
         }
 
         self.transport = Transport(HOST, PORT)
@@ -109,12 +154,40 @@ class Client(object):
         return msg.SerializeToString()
 
     def recv_lobby_view(self, msg):
-        print('lobby view')
-        print(msg)
+        for x in range(5):
+            print('')
+        print('--------------- TABLES ---------------')
+        for table in msg.tables:
+            print(table.name)
+            print("    players: {}/{}".format(table.players, table.maxPlayers))
+            print("")
+        print('--------------------------------------')
 
     def recv_table_view(self, msg):
-        print("table view")
-        print(msg)
+        for x in range(5):
+            print('')
+        print('---------------- INFO ----------------')
+        print('status: {}'.format(self.table_status_map[msg.tableStatus]))
+        print('round: {}'.format(self.round_status_map[msg.roundStatus]))
+        print('pot: {}'.format(msg.pot))
+        print('--------------- CARDS ----------------')
+        for card in msg.cards:
+            print("    " + self.card_value_map[card.cardValue] + self.card_suit_map[card.cardSuit])
+
+        print('-------------- PLAYERS ---------------')
+        for player in msg.players:
+            print(player.name)
+            for card in player.hand:
+                print("    " + self.card_value_map[card.cardValue] + self.card_suit_map[card.cardSuit])
+            print("    chips: {}".format(player.chips))
+            print("    bet: {}".format(player.bet))
+            if player.turn:
+                print("    dealer")
+            if msg.tableStatus == 2 and not player.inGame:
+                print("    folded")
+            if player.turn:
+                print("    turn")
+            print('--------------------------------------')
 
 
 client = Client()

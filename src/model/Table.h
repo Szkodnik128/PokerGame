@@ -81,8 +81,9 @@ private:
     void dealCardsToTable();
     Player *selectWinner();
     void checkPlayersHand();
-
+    void payPrize(Player *player);
     Player *getNextPlayer(Player *player);
+    void removeCards();
 
     std::map<RoundStatus, RoundHandler> roundHandlerMap;
 
@@ -97,10 +98,13 @@ public:
     int getCurrentPlayers() const;
     TableStatus getTableStatus() const;
     bool addPlayer(Player *player);
+    RoundStatus getRoundStatus() const;
 
     bool raise(Player *player, int chips);
     bool fold(Player *player);
     bool call(Player *player);
+
+    void startNextRound();
 
     DummyTableView *getTableView(Player *player) const;
 };

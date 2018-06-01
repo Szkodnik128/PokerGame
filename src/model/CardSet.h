@@ -27,6 +27,11 @@ private:
     CardSetCategory cardSetCategory;
     std::list <Card *> cards;
 
+    Card *firstPairCard;
+    Card *secondPairCard;
+    Card *threeOfAKindCard;
+    Card *fourOfAKindCard;
+
 public:
     CardSetCategory getCardSetCategory() const;
     const std::list<Card *> &getCards() const;
@@ -35,6 +40,54 @@ public:
     void removeCard(Card *card);
     void removeLastCard();
     void sortCards();
+    Card *getFirstPairCard() const;
+    Card *getSecondPairCard() const;
+    Card *getThreeOfAKindCard() const;
+    Card *getFourOfAKindCard() const;
+    void setFirstPairCard(Card *firstPairCard);
+    void setSecondPairCard(Card *secondPairCard);
+    void setThreeOfAKindCard(Card *threeOfAKindCard);
+    void setFourOfAKindCard(Card *fourOfAKindCard);
+
+    /**
+ * Overloads '==' operator.
+ *
+ * @param card          card
+ * @return true if equal to card
+ */
+    bool operator==(const CardSet &cardSet) const;
+
+    /**
+     * Overloads '<' operator.
+     *
+     * @param card          card
+     * @return true if lesser than card
+     */
+    bool operator<(const CardSet &cardSet) const;
+
+    /**
+     * Overloads '>' operator.
+     *
+     * @param card          card
+     * @return true if greater than card
+     */
+    bool operator>(const CardSet &cardSet) const;
+
+    /**
+     * Overloads '<=' operator.
+     *
+     * @param card          card
+     * @return true if lesser or equal to card
+     */
+    bool operator<=(const CardSet &cardSet) const;
+
+    /**
+     * Overloads '>=' operator.
+     *
+     * @param card          card
+     * @return true if greater or equal to card
+     */
+    bool operator>=(const CardSet &cardSet) const;
 };
 
 
