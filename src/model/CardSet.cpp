@@ -36,9 +36,9 @@ void CardSet::addCard(Card *card)
 
 void CardSet::removeCard(Card *card)
 {
-    for (auto const_iterator = this->cards.begin(); const_iterator != this->cards.end(); ++const_iterator) {
-        if (*const_iterator == card) {
-            this->cards.erase(const_iterator);
+    for (auto iterator = this->cards.begin(); iterator != this->cards.end(); ++iterator) {
+        if (*iterator == card) {
+            this->cards.erase(iterator);
             break;
         }
     }

@@ -84,6 +84,7 @@ private:
     void payPrize(Player *player);
     Player *getNextPlayer(Player *player);
     void removeCards();
+    bool isGameCouldFinish();
 
     std::map<RoundStatus, RoundHandler> roundHandlerMap;
 
@@ -98,6 +99,7 @@ public:
     int getCurrentPlayers() const;
     TableStatus getTableStatus() const;
     bool addPlayer(Player *player);
+    bool removePlayer(Player *player);
     RoundStatus getRoundStatus() const;
 
     bool raise(Player *player, int chips);

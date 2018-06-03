@@ -46,6 +46,7 @@ Card *Deck::getCardFromTop()
     /* Check if deck is not empty */
     if (this->cards.empty()) {
         // TODO: Throw exception
+        return nullptr;
     }
 
     /* Take card's pointer from list */

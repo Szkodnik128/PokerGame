@@ -187,7 +187,7 @@ void Model::raise(const Raise &raise, ClientHandler *const clientHandler)
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     }
 
-    if (table->getRoundStatus() == RoundStatusEnd) {
+    if (table->getRoundStatus() == RoundStatusEnd && table->getTableStatus() == TableStatusGameInProgress) {
         table->startNextRound();
         for (auto const&tablePlayer : players) {
             dummyTableView = table->getTableView(tablePlayer);
@@ -224,7 +224,7 @@ void Model::fold(const Fold &fold, ClientHandler *const clientHandler)
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     }
 
-    if (table->getRoundStatus() == RoundStatusEnd) {
+    if (table->getRoundStatus() == RoundStatusEnd && table->getTableStatus() == TableStatusGameInProgress) {
         table->startNextRound();
         for (auto const&tablePlayer : players) {
             dummyTableView = table->getTableView(tablePlayer);
@@ -261,7 +261,7 @@ void Model::call(const Call &call, ClientHandler *const clientHandler)
         this->playersMap[tablePlayer]->sendResponseMessage(dummyTableView, Response::PayloadCase::kTableView);
     }
 
-    if (table->getRoundStatus() == RoundStatusEnd) {
+    if (table->getRoundStatus() == RoundStatusEnd && table->getTableStatus() == TableStatusGameInProgress) {
         table->startNextRound();
         for (auto const&tablePlayer : players) {
             dummyTableView = table->getTableView(tablePlayer);

@@ -71,6 +71,18 @@ bool Table::addPlayer(Player *player)
     return true;
 }
 
+bool Table::removePlayer(Player *player)
+{
+    for (auto it = this->players.begin(); it != this->players.end(); it++) {
+        if (*it == player) {
+            it = this->players.erase(it);
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool Table::raise(Player *player, int chips)
 {
     if (this->tableStatus != TableStatusGameInProgress) {
@@ -226,6 +238,7 @@ void Table::handleBegining()
 {
     std::cout << "handle begining" << std::endl;
 
+    this->removeCards();
     this->deck.restartDeck();
     this->deck.shuffle();
     this->pot.zeroChips(); /* It should be already zeroed */
@@ -360,6 +373,10 @@ void Table::handleEnd()
     this->addBetsToPot();
     winner = this->selectWinner();
     payPrize(winner);
+
+    if (isGameCouldFinish()) {
+        this->tableStatus = TableStatusGameEnded;
+    }
 }
 
 void Table::setInGameAllPlayers()
@@ -589,4 +606,21 @@ void Table::removeCards()
 
 RoundStatus Table::getRoundStatus() const {
     return roundStatus;
+}
+
+bool Table::isGameCouldFinish()
+{
+    int broke = 0;
+
+    for (auto &player : this->players) {
+        if (player->getChips() == 0) {
+            broke++;
+        }
+    }
+
+    if ((broke + 1) >= this->players.size()) {
+        return true;
+    }
+
+    return false;
 }
